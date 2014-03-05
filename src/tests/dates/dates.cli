@@ -1,0 +1,44 @@
+add module dates { \
+	date1[1..1] : date;
+	date2[1..1] : date;
+}
+.
+compile dates
+cm dates
+
+#literal assignment
+date1 := 2007-03-19;
+date2 := 2007-03-20;
+
+#simple output
+date1;
+deref(date1);
+date2;
+deref(date2);
+
+#comparison
+date1 = date2;
+date1 < date2;
+date1 <= date2;
+date1 > date2;
+date1 >= date2;
+
+#current date
+now();
+
+#current date assignment
+date1 := now();
+
+#date precission tests
+date1;
+dateprec(date1, "low");
+dateprec(date1, "medium");
+dateprec(date1, "high");
+dateprec(date1, "full");
+date1 := dateprec(now(), "low");
+
+#dateformat comparison
+date1 := 2007-01-21 18:09:02.3;
+date2 := 2007-01-21 18:09:02.4;
+date1 = date2;
+dateprec(date1, "high") = dateprec(date2, "high");

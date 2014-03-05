@@ -1,0 +1,17 @@
+.classpath
+.project
+5.*/
+benchmark.*.csv
+build/
+dist/
+conf/
+*.dbf
+lib/
+*.log*
+res/
+build.xml
+test.rar
+tools/
+greg/blejam/
+greg/mbleja/
+

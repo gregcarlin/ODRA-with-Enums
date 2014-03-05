@@ -1,0 +1,9 @@
+src/odra/sbql/optimizers/costmodel/CostModel.java
+Modify and put cost model in
+
+src/odra/sbql/optimizers/benchmark/Benchmark.java
+Modify to add JVM warm-up
+
+src/odra/sbql/optimizers/Type.java
+/Users/greg/Documents/School/Science_Research/ODRA_enums_mbleja/src/odra/sbql/parser/SBQLParser.java 
+
