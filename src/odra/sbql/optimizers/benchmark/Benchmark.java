@@ -92,17 +92,28 @@ public class Benchmark
 	 * 
 	 * @throws Exception
 	 */
-	public void start() throws Exception
+	public void start() throws Exception {
+	    System.out.println("Warming up...");
+	    start(false, 10);
+	    System.out.println("Starting benchmarks...");
+	    start(true, repeat);
+	}
+	
+	private void start(boolean output, int repeat) throws Exception
 	{
 	
-		File outputFile;
-		do {
-			String date = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(new Date());
-			date = date.replaceAll(" ", ".").replaceAll(":", ".");
-			outputFile = new File(cli.getWorkingDirectory() + "/benchmark." + date + ".csv");
-		} while (outputFile.exists());
+		File outputFile = null;
+		PrintWriter writer = null;
 		
-		PrintWriter writer = new PrintWriter(new FileWriter(outputFile));
+		if(output) {
+    		do {
+    			String date = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(new Date());
+    			date = date.replaceAll(" ", ".").replaceAll(":", ".");
+    			outputFile = new File(cli.getWorkingDirectory() + "/benchmark." + date + ".csv");
+    		} while (outputFile.exists());
+    		
+    		writer = new PrintWriter(new FileWriter(outputFile));
+	    }
 		
 		NumberFormat numberFormat = NumberFormat.getInstance(Locale.getDefault());
 		DBConnection connection = cli.getConnection();
@@ -119,8 +130,10 @@ public class Benchmark
 		
 		for(int i = 0; i < repeat; i++)
 		{
-			if (verbose) System.out.print("test " + (i + 1) + " of " + repeat + "... ");
-			else System.out.print(".");
+		    if(output) {
+    			if (verbose) System.out.print("test " + (i + 1) + " of " + repeat + "... ");
+    			else System.out.print(".");
+		    }
 			
 			data.clear();
 			
@@ -148,6 +161,8 @@ public class Benchmark
 			typechecking_time_sum += ((IntegerResult)data.get(TIME_TYPECHECKING)).value;
 			optimization_time_sum += ((IntegerResult)data.get(TIME_OPTIMIZED_OPTIMIZATION)).value;
 			opt_execution_time_sum += ((IntegerResult)data.get(TIME_OPTIMIZED_EXECUTION)).value;
+			
+			if(!output) continue;
 			
 			if (cli.getVar(CLIVariable.TEST).equals("plaintimes")) {
 				if(i == 0)
@@ -232,6 +247,9 @@ public class Benchmark
 			
 			if (verbose) System.out.println("exec times ratio: " + numberFormat.format(((DoubleResult)data.get(RESULT_RATIO)).value) + " (" + comparisonResult + ")");
 		}
+		
+		if(!output) return;
+		
 		writer.println("");
 		if (!verbose) System.out.println();		
 		

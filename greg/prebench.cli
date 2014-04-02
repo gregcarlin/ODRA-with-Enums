@@ -1,0 +1,13 @@
+#batch res/optimiser/batch/bench.cli
+
+$encoding = utf-8
+
+set refoptimization none | dead | independent
+set optimization none | dead | weaklydependent | independent
+
+
+set test compare
+
+#benchmark 10 (Emp as e) where e.sal > avg((Emp where sex=e.sex).sal)
+
+#set test off

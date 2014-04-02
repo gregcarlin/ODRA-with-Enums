@@ -7,3 +7,6 @@ Modify to add JVM warm-up
 src/odra/sbql/optimizers/Type.java
 /Users/greg/Documents/School/Science_Research/ODRA_enums_mbleja/src/odra/sbql/parser/SBQLParser.java 
 
+src/odra/sbql/optimizers/queryrewrite/weakly/dependentquery/WeaklyDependencyChecker.java
+May be able to insert checking of cost model near lines 66-84.
+
