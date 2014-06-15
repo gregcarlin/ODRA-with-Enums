@@ -79,6 +79,12 @@ public class Benchmark
 		this.query = query;
 		this.repeat = repeat;
 		this.verbose = verbose;
+		
+		/*StringBuilder newQuery = new StringBuilder();
+        for(int i=0; i<10; i++) {
+            newQuery.append(query);
+        }
+        this.query = newQuery.toString();*/
 	}
 	
 	/**
@@ -95,10 +101,11 @@ public class Benchmark
 	
 	protected void start(boolean output, int repeat) {
         try {
-        
+            
             DBConnection connection = cli.getConnection();
             Hashtable<String, Object> data = new Hashtable<String, Object>();
-            //double executionTime = 0.0;
+            int executionTimeA = 0;
+            long executionTimeB = 0;
             BufferedWriter bw = null;
             if(output) {
                 bw = new BufferedWriter(new FileWriter(new File(cli.getWorkingDirectory() + "/benchmarks.csv"), true));
@@ -118,8 +125,11 @@ public class Benchmark
                         cli.getCurrMod(), 
                         cli.getVar(CLIVariable.AUTODEREF), 
                         cli.getVar(CLIVariable.TEST)});
+                long start = System.nanoTime();
                 DBReply reply = connection.sendRequest(request);
                 BagResult bagResult = (BagResult)reply.getResult();
+                long thisExecutionTimeB = System.nanoTime() - start;
+                executionTimeB += thisExecutionTimeB;
                 for(SingleResult result : bagResult.elementsToArray()) {
                     BinderResult binderResult = (BinderResult)result;
                     data.put(binderResult.getName(), binderResult.value);
@@ -127,12 +137,19 @@ public class Benchmark
                 
                 if(!output) continue;
                 
-                int executionTime = ((IntegerResult) data.get(TIME_OPTIMIZED_EXECUTION)).value;
+                int thisExecutionTimeA = ((IntegerResult) data.get(TIME_OPTIMIZED_EXECUTION)).value;
+                if(output && verbose) System.out.println(thisExecutionTimeA + "ms; " + thisExecutionTimeB + "ns");
+                executionTimeA += thisExecutionTimeA;
                 
-                bw.write(query + SEPARATOR + executionTime);
+                /*bw.write(query + SEPARATOR + executionTime);
+                bw.newLine();*/
             }
             
-            bw.close();
+            if(output) {
+                bw.write(query + SEPARATOR + ((double) executionTimeA/* / repeat*/) + SEPARATOR + (executionTimeB/* / (double) repeat*/));
+                bw.newLine();
+                bw.close();
+            }
         
         } catch (Exception e) {
             e.printStackTrace();
