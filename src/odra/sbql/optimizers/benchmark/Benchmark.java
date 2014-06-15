@@ -61,16 +61,16 @@ public class Benchmark
 	public static final String STORE_USED_RATIO = "store_used_ratio";
 	
 	/** CSV column separator */
-	private final String SEPRATOR = ";";
+	protected final String SEPARATOR = ",";
 	
 	/** CLI instance */
-	private final CLI cli;
+	protected final CLI cli;
 	/** query */
-	private final String query;
+	protected final String query;
 	/** number of repeats */
 	private final int repeat;
 	/** prints individual tests results on console */
-	private final boolean verbose;
+	protected final boolean verbose;
 	
 	/**
 	 * The constructor.
@@ -99,7 +99,7 @@ public class Benchmark
 	    start(true, repeat);
 	}
 	
-	private void start(boolean output, int repeat) throws Exception
+	protected void start(boolean output, int repeat) throws Exception
 	{
 	
 		File outputFile = null;
@@ -167,19 +167,19 @@ public class Benchmark
 			if (cli.getVar(CLIVariable.TEST).equals("plaintimes")) {
 				if(i == 0)
 				{
-					writer.println(TEST_MODE + SEPRATOR + cli.getVar(CLIVariable.TEST));
-					writer.println(QUERY_RAW + SEPRATOR + query);
+					writer.println(TEST_MODE + SEPARATOR + cli.getVar(CLIVariable.TEST));
+					writer.println(QUERY_RAW + SEPARATOR + query);
 					writer.println();
-					writer.println("#" + SEPRATOR + 
-							TIME_TYPECHECKING + SEPRATOR +
-							TIME_OPTIMIZED_OPTIMIZATION + SEPRATOR +
-							TIME_OPTIMIZED_EXECUTION + SEPRATOR);
+					writer.println("#" + SEPARATOR + 
+							TIME_TYPECHECKING + SEPARATOR +
+							TIME_OPTIMIZED_OPTIMIZATION + SEPARATOR +
+							TIME_OPTIMIZED_EXECUTION + SEPARATOR);
 				}
 				
-				writer.println(i + SEPRATOR + 
-						((IntegerResult)data.get(TIME_TYPECHECKING)).value + SEPRATOR +
-						((IntegerResult)data.get(TIME_OPTIMIZED_OPTIMIZATION)).value + SEPRATOR +
-						((IntegerResult)data.get(TIME_OPTIMIZED_EXECUTION)).value + SEPRATOR);
+				writer.println(i + SEPARATOR + 
+						((IntegerResult)data.get(TIME_TYPECHECKING)).value + SEPARATOR +
+						((IntegerResult)data.get(TIME_OPTIMIZED_OPTIMIZATION)).value + SEPARATOR +
+						((IntegerResult)data.get(TIME_OPTIMIZED_EXECUTION)).value + SEPARATOR);
 				if (verbose) System.out.println("typechecking [ms]: " + ((IntegerResult)data.get(TIME_TYPECHECKING)).value + 
 						" optimization [ms]: " + ((IntegerResult)data.get(TIME_OPTIMIZED_OPTIMIZATION)).value + 
 						" execution [ms]: " + ((IntegerResult)data.get(TIME_OPTIMIZED_EXECUTION)).value);
@@ -194,36 +194,36 @@ public class Benchmark
 			
 			if(i == 0)
 			{
-				writer.println(TEST_MODE + SEPRATOR + ((StringResult)data.get(TEST_MODE)).value);
-				writer.println(OPTIMIZATION_SEQUENCE_REFERENCE + SEPRATOR + ((StringResult)data.get(OPTIMIZATION_SEQUENCE_REFERENCE)).value);
-				writer.println(OPTIMIZATION_SEQUENCE_APPLIED + SEPRATOR + ((StringResult)data.get(OPTIMIZATION_SEQUENCE_APPLIED)).value);
-				writer.println(QUERY_RAW + SEPRATOR + ((StringResult)data.get(QUERY_RAW)).value);
-				writer.println(QUERY_REFERENCE + SEPRATOR + ((StringResult)data.get(QUERY_REFERENCE)).value);
-				writer.println(QUERY_OPTIMIZED + SEPRATOR + ((StringResult)data.get(QUERY_OPTIMIZED)).value);
+				writer.println(TEST_MODE + SEPARATOR + ((StringResult)data.get(TEST_MODE)).value);
+				writer.println(OPTIMIZATION_SEQUENCE_REFERENCE + SEPARATOR + ((StringResult)data.get(OPTIMIZATION_SEQUENCE_REFERENCE)).value);
+				writer.println(OPTIMIZATION_SEQUENCE_APPLIED + SEPARATOR + ((StringResult)data.get(OPTIMIZATION_SEQUENCE_APPLIED)).value);
+				writer.println(QUERY_RAW + SEPARATOR + ((StringResult)data.get(QUERY_RAW)).value);
+				writer.println(QUERY_REFERENCE + SEPARATOR + ((StringResult)data.get(QUERY_REFERENCE)).value);
+				writer.println(QUERY_OPTIMIZED + SEPARATOR + ((StringResult)data.get(QUERY_OPTIMIZED)).value);
 				writer.println();
 				writer.println(
-					"#" + SEPRATOR +
-					TIME_TYPECHECKING + SEPRATOR +
-					TIME_REFERENCE + SEPRATOR +
-					TIME_OPTIMIZED + SEPRATOR +
-					TIME_OPTIMIZED_OPTIMIZATION + SEPRATOR +
-					TIME_OPTIMIZED_EXECUTION + SEPRATOR +
-					RESULT_RATIO + SEPRATOR +
-					RESULT_PERCENTAGE + SEPRATOR +
-					RESULT_COMPARISON + SEPRATOR +
-					STORE_USED_FOR_REFERENCE + SEPRATOR +
-					STORE_USED_FOR_OPTIMIZED + SEPRATOR +
-					STORE_USED_RATIO + SEPRATOR);
+					"#" + SEPARATOR +
+					TIME_TYPECHECKING + SEPARATOR +
+					TIME_REFERENCE + SEPARATOR +
+					TIME_OPTIMIZED + SEPARATOR +
+					TIME_OPTIMIZED_OPTIMIZATION + SEPARATOR +
+					TIME_OPTIMIZED_EXECUTION + SEPARATOR +
+					RESULT_RATIO + SEPARATOR +
+					RESULT_PERCENTAGE + SEPARATOR +
+					RESULT_COMPARISON + SEPARATOR +
+					STORE_USED_FOR_REFERENCE + SEPARATOR +
+					STORE_USED_FOR_OPTIMIZED + SEPARATOR +
+					STORE_USED_RATIO + SEPARATOR);
 			}
 			
-			String line = Integer.toString(i + 1) + SEPRATOR;
-			line += ((IntegerResult)data.get(TIME_TYPECHECKING)).value + SEPRATOR;
-			line += ((IntegerResult)data.get(TIME_REFERENCE)).value + SEPRATOR;
-			line += ((IntegerResult)data.get(TIME_OPTIMIZED)).value + SEPRATOR;
-			line += ((IntegerResult)data.get(TIME_OPTIMIZED_OPTIMIZATION)).value + SEPRATOR;
-			line += ((IntegerResult)data.get(TIME_OPTIMIZED_EXECUTION)).value + SEPRATOR;
-			line += numberFormat.format(((DoubleResult)data.get(RESULT_RATIO)).value) + SEPRATOR;
-			line += numberFormat.format(((DoubleResult)data.get(RESULT_PERCENTAGE)).value) + SEPRATOR;
+			String line = Integer.toString(i + 1) + SEPARATOR;
+			line += ((IntegerResult)data.get(TIME_TYPECHECKING)).value + SEPARATOR;
+			line += ((IntegerResult)data.get(TIME_REFERENCE)).value + SEPARATOR;
+			line += ((IntegerResult)data.get(TIME_OPTIMIZED)).value + SEPARATOR;
+			line += ((IntegerResult)data.get(TIME_OPTIMIZED_OPTIMIZATION)).value + SEPARATOR;
+			line += ((IntegerResult)data.get(TIME_OPTIMIZED_EXECUTION)).value + SEPARATOR;
+			line += numberFormat.format(((DoubleResult)data.get(RESULT_RATIO)).value) + SEPARATOR;
+			line += numberFormat.format(((DoubleResult)data.get(RESULT_PERCENTAGE)).value) + SEPARATOR;
 			
 			String comparisonInfo = ((StringResult)data.get(RESULT_COMPARISON)).value;
 			String comparisonResult = "";
@@ -233,13 +233,13 @@ public class Benchmark
 				comparisonResult = "ERROR";
 			else if(comparisonInfo.equals(RESULT_COMPARISON_UNCERTAIN))
 				comparisonResult = "uncertain";
-			line += comparisonResult + SEPRATOR;
+			line += comparisonResult + SEPARATOR;
 			
 			try
 			{
-				line += ((IntegerResult)data.get(STORE_USED_FOR_REFERENCE)).value + SEPRATOR;
-				line += ((IntegerResult)data.get(STORE_USED_FOR_OPTIMIZED)).value + SEPRATOR;
-				line += numberFormat.format(((DoubleResult)data.get(STORE_USED_RATIO)).value) + SEPRATOR;
+				line += ((IntegerResult)data.get(STORE_USED_FOR_REFERENCE)).value + SEPARATOR;
+				line += ((IntegerResult)data.get(STORE_USED_FOR_OPTIMIZED)).value + SEPARATOR;
+				line += numberFormat.format(((DoubleResult)data.get(STORE_USED_RATIO)).value) + SEPARATOR;
 			}
 			catch(NullPointerException exc) {}
 			
@@ -277,15 +277,15 @@ public class Benchmark
 					writer.println("");
 					writer.println("Below results with test no 1 omitted in calculating avarage values (often erroneous).");
 				}
-				writer.print("avg_typechecking [ms]: " + SEPRATOR + " avg_optimization [ms]: " + SEPRATOR + " avg_opt_execution [ms]: ");
+				writer.print("avg_typechecking [ms]: " + SEPARATOR + " avg_optimization [ms]: " + SEPARATOR + " avg_opt_execution [ms]: ");
 				if (!cli.getVar(CLIVariable.TEST).equals("plaintimes")) 
-					writer.print(SEPRATOR + "avg_reference [ms]: " + SEPRATOR + "avg_result_ratio (with typechecking): ");
+					writer.print(SEPARATOR + "avg_reference [ms]: " + SEPARATOR + "avg_result_ratio (with typechecking): ");
 				writer.println("");
-				writer.print(numberFormat.format(typechecking_time_sum / (repeat - k)) + SEPRATOR +
-						numberFormat.format(optimization_time_sum / (repeat - k)) + SEPRATOR +
+				writer.print(numberFormat.format(typechecking_time_sum / (repeat - k)) + SEPARATOR +
+						numberFormat.format(optimization_time_sum / (repeat - k)) + SEPARATOR +
 						numberFormat.format(opt_execution_time_sum / (repeat - k)));
 				if (!cli.getVar(CLIVariable.TEST).equals("plaintimes")) 
-					writer.print(SEPRATOR + numberFormat.format(ref_total_time_sum / (repeat - k)) + SEPRATOR + numberFormat.format(ref_total_time_sum / (typechecking_time_sum + optimization_time_sum + opt_execution_time_sum)));
+					writer.print(SEPARATOR + numberFormat.format(ref_total_time_sum / (repeat - k)) + SEPARATOR + numberFormat.format(ref_total_time_sum / (typechecking_time_sum + optimization_time_sum + opt_execution_time_sum)));
 				writer.println("");
 			}			
 		}
