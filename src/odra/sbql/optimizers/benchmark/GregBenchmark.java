@@ -72,7 +72,7 @@ public class GregBenchmark extends Benchmark {
             
             bw.close();
         
-        } catch (RDException | IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

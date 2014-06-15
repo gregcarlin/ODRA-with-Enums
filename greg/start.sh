@@ -1,0 +1,3 @@
+cd ../dist/
+java -Xms128m -Xmx768m -cp ./lib/odra-core-1.0-v.jar:./lib/odra-commons-1.0-dev.jar:./lib/odra-xmlfilter-1.0-dev.jar:./lib/odra-ws-1.0-dev.jar:./lib/odra-wrapper-1.0-dev.jar:./lib/odra-p2p-1.0-dev.jar:./lib/cup-runtime.jar:./lib/xom-1.1.jar:./lib/cup-runtime.jar:./lib/xercesImpl.jar:./lib/xalan.jar:./lib/http.jar:./lib/xsom.jar:./lib/relaxngDatatype.jar:./lib/commons-httpclient-3.0.1.jar:./lib/commons-codec-1.3.jar:./lib/wsdl4j.jar:./lib/serializer.jar:./lib/activation.jar:./lib/ant-1.6.5.jar:./lib/jdom.jar:./lib/zql.jar:./lib/commons-logging-1.0.4.jar:./lib/commons-lang-2.1.jar:./lib/log4j-1.2.14.jar odra.system.Main --start_expandable test
+
