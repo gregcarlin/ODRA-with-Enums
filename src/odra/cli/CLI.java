@@ -41,7 +41,7 @@ import odra.sbql.ast.ASTNode;
 import odra.sbql.ast.serializer.ASTDeserializer;
 import odra.sbql.optimizers.OptimizationSequence;
 import odra.sbql.optimizers.Type;
-import odra.sbql.optimizers.benchmark.GregBenchmark;
+import odra.sbql.optimizers.benchmark.Benchmark;
 import odra.sbql.results.runtime.BagResult;
 import odra.sbql.results.runtime.BooleanResult;
 import odra.sbql.results.runtime.RawResultPrinter;
@@ -1857,7 +1857,7 @@ public class CLI implements CLIASTVisitor {
         if(!(getVar(CLIVariable.TEST).equals("plaintimes") || getVar(CLIVariable.TEST).equals("compare") || getVar(CLIVariable.TEST).equals("comparesimple")))
             throw new CLISyntaxErrorException("Set 'plaintimes' or 'compare' or 'comparesimple' test before running 'benchmark'.");
 
-        new GregBenchmark(this, data[0], Integer.parseInt(data[1]), Boolean.parseBoolean(data[2])).start();
+        new Benchmark(this, data[0], Integer.parseInt(data[1]), Boolean.parseBoolean(data[2])).start();
     }
 
     protected void execASTVisualizer() {
