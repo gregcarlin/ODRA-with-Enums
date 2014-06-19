@@ -1,0 +1,10 @@
+#batch res/optimiser/batch/bench.cli
+
+$encoding = utf-8
+
+set test plaintimes
+
+benchmark 10 "true" and "true";
+benchmark 10 "true" and "false";
+benchmark 10 "false" and "true";
+benchmark 10 "false" and "true";

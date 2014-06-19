@@ -1,0 +1,6 @@
+#batch res/optimiser/batch/bench.cli
+
+$encoding = utf-8
+
+set test plaintimes
+

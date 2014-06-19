@@ -2,7 +2,10 @@ package odra.sbql.optimizers.benchmark;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.LineNumberReader;
 import java.util.Hashtable;
 
 import odra.cli.CLI;
@@ -78,7 +81,8 @@ public class Benchmark
 		this.cli = cli;
 		this.query = query;
 		this.repeat = repeat;
-		this.verbose = verbose;
+		//this.verbose = verbose;
+		this.verbose = false; // just hardcode this, it's easier
 		
 		/*StringBuilder newQuery = new StringBuilder();
         for(int i=0; i<10; i++) {
@@ -93,9 +97,9 @@ public class Benchmark
 	 * @throws Exception
 	 */
 	public void start() throws Exception {
-	    System.out.println("Warming up...");
+	    if(verbose) System.out.println("Warming up...");
 	    start(false, 10);
-	    System.out.println("Starting benchmarks...");
+	    if(verbose) System.out.println("Starting benchmarks...");
 	    start(true, repeat);
 	}
 	
@@ -107,8 +111,11 @@ public class Benchmark
             int executionTimeA = 0;
             long executionTimeB = 0;
             BufferedWriter bw = null;
+            int lines = 0;
             if(output) {
-                bw = new BufferedWriter(new FileWriter(new File(cli.getWorkingDirectory() + "/benchmarks.csv"), true));
+                File f = new File(cli.getWorkingDirectory() + "/benchmarks.csv");
+                lines = countLines(f);
+                bw = new BufferedWriter(new FileWriter(f, true));
                 /*bw.write("query" + SEPARATOR + "execution time");
                 bw.newLine();*/
             }
@@ -146,7 +153,7 @@ public class Benchmark
             }
             
             if(output) {
-                bw.write(query + SEPARATOR + ((double) executionTimeA/* / repeat*/) + SEPARATOR + (executionTimeB/* / (double) repeat*/));
+                bw.write(lines + SEPARATOR + query + SEPARATOR + ((double) executionTimeA / repeat) + SEPARATOR + (executionTimeB / (double) repeat));
                 bw.newLine();
                 bw.close();
             }
@@ -155,4 +162,15 @@ public class Benchmark
             e.printStackTrace();
         }
     }
+	
+	// adapted from http://stackoverflow.com/questions/453018/number-of-lines-in-a-file-in-java
+	private static final int countLines(File file) throws IOException {
+	    if(!file.exists()) return 0;
+	    LineNumberReader  lnr = new LineNumberReader(new FileReader(file));
+	    lnr.skip(Long.MAX_VALUE);
+	    int rt = lnr.getLineNumber();
+	    // Finally, the LineNumberReader object should be closed to prevent resource leak
+	    lnr.close();
+	    return rt;
+	}
 }
