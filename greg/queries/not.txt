@@ -4,5 +4,5 @@ $encoding = utf-8
 
 set test plaintimes
 
-benchmark 10 not "true";
-benchmark 10 not "false";
+benchmark 10 not:not "true";
+benchmark 10 not:not "false";

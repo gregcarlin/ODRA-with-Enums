@@ -4,7 +4,7 @@ $encoding = utf-8
 
 set test plaintimes
 
-benchmark 10 dateprec(1900-01-01, low);
-benchmark 10 dateprec(1900-01-01, medium);
-benchmark 10 dateprec(1900-01-01, high);
-benchmark 10 dateprec(1900-01-01, full);
+benchmark 10 dform:dateprec(1900-01-01, low);
+benchmark 10 dform:dateprec(1900-01-01, medium);
+benchmark 10 dform:dateprec(1900-01-01, high);
+benchmark 10 dform:dateprec(1900-01-01, full);

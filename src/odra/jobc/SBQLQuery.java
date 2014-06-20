@@ -119,7 +119,7 @@ public class SBQLQuery {
     public String prepare() {
 		
 	String query = this.rawquery.trim();
-	if (!query.endsWith(END_STATEMENT)) {
+	if (!query.endsWith(END_STATEMENT)) { // may be causing problems with cd ..
 	    query = query.concat(END_STATEMENT);
 	}
 	for(Iterator i = this.params.keySet().iterator(); i.hasNext();){

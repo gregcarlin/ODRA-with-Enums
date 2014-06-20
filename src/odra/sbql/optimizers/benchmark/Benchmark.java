@@ -68,6 +68,7 @@ public class Benchmark
 	private final int repeat;
 	/** prints individual tests results on console */
 	protected final boolean verbose;
+	private final String name;
 	
 	/**
 	 * The constructor.
@@ -79,10 +80,11 @@ public class Benchmark
 	public Benchmark(CLI cli, String query, int repeat, boolean verbose)
 	{
 		this.cli = cli;
-		this.query = query;
+		this.query = query.substring(query.indexOf(':') + 1);
 		this.repeat = repeat;
 		//this.verbose = verbose;
 		this.verbose = false; // just hardcode this, it's easier
+		this.name = query.substring(0, query.indexOf(":"));
 		
 		/*StringBuilder newQuery = new StringBuilder();
         for(int i=0; i<10; i++) {
@@ -113,7 +115,9 @@ public class Benchmark
             BufferedWriter bw = null;
             int lines = 0;
             if(output) {
-                File f = new File(cli.getWorkingDirectory() + "/benchmarks.csv");
+                /*System.out.println("query is " + query);
+                System.out.println("index is " + query.indexOf(":"));*/
+                File f = new File(cli.getWorkingDirectory() + "/benchmarks-" + name + ".csv");
                 lines = countLines(f);
                 bw = new BufferedWriter(new FileWriter(f, true));
                 /*bw.write("query" + SEPARATOR + "execution time");
