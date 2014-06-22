@@ -58,7 +58,7 @@ public class Benchmark
 	public static final String STORE_USED_RATIO = "store_used_ratio";
 	
 	/** CSV column separator */
-	protected final String SEPARATOR = ",";
+	protected final String SEPARATOR = ";";
 	
 	/** CLI instance */
 	protected final CLI cli;
@@ -157,7 +157,8 @@ public class Benchmark
             }
             
             if(output) {
-                bw.write(lines + SEPARATOR + query + SEPARATOR + ((double) executionTimeA / repeat) + SEPARATOR + (executionTimeB / (double) repeat));
+                String cutQuery = query.endsWith(";") ? query.substring(0, query.length() - 2) : query;
+                bw.write(lines + SEPARATOR + cutQuery + SEPARATOR + ((double) executionTimeA / repeat) + SEPARATOR + (executionTimeB / (double) repeat));
                 bw.newLine();
                 bw.close();
             }

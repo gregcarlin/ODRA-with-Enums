@@ -4,3 +4,4 @@ $encoding = utf-8
 
 set test plaintimes
 
+benchmark 10 now:now();

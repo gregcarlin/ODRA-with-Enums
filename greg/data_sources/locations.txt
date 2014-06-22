@@ -1,3 +1,9 @@
 First Names:
 http://www.babynamewizard.com/the-top-1000-baby-names-of-2011-united-states-of-america
 
+Last Names:
+http://names.mongabay.com/data/1000.html
+
+Departments:
+http://www.net.princeton.edu/hostmaster/departments.txt
+
