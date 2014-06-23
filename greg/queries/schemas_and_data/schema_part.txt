@@ -1,0 +1,26 @@
+\
+add module PartMod {
+
+	class PartClass {
+		instance Part: {
+			name: string;
+			kind: string;
+			detailCost: real[0..1];
+			detailMass: real[0..1];
+			assemblyCost: real[0..1];
+			assemblyMass: real[0..1];
+			component: ComponentClass[0..*];
+		}
+	}
+
+	class ComponentClass {
+		instance Component: {
+			amount: integer;
+			leadsTo: ref Part;
+		}
+	}
+	
+	Part: PartClass[0..*];
+	Component: ComponentClass[0..*];
+}
+.

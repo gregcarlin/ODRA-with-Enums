@@ -1,0 +1,190 @@
+create permanent Part("Kemp" as name, "mouse" as kind, 47.970779 as detailCost, 18.973314 as detailMass, 62.885876 as assemblyCost, 66.226624 as assemblyMass);
+create permanent Part("Pittman" as name, "hard drive" as kind, 11.590552 as detailCost, 73.774445 as detailMass, 23.319542 as assemblyCost, 75.332024 as assemblyMass);
+create permanent Part("Todd" as name, "power supply" as kind, 28.977633 as detailCost, 69.567932 as detailMass, 30.164772 as assemblyCost, 48.790951 as assemblyMass);
+create permanent Part("Richard" as name, "cpu" as kind, 10.408020 as detailCost, 8.197296 as detailMass, 12.112612 as assemblyCost, 56.884003 as assemblyMass);
+create permanent Part("Webb" as name, "fan" as kind, 45.608242 as detailCost, 89.700897 as detailMass, 47.916283 as assemblyCost, 69.128510 as assemblyMass);
+create permanent Part("Foley" as name, "power supply" as kind, 80.515099 as detailCost, 68.688972 as detailMass, 80.205421 as assemblyCost, 43.774479 as assemblyMass);
+create permanent Part("Jacobson" as name, "memory" as kind, 87.598366 as detailCost, 82.550339 as detailMass, 35.430443 as assemblyCost, 1.336950 as assemblyMass);
+create permanent Part("Cardenas" as name, "processor" as kind, 75.847908 as detailCost, 88.506485 as detailMass, 89.072777 as assemblyCost, 91.195618 as assemblyMass);
+create permanent Part("Mooney" as name, "optical drive" as kind, 19.463211 as detailCost, 0.760525 as detailMass, 33.635883 as assemblyCost, 8.913046 as assemblyMass);
+create permanent Part("Greer" as name, "fan" as kind, 26.646412 as detailCost, 28.359009 as detailMass, 61.527561 as assemblyCost, 65.639679 as assemblyMass);
+create permanent Part("Clarke" as name, "keyboard" as kind, 65.639877 as detailCost, 96.757629 as detailMass, 43.087856 as assemblyCost, 16.567177 as assemblyMass);
+Part[1] :<< component(create permanent Component(5 as amount, ref(Part[10]) as leadsTo))
+create permanent Part("Paul" as name, "memory" as kind, 56.680279 as detailCost, 99.747383 as detailMass, 55.284966 as assemblyCost, 84.820808 as assemblyMass);
+Part[8] :<< component(create permanent Component(7 as amount, ref(Part[11]) as leadsTo))
+create permanent Part("Duran" as name, "fan" as kind, 5.797380 as detailCost, 89.464806 as detailMass, 94.521927 as assemblyCost, 4.909360 as assemblyMass);
+Part[5] :<< component(create permanent Component(6 as amount, ref(Part[12]) as leadsTo))
+create permanent Part("Bradley" as name, "processor" as kind, 20.891279 as detailCost, 22.713493 as detailMass, 80.684021 as assemblyCost, 80.315742 as assemblyMass);
+Part[4] :<< component(create permanent Component(9 as amount, ref(Part[13]) as leadsTo))
+create permanent Part("Fitzpatrick" as name, "cpu" as kind, 83.870979 as detailCost, 11.381120 as detailMass, 25.701380 as assemblyCost, 40.685566 as assemblyMass);
+Part[1] :<< component(create permanent Component(9 as amount, ref(Part[14]) as leadsTo))
+create permanent Part("Johnson" as name, "cpu" as kind, 77.517265 as detailCost, 60.486176 as detailMass, 68.419418 as assemblyCost, 4.087448 as assemblyMass);
+Part[7] :<< component(create permanent Component(1 as amount, ref(Part[15]) as leadsTo))
+create permanent Part("Petersen" as name, "gpu" as kind, 82.304092 as detailCost, 21.758354 as detailMass, 25.324833 as assemblyCost, 56.059147 as assemblyMass);
+Part[4] :<< component(create permanent Component(7 as amount, ref(Part[16]) as leadsTo))
+create permanent Part("Phillips" as name, "cpu" as kind, 91.834869 as detailCost, 95.013100 as detailMass, 0.303292 as assemblyCost, 26.663422 as assemblyMass);
+Part[7] :<< component(create permanent Component(5 as amount, ref(Part[17]) as leadsTo))
+create permanent Part("Murphy" as name, "optical drive" as kind, 19.608074 as detailCost, 97.247765 as detailMass, 29.097826 as assemblyCost, 79.154793 as assemblyMass);
+Part[4] :<< component(create permanent Component(5 as amount, ref(Part[18]) as leadsTo))
+create permanent Part("Novak" as name, "hard drive" as kind, 39.108162 as detailCost, 21.685511 as detailMass, 50.815331 as assemblyCost, 23.134821 as assemblyMass);
+Part[4] :<< component(create permanent Component(6 as amount, ref(Part[19]) as leadsTo))
+create permanent Part("Lewis" as name, "optical drive" as kind, 69.714264 as detailCost, 15.040231 as detailMass, 29.083084 as assemblyCost, 41.271759 as assemblyMass);
+Part[18] :<< component(create permanent Component(8 as amount, ref(Part[20]) as leadsTo))
+create permanent Part("Whitehead" as name, "gpu" as kind, 87.037033 as detailCost, 61.894394 as detailMass, 3.768837 as assemblyCost, 21.074509 as assemblyMass);
+Part[17] :<< component(create permanent Component(8 as amount, ref(Part[21]) as leadsTo))
+create permanent Part("Marks" as name, "storage" as kind, 13.850326 as detailCost, 52.552563 as detailMass, 37.699848 as assemblyCost, 29.714430 as assemblyMass);
+Part[16] :<< component(create permanent Component(9 as amount, ref(Part[22]) as leadsTo))
+create permanent Part("Gamble" as name, "memory" as kind, 53.274040 as detailCost, 79.489960 as detailMass, 75.515106 as assemblyCost, 13.737082 as assemblyMass);
+Part[14] :<< component(create permanent Component(3 as amount, ref(Part[23]) as leadsTo))
+create permanent Part("Cantu" as name, "optical drive" as kind, 26.082493 as detailCost, 16.680836 as detailMass, 28.524786 as assemblyCost, 15.463316 as assemblyMass);
+Part[12] :<< component(create permanent Component(0 as amount, ref(Part[24]) as leadsTo))
+create permanent Part("Frye" as name, "processor" as kind, 34.192230 as detailCost, 79.945877 as detailMass, 71.162292 as assemblyCost, 87.427635 as assemblyMass);
+Part[12] :<< component(create permanent Component(8 as amount, ref(Part[25]) as leadsTo))
+create permanent Part("Warren" as name, "gpu" as kind, 40.544121 as detailCost, 2.358067 as detailMass, 30.650246 as assemblyCost, 68.308395 as assemblyMass);
+Part[16] :<< component(create permanent Component(1 as amount, ref(Part[26]) as leadsTo))
+create permanent Part("Baker" as name, "optical drive" as kind, 94.843956 as detailCost, 33.903568 as detailMass, 74.127480 as assemblyCost, 91.875160 as assemblyMass);
+Part[16] :<< component(create permanent Component(2 as amount, ref(Part[27]) as leadsTo))
+create permanent Part("Smith" as name, "optical drive" as kind, 73.835495 as detailCost, 16.078430 as detailMass, 62.346012 as assemblyCost, 21.843035 as assemblyMass);
+Part[12] :<< component(create permanent Component(7 as amount, ref(Part[28]) as leadsTo))
+create permanent Part("Gray" as name, "cpu" as kind, 95.065102 as detailCost, 4.671633 as detailMass, 66.404221 as assemblyCost, 32.763611 as assemblyMass);
+Part[18] :<< component(create permanent Component(6 as amount, ref(Part[29]) as leadsTo))
+create permanent Part("Mcknight" as name, "fan" as kind, 36.197693 as detailCost, 8.364076 as detailMass, 76.759705 as assemblyCost, 40.829731 as assemblyMass);
+Part[26] :<< component(create permanent Component(0 as amount, ref(Part[30]) as leadsTo))
+create permanent Part("Mejia" as name, "storage" as kind, 10.418057 as detailCost, 7.099235 as detailMass, 0.791287 as assemblyCost, 40.502213 as assemblyMass);
+Part[29] :<< component(create permanent Component(6 as amount, ref(Part[31]) as leadsTo))
+create permanent Part("Hicks" as name, "storage" as kind, 14.048725 as detailCost, 65.781120 as detailMass, 34.131859 as assemblyCost, 73.597855 as assemblyMass);
+Part[22] :<< component(create permanent Component(1 as amount, ref(Part[32]) as leadsTo))
+create permanent Part("Moran" as name, "display" as kind, 50.794495 as detailCost, 50.636017 as detailMass, 31.320589 as assemblyCost, 41.058750 as assemblyMass);
+Part[22] :<< component(create permanent Component(2 as amount, ref(Part[33]) as leadsTo))
+create permanent Part("Mcknight" as name, "fan" as kind, 36.893757 as detailCost, 52.162712 as detailMass, 17.203045 as assemblyCost, 28.116787 as assemblyMass);
+Part[28] :<< component(create permanent Component(0 as amount, ref(Part[34]) as leadsTo))
+create permanent Part("Chavez" as name, "ram" as kind, 24.392902 as detailCost, 4.449707 as detailMass, 59.322750 as assemblyCost, 57.377338 as assemblyMass);
+Part[27] :<< component(create permanent Component(9 as amount, ref(Part[35]) as leadsTo))
+create permanent Part("Rangel" as name, "graphics card" as kind, 24.194027 as detailCost, 84.972832 as detailMass, 8.483237 as assemblyCost, 94.917793 as assemblyMass);
+Part[22] :<< component(create permanent Component(0 as amount, ref(Part[36]) as leadsTo))
+create permanent Part("Nguyen" as name, "graphics card" as kind, 44.356407 as detailCost, 43.632664 as detailMass, 92.586853 as assemblyCost, 8.405060 as assemblyMass);
+Part[20] :<< component(create permanent Component(3 as amount, ref(Part[37]) as leadsTo))
+create permanent Part("Clayton" as name, "keyboard" as kind, 45.134758 as detailCost, 36.765556 as detailMass, 73.898087 as assemblyCost, 90.035042 as assemblyMass);
+Part[28] :<< component(create permanent Component(1 as amount, ref(Part[38]) as leadsTo))
+create permanent Part("Cortez" as name, "processor" as kind, 14.437288 as detailCost, 18.317133 as detailMass, 25.508572 as assemblyCost, 76.261780 as assemblyMass);
+Part[23] :<< component(create permanent Component(4 as amount, ref(Part[39]) as leadsTo))
+create permanent Part("Quinn" as name, "storage" as kind, 80.066956 as detailCost, 11.968767 as detailMass, 92.803963 as assemblyCost, 81.881737 as assemblyMass);
+Part[32] :<< component(create permanent Component(8 as amount, ref(Part[40]) as leadsTo))
+create permanent Part("Mcgee" as name, "optical drive" as kind, 81.000687 as detailCost, 60.099060 as detailMass, 2.979231 as assemblyCost, 34.628860 as assemblyMass);
+Part[37] :<< component(create permanent Component(4 as amount, ref(Part[41]) as leadsTo))
+create permanent Part("Nunez" as name, "processor" as kind, 9.140831 as detailCost, 40.914185 as detailMass, 16.187168 as assemblyCost, 11.904984 as assemblyMass);
+Part[30] :<< component(create permanent Component(0 as amount, ref(Part[42]) as leadsTo))
+create permanent Part("Weaver" as name, "power supply" as kind, 23.187519 as detailCost, 81.369034 as detailMass, 53.431736 as assemblyCost, 47.975468 as assemblyMass);
+Part[35] :<< component(create permanent Component(1 as amount, ref(Part[43]) as leadsTo))
+create permanent Part("Hayden" as name, "cpu" as kind, 8.766341 as detailCost, 21.548653 as detailMass, 70.307594 as assemblyCost, 15.113682 as assemblyMass);
+Part[32] :<< component(create permanent Component(9 as amount, ref(Part[44]) as leadsTo))
+create permanent Part("Wheeler" as name, "fan" as kind, 9.604836 as detailCost, 97.547394 as detailMass, 11.288649 as assemblyCost, 70.185959 as assemblyMass);
+Part[33] :<< component(create permanent Component(2 as amount, ref(Part[45]) as leadsTo))
+create permanent Part("Grant" as name, "hard drive" as kind, 89.406837 as detailCost, 41.615677 as detailMass, 95.078835 as assemblyCost, 54.844677 as assemblyMass);
+Part[32] :<< component(create permanent Component(3 as amount, ref(Part[46]) as leadsTo))
+create permanent Part("Glass" as name, "ram" as kind, 66.577499 as detailCost, 96.756378 as detailMass, 22.963995 as assemblyCost, 80.741020 as assemblyMass);
+Part[32] :<< component(create permanent Component(9 as amount, ref(Part[47]) as leadsTo))
+create permanent Part("Gallegos" as name, "mouse" as kind, 36.406170 as detailCost, 30.384010 as detailMass, 41.330284 as assemblyCost, 52.698563 as assemblyMass);
+Part[38] :<< component(create permanent Component(3 as amount, ref(Part[48]) as leadsTo))
+create permanent Part("Nichols" as name, "graphics card" as kind, 59.796280 as detailCost, 4.873425 as detailMass, 89.353111 as assemblyCost, 84.735840 as assemblyMass);
+Part[36] :<< component(create permanent Component(7 as amount, ref(Part[49]) as leadsTo))
+create permanent Part("Mcdaniel" as name, "gpu" as kind, 11.219293 as detailCost, 10.545826 as detailMass, 32.135071 as assemblyCost, 97.759651 as assemblyMass);
+Part[47] :<< component(create permanent Component(2 as amount, ref(Part[50]) as leadsTo))
+create permanent Part("Benjamin" as name, "optical drive" as kind, 65.466965 as detailCost, 72.225731 as detailMass, 36.318981 as assemblyCost, 36.760181 as assemblyMass);
+Part[42] :<< component(create permanent Component(6 as amount, ref(Part[51]) as leadsTo))
+create permanent Part("Whitney" as name, "ram" as kind, 84.366020 as detailCost, 81.150475 as detailMass, 16.943014 as assemblyCost, 77.932091 as assemblyMass);
+Part[43] :<< component(create permanent Component(9 as amount, ref(Part[52]) as leadsTo))
+create permanent Part("Holland" as name, "hard drive" as kind, 79.759842 as detailCost, 6.338525 as detailMass, 69.725891 as assemblyCost, 71.703102 as assemblyMass);
+Part[40] :<< component(create permanent Component(4 as amount, ref(Part[53]) as leadsTo))
+create permanent Part("Shaw" as name, "power supply" as kind, 74.329964 as detailCost, 80.938942 as detailMass, 53.033424 as assemblyCost, 10.641569 as assemblyMass);
+Part[44] :<< component(create permanent Component(8 as amount, ref(Part[54]) as leadsTo))
+create permanent Part("Chandler" as name, "ram" as kind, 25.553249 as detailCost, 96.662155 as detailMass, 99.462837 as assemblyCost, 28.624647 as assemblyMass);
+Part[40] :<< component(create permanent Component(3 as amount, ref(Part[55]) as leadsTo))
+create permanent Part("Woods" as name, "processor" as kind, 63.695293 as detailCost, 60.753929 as detailMass, 39.287437 as assemblyCost, 69.823219 as assemblyMass);
+Part[40] :<< component(create permanent Component(5 as amount, ref(Part[56]) as leadsTo))
+create permanent Part("Bridges" as name, "optical drive" as kind, 44.687504 as detailCost, 40.784542 as detailMass, 79.241516 as assemblyCost, 95.149597 as assemblyMass);
+Part[46] :<< component(create permanent Component(2 as amount, ref(Part[57]) as leadsTo))
+create permanent Part("Cantrell" as name, "hard drive" as kind, 71.164055 as detailCost, 63.276215 as detailMass, 37.506138 as assemblyCost, 10.379404 as assemblyMass);
+Part[49] :<< component(create permanent Component(4 as amount, ref(Part[58]) as leadsTo))
+create permanent Part("Fisher" as name, "display" as kind, 91.357864 as detailCost, 45.379414 as detailMass, 72.290245 as assemblyCost, 99.198219 as assemblyMass);
+Part[45] :<< component(create permanent Component(8 as amount, ref(Part[59]) as leadsTo))
+create permanent Part("Macdonald" as name, "hard drive" as kind, 45.828438 as detailCost, 68.976181 as detailMass, 67.346725 as assemblyCost, 1.063484 as assemblyMass);
+Part[50] :<< component(create permanent Component(3 as amount, ref(Part[60]) as leadsTo))
+create permanent Part("Nicholson" as name, "keyboard" as kind, 96.095596 as detailCost, 75.912025 as detailMass, 18.830067 as assemblyCost, 77.363281 as assemblyMass);
+Part[50] :<< component(create permanent Component(7 as amount, ref(Part[61]) as leadsTo))
+create permanent Part("Gibbs" as name, "gpu" as kind, 79.075203 as detailCost, 73.872910 as detailMass, 26.061737 as assemblyCost, 76.227219 as assemblyMass);
+Part[57] :<< component(create permanent Component(2 as amount, ref(Part[62]) as leadsTo))
+create permanent Part("Wall" as name, "fan" as kind, 9.717011 as detailCost, 26.583803 as detailMass, 56.298077 as assemblyCost, 50.945602 as assemblyMass);
+Part[51] :<< component(create permanent Component(0 as amount, ref(Part[63]) as leadsTo))
+create permanent Part("Hanna" as name, "mouse" as kind, 55.781429 as detailCost, 95.234230 as detailMass, 22.525787 as assemblyCost, 68.052643 as assemblyMass);
+Part[57] :<< component(create permanent Component(0 as amount, ref(Part[64]) as leadsTo))
+create permanent Part("Sellers" as name, "memory" as kind, 36.422806 as detailCost, 43.593174 as detailMass, 0.959426 as assemblyCost, 90.864334 as assemblyMass);
+Part[58] :<< component(create permanent Component(0 as amount, ref(Part[65]) as leadsTo))
+create permanent Part("Baker" as name, "ram" as kind, 58.705227 as detailCost, 92.164757 as detailMass, 67.615746 as assemblyCost, 83.133629 as assemblyMass);
+Part[53] :<< component(create permanent Component(0 as amount, ref(Part[66]) as leadsTo))
+create permanent Part("Bird" as name, "mouse" as kind, 23.960108 as detailCost, 69.919250 as detailMass, 24.966599 as assemblyCost, 93.938164 as assemblyMass);
+Part[50] :<< component(create permanent Component(3 as amount, ref(Part[67]) as leadsTo))
+create permanent Part("Spencer" as name, "gpu" as kind, 52.910870 as detailCost, 78.457077 as detailMass, 85.160896 as assemblyCost, 88.591545 as assemblyMass);
+Part[59] :<< component(create permanent Component(6 as amount, ref(Part[68]) as leadsTo))
+create permanent Part("Cannon" as name, "graphics card" as kind, 73.558815 as detailCost, 28.252333 as detailMass, 36.591106 as assemblyCost, 72.366608 as assemblyMass);
+Part[53] :<< component(create permanent Component(1 as amount, ref(Part[69]) as leadsTo))
+create permanent Part("Ross" as name, "power supply" as kind, 45.107342 as detailCost, 15.360064 as detailMass, 3.572804 as assemblyCost, 98.980446 as assemblyMass);
+Part[63] :<< component(create permanent Component(8 as amount, ref(Part[70]) as leadsTo))
+create permanent Part("Sims" as name, "gpu" as kind, 35.054485 as detailCost, 60.124523 as detailMass, 28.569412 as assemblyCost, 39.239590 as assemblyMass);
+Part[62] :<< component(create permanent Component(4 as amount, ref(Part[71]) as leadsTo))
+create permanent Part("Davila" as name, "cpu" as kind, 75.237717 as detailCost, 49.663322 as detailMass, 37.801697 as assemblyCost, 6.524825 as assemblyMass);
+Part[61] :<< component(create permanent Component(9 as amount, ref(Part[72]) as leadsTo))
+create permanent Part("Durham" as name, "hard drive" as kind, 66.804985 as detailCost, 58.067375 as detailMass, 72.989883 as assemblyCost, 1.134259 as assemblyMass);
+Part[60] :<< component(create permanent Component(5 as amount, ref(Part[73]) as leadsTo))
+create permanent Part("Franklin" as name, "processor" as kind, 38.779785 as detailCost, 66.847076 as detailMass, 85.375191 as assemblyCost, 73.998650 as assemblyMass);
+Part[63] :<< component(create permanent Component(4 as amount, ref(Part[74]) as leadsTo))
+create permanent Part("Shepard" as name, "fan" as kind, 74.588844 as detailCost, 78.054245 as detailMass, 8.493603 as assemblyCost, 89.052803 as assemblyMass);
+Part[64] :<< component(create permanent Component(8 as amount, ref(Part[75]) as leadsTo))
+create permanent Part("Friedman" as name, "power supply" as kind, 22.070265 as detailCost, 80.956444 as detailMass, 72.890976 as assemblyCost, 58.879204 as assemblyMass);
+Part[63] :<< component(create permanent Component(2 as amount, ref(Part[76]) as leadsTo))
+create permanent Part("Ortiz" as name, "fan" as kind, 23.239071 as detailCost, 34.550255 as detailMass, 42.541431 as assemblyCost, 54.844276 as assemblyMass);
+Part[61] :<< component(create permanent Component(7 as amount, ref(Part[77]) as leadsTo))
+create permanent Part("Lindsey" as name, "gpu" as kind, 35.152603 as detailCost, 94.455429 as detailMass, 91.113922 as assemblyCost, 75.764557 as assemblyMass);
+Part[66] :<< component(create permanent Component(2 as amount, ref(Part[78]) as leadsTo))
+create permanent Part("Avila" as name, "gpu" as kind, 36.659370 as detailCost, 88.280106 as detailMass, 96.615097 as assemblyCost, 84.569595 as assemblyMass);
+Part[67] :<< component(create permanent Component(5 as amount, ref(Part[79]) as leadsTo))
+create permanent Part("Higgins" as name, "keyboard" as kind, 11.692959 as detailCost, 66.565430 as detailMass, 97.578560 as assemblyCost, 53.276806 as assemblyMass);
+Part[73] :<< component(create permanent Component(0 as amount, ref(Part[80]) as leadsTo))
+create permanent Part("Arellano" as name, "power supply" as kind, 83.986549 as detailCost, 56.068325 as detailMass, 47.252625 as assemblyCost, 64.402328 as assemblyMass);
+Part[73] :<< component(create permanent Component(7 as amount, ref(Part[81]) as leadsTo))
+create permanent Part("Gilbert" as name, "mouse" as kind, 10.579056 as detailCost, 71.932343 as detailMass, 99.225830 as assemblyCost, 25.700277 as assemblyMass);
+Part[72] :<< component(create permanent Component(9 as amount, ref(Part[82]) as leadsTo))
+create permanent Part("Everett" as name, "graphics card" as kind, 72.546646 as detailCost, 10.027254 as detailMass, 11.532736 as assemblyCost, 14.269156 as assemblyMass);
+Part[78] :<< component(create permanent Component(8 as amount, ref(Part[83]) as leadsTo))
+create permanent Part("Cross" as name, "graphics card" as kind, 56.394653 as detailCost, 30.406517 as detailMass, 45.302929 as assemblyCost, 83.423538 as assemblyMass);
+Part[72] :<< component(create permanent Component(9 as amount, ref(Part[84]) as leadsTo))
+create permanent Part("Hansen" as name, "display" as kind, 99.371414 as detailCost, 65.869835 as detailMass, 91.121979 as assemblyCost, 69.242188 as assemblyMass);
+Part[71] :<< component(create permanent Component(5 as amount, ref(Part[85]) as leadsTo))
+create permanent Part("Murray" as name, "cpu" as kind, 64.901558 as detailCost, 70.812134 as detailMass, 54.999916 as assemblyCost, 18.320089 as assemblyMass);
+Part[71] :<< component(create permanent Component(7 as amount, ref(Part[86]) as leadsTo))
+create permanent Part("Cain" as name, "graphics card" as kind, 10.500836 as detailCost, 96.334923 as detailMass, 77.646370 as assemblyCost, 61.512383 as assemblyMass);
+Part[72] :<< component(create permanent Component(5 as amount, ref(Part[87]) as leadsTo))
+create permanent Part("Colon" as name, "processor" as kind, 55.956181 as detailCost, 15.524692 as detailMass, 28.101522 as assemblyCost, 63.533665 as assemblyMass);
+Part[74] :<< component(create permanent Component(0 as amount, ref(Part[88]) as leadsTo))
+create permanent Part("Young" as name, "gpu" as kind, 44.644505 as detailCost, 85.665939 as detailMass, 86.294678 as assemblyCost, 27.738577 as assemblyMass);
+Part[72] :<< component(create permanent Component(8 as amount, ref(Part[89]) as leadsTo))
+create permanent Part("Strong" as name, "graphics card" as kind, 1.770252 as detailCost, 77.673790 as detailMass, 19.701296 as assemblyCost, 33.926765 as assemblyMass);
+Part[84] :<< component(create permanent Component(4 as amount, ref(Part[90]) as leadsTo))
+create permanent Part("Hayden" as name, "fan" as kind, 80.897278 as detailCost, 87.265198 as detailMass, 15.736079 as assemblyCost, 62.413204 as assemblyMass);
+Part[87] :<< component(create permanent Component(2 as amount, ref(Part[91]) as leadsTo))
+create permanent Part("Bridges" as name, "optical drive" as kind, 87.452118 as detailCost, 49.726616 as detailMass, 63.200623 as assemblyCost, 72.345451 as assemblyMass);
+Part[82] :<< component(create permanent Component(1 as amount, ref(Part[92]) as leadsTo))
+create permanent Part("Ortega" as name, "keyboard" as kind, 71.722946 as detailCost, 86.973587 as detailMass, 13.018828 as assemblyCost, 56.935947 as assemblyMass);
+Part[84] :<< component(create permanent Component(4 as amount, ref(Part[93]) as leadsTo))
+create permanent Part("Castaneda" as name, "ram" as kind, 71.860870 as detailCost, 94.473846 as detailMass, 68.392410 as assemblyCost, 31.352932 as assemblyMass);
+Part[83] :<< component(create permanent Component(6 as amount, ref(Part[94]) as leadsTo))
+create permanent Part("Gill" as name, "display" as kind, 98.332314 as detailCost, 76.115227 as detailMass, 88.865646 as assemblyCost, 39.562458 as assemblyMass);
+Part[83] :<< component(create permanent Component(0 as amount, ref(Part[95]) as leadsTo))
+create permanent Part("Hicks" as name, "storage" as kind, 8.084756 as detailCost, 70.712440 as detailMass, 77.307655 as assemblyCost, 71.037041 as assemblyMass);
+Part[82] :<< component(create permanent Component(2 as amount, ref(Part[96]) as leadsTo))
+create permanent Part("Guerrero" as name, "graphics card" as kind, 23.310030 as detailCost, 39.101147 as detailMass, 57.993568 as assemblyCost, 72.486671 as assemblyMass);
+Part[80] :<< component(create permanent Component(3 as amount, ref(Part[97]) as leadsTo))
+create permanent Part("Simpson" as name, "display" as kind, 66.924545 as detailCost, 26.527548 as detailMass, 26.477551 as assemblyCost, 57.886570 as assemblyMass);
+Part[86] :<< component(create permanent Component(3 as amount, ref(Part[98]) as leadsTo))
+create permanent Part("Flynn" as name, "fan" as kind, 31.685453 as detailCost, 54.497128 as detailMass, 37.534245 as assemblyCost, 90.346947 as assemblyMass);
+Part[86] :<< component(create permanent Component(2 as amount, ref(Part[99]) as leadsTo))
