@@ -13,6 +13,7 @@ batch closeuniqueby.txt
 batch groupas.txt
 batch indexBag.txt
 batch comma.txt
+batch condition.txt
 batch or.txt
 batch dform.txt
 batch bag.txt

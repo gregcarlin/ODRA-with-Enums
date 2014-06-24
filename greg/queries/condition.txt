@@ -1,0 +1,8 @@
+$encoding = utf-8
+
+benchmark 100 condition:if hire_date > 1980-01-01 then "a" else "b";
+benchmark 100 condition:if hire_date > 1980-01-01 and sal > 500 then "a" else "b";
+benchmark 100 condition:if hire_date > 1980-01-01 and sal > 500 and position = "tester" then "a" else "b";
+benchmark 100 condition:if hire_date > 1980-01-01 and sal > 500 and position = "tester" and sex = "female" then "a" else "b";
+benchmark 100 condition:if hire_date > 1980-01-01 and sal > 500 and position = "tester" and sex = "female" and lname = "Brooks" then "a" else "b";
+benchmark 100 condition:if hire_date > 1980-01-01 and sal > 500 and position = "tester" and sex = "female" and lname = "Brooks" and fName = "Ava" then "a" else "b";
