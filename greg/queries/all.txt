@@ -1,0 +1,5 @@
+$encoding = utf-8
+
+batch all-none.txt
+batch all-WeakDependMod.txt
+batch all-PartMod.txt
