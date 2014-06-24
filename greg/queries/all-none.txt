@@ -1,0 +1,48 @@
+$encoding = utf-8
+
+cm ..
+
+set test plaintimes
+
+batch neg.txt
+batch cat.txt
+batch sub.txt
+batch unique.txt
+batch ls.txt
+batch div.txt
+batch sum.txt
+batch contains.txt
+batch add.txt
+batch nRegexMult.txt
+batch struct.txt
+batch union.txt
+batch lse.txt
+batch avg.txt
+batch regexSing.txt
+batch min.txt
+batch groupas.txt
+batch comma.txt
+batch max.txt
+batch cnt.txt
+batch bag.txt
+batch dform.txt
+batch or.txt
+batch mod.txt
+batch as.txt
+batch forall.txt
+batch mul.txt
+batch in.txt
+batch gre.txt
+batch and.txt
+batch not.txt
+batch nRegexSing.txt
+batch subtract.txt
+batch neqNum.txt
+batch eqStr.txt
+batch now.txt
+batch intersect.txt
+batch eqNum.txt
+batch forsome.txt
+batch regexMult.txt
+batch gr.txt
+batch neqStr.txt

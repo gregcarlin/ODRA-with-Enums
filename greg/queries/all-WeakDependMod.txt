@@ -1,0 +1,22 @@
+$encoding = utf-8
+
+cm ..
+cm WeakDependMod
+
+set test plaintimes
+
+batch deref.txt
+batch indexBag.txt
+batch indexNum.txt
+batch condition.txt
+batch uniqueref.txt
+batch join.txt
+batch where.txt
+batch rangeas.txt
+batch dot.txt
+batch orderbyEnum.txt
+batch ref.txt
+batch orderbyDate.txt
+batch exists.txt
+batch orderbyStr.txt
+batch orderbyNum.txt

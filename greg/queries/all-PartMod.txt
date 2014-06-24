@@ -1,0 +1,11 @@
+$encoding = utf-8
+
+cm ..
+cm PartMod
+
+set test plaintimes
+
+batch closeuniqueby.txt
+batch leavesby.txt
+batch leavesuniqueby.txt
+batch closeby.txt
