@@ -1,6 +1,6 @@
 $encoding = utf-8
 
-benchmark 10 dform:dateprec(1900-01-01, "low");
-benchmark 10 dform:dateprec(1900-01-01, "medium");
-benchmark 10 dform:dateprec(1900-01-01, "high");
-benchmark 10 dform:dateprec(1900-01-01, "full");
+benchmark 100 dform:dateprec(1900-01-01, "low");
+benchmark 100 dform:dateprec(1900-01-01, "medium");
+benchmark 100 dform:dateprec(1900-01-01, "high");
+benchmark 100 dform:dateprec(1900-01-01, "full");

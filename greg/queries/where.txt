@@ -1,0 +1,8 @@
+$encoding = utf-8
+
+benchmark 100 where:Emp where hire_date > 1980-01-01;
+benchmark 100 where:Emp where hire_date > 1980-01-01 and sal > 500;
+benchmark 100 where:Emp where hire_date > 1980-01-01 and sal > 500 and position = "tester";
+benchmark 100 where:Emp where hire_date > 1980-01-01 and sal > 500 and position = "tester" and sex = "female";
+benchmark 100 where:Emp where hire_date > 1980-01-01 and sal > 500 and position = "tester" and sex = "female" and lname = "Brooks";
+benchmark 100 where:Emp where hire_date > 1980-01-01 and sal > 500 and position = "tester" and sex = "female" and lname = "Brooks" and fName = "Ava";

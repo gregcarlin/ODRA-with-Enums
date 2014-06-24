@@ -1,4 +1,4 @@
 $encoding = utf-8
 
-benchmark 10 not:not true;
-benchmark 10 not:not false;
+benchmark 100 not:not true;
+benchmark 100 not:not false;

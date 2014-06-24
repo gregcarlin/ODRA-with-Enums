@@ -1,6 +1,6 @@
 $encoding = utf-8
 
-benchmark 10 and:true and true;
-benchmark 10 and:true and false;
-benchmark 10 and:false and true;
-benchmark 10 and:false and true;
+benchmark 100 and:true and true;
+benchmark 100 and:true and false;
+benchmark 100 and:false and true;
+benchmark 100 and:false and true;

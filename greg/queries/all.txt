@@ -5,6 +5,7 @@ set test plaintimes
 batch deref.txt
 batch indexNum.txt
 batch contains.txt
+batch where.txt
 batch dot.txt
 batch avg.txt
 batch regexSing.txt
@@ -22,8 +23,8 @@ batch and.txt
 batch orderbyEnum.txt
 batch not.txt
 batch eqStr.txt
-batch now.txt
 batch orderbyDate.txt
+batch now.txt
 batch intersect.txt
 batch orderbyStr.txt
 batch regexMult.txt
@@ -59,4 +60,5 @@ batch ref.txt
 batch subtract.txt
 batch neqNum.txt
 batch eqNum.txt
+batch exists.txt
 batch forsome.txt
