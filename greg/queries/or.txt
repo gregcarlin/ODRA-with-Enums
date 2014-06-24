@@ -1,8 +1,4 @@
-#batch res/optimiser/batch/bench.cli
-
 $encoding = utf-8
-
-set test plaintimes
 
 benchmark 10 or:true or true;
 benchmark 10 or:true or false;

@@ -1,3 +1,7 @@
+$encoding = utf-8
+
+set test plaintimes
+
 batch deref.txt
 batch indexNum.txt
 batch contains.txt
