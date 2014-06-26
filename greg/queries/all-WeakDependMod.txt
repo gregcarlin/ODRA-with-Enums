@@ -10,7 +10,6 @@ batch indexBag.txt
 batch indexNum.txt
 batch condition.txt
 batch uniqueref.txt
-batch join.txt
 batch where.txt
 batch rangeas.txt
 batch dot.txt

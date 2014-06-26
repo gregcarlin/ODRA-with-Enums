@@ -29,6 +29,7 @@ batch dform.txt
 batch or.txt
 batch mod.txt
 batch as.txt
+batch join.txt
 batch forall.txt
 batch mul.txt
 batch in.txt
