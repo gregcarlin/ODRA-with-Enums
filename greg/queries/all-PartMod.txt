@@ -7,5 +7,5 @@ set test plaintimes
 
 batch closeuniqueby.txt
 batch leavesby.txt
-batch leavesuniqueby.txt
+#batch leavesuniqueby.txt
 batch closeby.txt

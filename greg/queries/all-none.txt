@@ -13,7 +13,7 @@ batch div.txt
 batch sum.txt
 batch contains.txt
 batch add.txt
-batch nRegexMult.txt
+#batch nRegexMult.txt
 batch struct.txt
 batch union.txt
 batch lse.txt
@@ -25,7 +25,7 @@ batch comma.txt
 batch max.txt
 batch cnt.txt
 batch bag.txt
-batch dform.txt
+#batch dform.txt
 batch or.txt
 batch mod.txt
 batch as.txt
@@ -35,8 +35,8 @@ batch mul.txt
 batch in.txt
 batch gre.txt
 batch and.txt
-batch not.txt
-batch nRegexSing.txt
+#batch not.txt
+#batch nRegexSing.txt
 batch subtract.txt
 batch neqNum.txt
 batch eqStr.txt
