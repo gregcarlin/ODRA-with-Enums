@@ -8,6 +8,8 @@ import odra.sbql.ast.DeepCopyAST;
 import odra.sbql.optimizers.costmodel.CostModel;
 
 public class OptimizationFramework {
+    private static final boolean FORCE_OPTIMIZATION = false; // ignore cost model and always use 'optimized's version of query
+    
 	private OptimizationSequence sequence = new OptimizationSequence();
 	ASTAdapter staticEval;
 	
@@ -63,6 +65,7 @@ public class OptimizationFramework {
 	    
 		for(Type type : sequence) 
 		{
+		    //System.out.println("optimizing via type " + type);
 			ISBQLOptimizer optimizer = OptimizationFactory.getOptimizer(type);
 			optimizer.setStaticEval(staticEval);
 			query = optimizer.optimize(query, module);
@@ -70,7 +73,7 @@ public class OptimizationFramework {
 		
 		CostModel costModel = CostModel.getCostModel();
 		// if the new query is faster, return it, otherwise return the old query
-		if(costModel.estimate(query, module) < costModel.estimate(oldQuery, module)) {
+		if(FORCE_OPTIMIZATION || costModel.estimate(query, module) < costModel.estimate(oldQuery, module)) {
 		    System.out.println("Using optimized version.");
 		    return query;
 		} else {
