@@ -1,0 +1,6 @@
+0;(Emp[1]).(if hire_date < 1980-01-01 then "a" else "b";9.35;4.936506093E7
+1;(Emp[1]).(if hire_date < 1980-01-01 and sal > 500 then "a" else "b";8.94;4.893867225E7
+2;(Emp[1]).(if hire_date < 1980-01-01 and sal > 500 and position = "tester" then "a" else "b";9.04;4.918031919E7
+3;(Emp[1]).(if hire_date < 1980-01-01 and sal > 500 and position = "tester" and sex = "male" then "a" else "b";9.53;4.913929543E7
+4;(Emp[1]).(if hire_date < 1980-01-01 and sal > 500 and position = "tester" and sex = "male" and lname = "Acosta" then "a" else "b";9.0;4.902153088E7
+5;(Emp[1]).(if hire_date < 1980-01-01 and sal > 500 and position = "tester" and sex = "male" and lname = "Acosta" and fName = "Clayton" then "a" else "b";9.06;4.914060478E7

@@ -1,0 +1,6 @@
+0;Emp where hire_date < 1980-01-0;2415.97;2.41757357273E9
+1;Emp where hire_date < 1980-01-01 and sal > 50;2569.59;2.57131959992E9
+2;Emp where hire_date < 1980-01-01 and sal > 500 and position = "tester;2678.06;2.67998377758E9
+3;Emp where hire_date < 1980-01-01 and sal > 500 and position = "tester" and sex = "male;2755.49;2.75747230397E9
+4;Emp where hire_date < 1980-01-01 and sal > 500 and position = "tester" and sex = "male" and lname = "Acosta;2821.76;2.82384469946E9
+5;Emp where hire_date < 1980-01-01 and sal > 500 and position = "tester" and sex = "male" and lname = "Acosta" and fName = "Clayton;2881.32;2.8834368997E9
