@@ -1,0 +1,1 @@
+Emp as e where e.sal > ((2000 where e.sex = "female") union (Emp as f where e.sex = "male" and f.lname = "Smith").sal)

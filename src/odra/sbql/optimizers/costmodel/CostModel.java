@@ -2,15 +2,15 @@ package odra.sbql.optimizers.costmodel;
 
 import java.util.Vector;
 
+import odra.db.objects.data.DBModule;
+import odra.sbql.ast.ASTNode;
 import odra.sbql.optimizers.queryrewrite.index.SingleIndexFitter;
 
 /** 
  * 
- * This class is just a stub. Should be extended as a cost model for optimizations.
+ * A cost model for optimizations and a "best" index selecting method.
  * 
- * Now it provides simple "best" index selecting method
- * 
- * @author tkowals
+ * @author tkowals, Greg Carlin
  * 
  */
 
@@ -23,6 +23,18 @@ public class CostModel {
 	
 	public static CostModel getCostModel() {
 		return new CostModel();
+	}
+	
+	/**
+	 * Estimates the running time of a given query. Note that estimates are not absolute, but they can be compared.
+	 * 
+	 * @param query
+	 * @param module
+	 * @return
+	 */
+	public double estimate(ASTNode query, DBModule module) {
+	    // TODO
+	    return 0.0;
 	}
 	
 	public double indexSelectivity(SingleIndexFitter index, boolean[] combination) {

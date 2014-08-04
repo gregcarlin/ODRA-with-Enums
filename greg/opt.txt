@@ -1,0 +1,2 @@
+set optimization none | dead | weaklydependent | independent
+

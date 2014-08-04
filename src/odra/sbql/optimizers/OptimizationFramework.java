@@ -4,6 +4,8 @@ import odra.db.objects.data.DBModule;
 import odra.sbql.SBQLException;
 import odra.sbql.ast.ASTAdapter;
 import odra.sbql.ast.ASTNode;
+import odra.sbql.ast.DeepCopyAST;
+import odra.sbql.optimizers.costmodel.CostModel;
 
 public class OptimizationFramework {
 	private OptimizationSequence sequence = new OptimizationSequence();
@@ -57,12 +59,23 @@ public class OptimizationFramework {
 	}
 	
 	public ASTNode optimize(ASTNode query, DBModule module) throws SBQLException {
+	    ASTNode oldQuery = DeepCopyAST.copy(query);
+	    
 		for(Type type : sequence) 
 		{
 			ISBQLOptimizer optimizer = OptimizationFactory.getOptimizer(type);
 			optimizer.setStaticEval(staticEval);
 			query = optimizer.optimize(query, module);
 		}
-		return query;
+		
+		CostModel costModel = CostModel.getCostModel();
+		// if the new query is faster, return it, otherwise return the old query
+		if(costModel.estimate(query, module) < costModel.estimate(oldQuery, module)) {
+		    System.out.println("Using optimized version.");
+		    return query;
+		} else {
+		    System.out.println("Using unoptimized version.");
+		    return oldQuery;
+		}
 	}
 }
