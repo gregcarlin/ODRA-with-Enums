@@ -127,10 +127,10 @@
 	\section{-a}
 	Negligible
 	
-	\section{a <> b (Numerical)}
+	\section{a $<>$ b (Numerical)}
 	Negligible
 	
-	\section{a <> b (Strings)}
+	\section{a $<>$ b (Strings)}
 	Negligible
 	
 	\section{now()}
@@ -154,5 +154,16 @@
 	\section{ref(a)}
 	x := number of items in a\\
 	$TODO$
+	
+	\section{a $\sim\sim$ b}
+	x := length of b
+	\begin{displaymath}
+		f(x) = \left\{
+			\begin{array}{lr}
+				0.676408; & \text{x $<$ 103}\\
+				2.00131; & \text{x $\geq$ 103}
+			\end{array}
+		\right.
+	\end{displaymath}
 
 \end{document}
