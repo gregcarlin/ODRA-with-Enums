@@ -117,6 +117,7 @@ import odra.sbql.optimizers.queryrewrite.index.SingleIndexFitter;
 
 
 public class CostModel extends TraversingASTAdapter {
+    private static final boolean WARN = true; // TODO link up with some server setting?
 
 	private CostModel() {
 		
@@ -141,7 +142,7 @@ public class CostModel extends TraversingASTAdapter {
 	}
 	
 	private void warn() {
-	    System.out.println("WARNING: Unsupported operator encountered.");
+	    if(WARN) System.out.println("WARNING: Unsupported operator encountered.");
 	}
 	
 	@Override
@@ -158,47 +159,48 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	protected Object commonVisitLiteral(Expression expr, Object attr) throws SBQLException {
-	    return commonVisitExpression(expr, attr);
+	    // do nothing
+	    return null;
 	}
 	
-	protected Object commonVisitUnaryExpression(UnaryExpression expr,
-	        Object attr) throws SBQLException{
-	    expr.getExpression().accept(this, attr);
-	    return commonVisitExpression(expr, attr);
+	@Override
+	protected Object commonVisitUnaryExpression(UnaryExpression expr, Object attr) throws SBQLException {
+	    warn();
+	    return null;
 	}
 
-	protected Object commonVisitBinaryExpression(BinaryExpression expr,
-	        Object attr) throws SBQLException{
-	    expr.getLeftExpression().accept(this, attr);
-	    expr.getRightExpression().accept(this, attr);
-	    return commonVisitExpression(expr, attr);
+	@Override
+	protected Object commonVisitBinaryExpression(BinaryExpression expr, Object attr) throws SBQLException {
+	    warn();
+	    return null;
 	}
 
-	protected Object commonVisitAlgebraicExpression(BinaryExpression expr,
-	        Object attr) throws SBQLException{
-	    return commonVisitBinaryExpression(expr, attr);
+	@Override
+	protected Object commonVisitAlgebraicExpression(BinaryExpression expr, Object attr) throws SBQLException {
+	    warn();
+	    return null;
 	}
 
-	protected Object commonVisitNonAlgebraicExpression(
-	        NonAlgebraicExpression expr, Object attr) throws SBQLException{
-	    return commonVisitBinaryExpression(expr, attr);
+	@Override
+	protected Object commonVisitNonAlgebraicExpression(NonAlgebraicExpression expr, Object attr) throws SBQLException {
+	    warn();
+	    return null;
 	}
 
-	protected Object commonVisitParallelExpression(
-	        ParallelExpression expr, Object attr) throws SBQLException{
-	    for (Expression subexpr: expr.getParallelExpressions())
-	        subexpr.accept(this, attr);
-
-	    return commonVisitExpression(expr, attr);
+	@Override
+	protected Object commonVisitParallelExpression(ParallelExpression expr, Object attr) throws SBQLException {
+	    warn();
+	    return null;
 	}
 
-	public Object visitAsExpression(AsExpression expr, Object attr)
-	        throws SBQLException {
+	@Override
+	public Object visitAsExpression(AsExpression expr, Object attr) throws SBQLException {
+	    // TODO implement as
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
-	public Object visitAssignExpression(AssignExpression expr, Object attr)
-	        throws SBQLException {
+	@Override
+	public Object visitAssignExpression(AssignExpression expr, Object attr) throws SBQLException {
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 
