@@ -6,105 +6,8 @@ import odra.db.objects.data.DBModule;
 import odra.sbql.SBQLException;
 import odra.sbql.ast.ASTNode;
 import odra.sbql.ast.TraversingASTAdapter;
-import odra.sbql.ast.expressions.AsExpression;
-import odra.sbql.ast.expressions.AssignExpression;
-import odra.sbql.ast.expressions.AtLeastExpression;
-import odra.sbql.ast.expressions.AtMostExpression;
-import odra.sbql.ast.expressions.AvgExpression;
-import odra.sbql.ast.expressions.BagExpression;
-import odra.sbql.ast.expressions.BinaryExpression;
-import odra.sbql.ast.expressions.BooleanExpression;
-import odra.sbql.ast.expressions.CastExpression;
-import odra.sbql.ast.expressions.CloseByExpression;
-import odra.sbql.ast.expressions.CloseUniqueByExpression;
-import odra.sbql.ast.expressions.CommaExpression;
-import odra.sbql.ast.expressions.CountExpression;
-import odra.sbql.ast.expressions.CreateExpression;
-import odra.sbql.ast.expressions.CreateLocalExpression;
-import odra.sbql.ast.expressions.CreatePermanentExpression;
-import odra.sbql.ast.expressions.CreateTemporalExpression;
-import odra.sbql.ast.expressions.DateExpression;
-import odra.sbql.ast.expressions.DateprecissionExpression;
-import odra.sbql.ast.expressions.DeleteExpression;
-import odra.sbql.ast.expressions.DerefExpression;
-import odra.sbql.ast.expressions.DeserializeOidExpression;
-import odra.sbql.ast.expressions.DotExpression;
-import odra.sbql.ast.expressions.EmptyExpression;
-import odra.sbql.ast.expressions.EqualityExpression;
-import odra.sbql.ast.expressions.ExecSqlExpression;
-import odra.sbql.ast.expressions.ExistsExpression;
-import odra.sbql.ast.expressions.Expression;
-import odra.sbql.ast.expressions.ExternalNameExpression;
-import odra.sbql.ast.expressions.ExternalProcedureCallExpression;
-import odra.sbql.ast.expressions.ForAllExpression;
-import odra.sbql.ast.expressions.ForSomeExpression;
-import odra.sbql.ast.expressions.GroupAsExpression;
-import odra.sbql.ast.expressions.IfThenElseExpression;
-import odra.sbql.ast.expressions.IfThenExpression;
-import odra.sbql.ast.expressions.InExpression;
-import odra.sbql.ast.expressions.InsertCopyExpression;
-import odra.sbql.ast.expressions.InsertExpression;
-import odra.sbql.ast.expressions.InstanceOfExpression;
-import odra.sbql.ast.expressions.IntegerExpression;
-import odra.sbql.ast.expressions.IntersectExpression;
-import odra.sbql.ast.expressions.JoinExpression;
-import odra.sbql.ast.expressions.LazyFailureExpression;
-import odra.sbql.ast.expressions.LeavesByExpression;
-import odra.sbql.ast.expressions.LeavesUniqueByExpression;
-import odra.sbql.ast.expressions.MaxExpression;
-import odra.sbql.ast.expressions.MinExpression;
-import odra.sbql.ast.expressions.MinusExpression;
-import odra.sbql.ast.expressions.NameExpression;
-import odra.sbql.ast.expressions.NonAlgebraicExpression;
-import odra.sbql.ast.expressions.OrderByExpression;
-import odra.sbql.ast.expressions.ParallelExpression;
-import odra.sbql.ast.expressions.ParallelUnionExpression;
-import odra.sbql.ast.expressions.ProcedureCallExpression;
-import odra.sbql.ast.expressions.RandomExpression;
-import odra.sbql.ast.expressions.RangeAsExpression;
-import odra.sbql.ast.expressions.RangeExpression;
-import odra.sbql.ast.expressions.RealExpression;
-import odra.sbql.ast.expressions.RefExpression;
-import odra.sbql.ast.expressions.RemoteQueryExpression;
-import odra.sbql.ast.expressions.RenameExpression;
-import odra.sbql.ast.expressions.SequentialExpression;
-import odra.sbql.ast.expressions.SerializeOidExpression;
-import odra.sbql.ast.expressions.SimpleBinaryExpression;
-import odra.sbql.ast.expressions.SimpleUnaryExpression;
-import odra.sbql.ast.expressions.StringExpression;
-import odra.sbql.ast.expressions.StructExpression;
-import odra.sbql.ast.expressions.SumExpression;
-import odra.sbql.ast.expressions.ToBagExpression;
-import odra.sbql.ast.expressions.ToBooleanExpression;
-import odra.sbql.ast.expressions.ToDateExpression;
-import odra.sbql.ast.expressions.ToIntegerExpression;
-import odra.sbql.ast.expressions.ToRealExpression;
-import odra.sbql.ast.expressions.ToSingleExpression;
-import odra.sbql.ast.expressions.ToStringExpression;
-import odra.sbql.ast.expressions.UnaryExpression;
-import odra.sbql.ast.expressions.UnionExpression;
-import odra.sbql.ast.expressions.UniqueExpression;
-import odra.sbql.ast.expressions.WhereExpression;
-import odra.sbql.ast.statements.BlockStatement;
-import odra.sbql.ast.statements.BreakStatement;
-import odra.sbql.ast.statements.ContinueStatement;
-import odra.sbql.ast.statements.DoWhileStatement;
-import odra.sbql.ast.statements.EmptyStatement;
-import odra.sbql.ast.statements.ExpressionStatement;
-import odra.sbql.ast.statements.ForEachStatement;
-import odra.sbql.ast.statements.ForStatement;
-import odra.sbql.ast.statements.IfElseStatement;
-import odra.sbql.ast.statements.IfStatement;
-import odra.sbql.ast.statements.ReturnWithValueStatement;
-import odra.sbql.ast.statements.ReturnWithoutValueStatement;
-import odra.sbql.ast.statements.SequentialStatement;
-import odra.sbql.ast.statements.SingleCatchBlock;
-import odra.sbql.ast.statements.Statement;
-import odra.sbql.ast.statements.ThrowStatement;
-import odra.sbql.ast.statements.TransactionAbortStatement;
-import odra.sbql.ast.statements.TryCatchFinallyStatement;
-import odra.sbql.ast.statements.VariableDeclarationStatement;
-import odra.sbql.ast.statements.WhileStatement;
+import odra.sbql.ast.expressions.*;
+import odra.sbql.ast.statements.*;
 import odra.sbql.optimizers.queryrewrite.index.SingleIndexFitter;
 
 /** 
@@ -143,6 +46,182 @@ public class CostModel extends TraversingASTAdapter {
 	
 	private void warn() {
 	    if(WARN) System.out.println("WARNING: Unsupported operator encountered.");
+	}
+	
+	/**
+	 * Estimates the number of items returned by a given query.
+	 * 
+	 * @param expr
+	 * @return
+	 */
+	private int estimateNumItems(Expression expr) {
+	    if(expr instanceof AsExpression) {
+	        return estimateNumItems(((AsExpression) expr).getExpression());
+	    } else if(expr instanceof AssignExpression) {
+	        
+	    } else if(expr instanceof AtLeastExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof AtMostExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof AvgExpression) {
+	        
+	    } else if(expr instanceof BagExpression) {
+	        return estimateNumItems(((BagExpression) expr).getExpression());
+	    } else if(expr instanceof BooleanExpression) {
+	        
+	    } else if(expr instanceof CastExpression) {
+	        
+	    } else if(expr instanceof CloseByExpression) {
+	        // TODO
+	    } else if(expr instanceof CloseUniqueByExpression) {
+	        // TODO
+	    } else if(expr instanceof CommaExpression) {
+	        CommaExpression ce = (CommaExpression) expr;
+	        return estimateNumItems(ce.getLeftExpression()) + estimateNumItems(ce.getRightExpression());
+	    } else if(expr instanceof CountExpression) {
+	        
+	    } else if(expr instanceof CreateLocalExpression) {
+	        
+	    } else if(expr instanceof CreatePermanentExpression) {
+	        
+	    } else if(expr instanceof CreateTemporalExpression) {
+	        
+	    } else if(expr instanceof DateExpression) {
+	        
+	    } else if(expr instanceof DateprecissionExpression) {
+	        
+	    } else if(expr instanceof DeleteExpression) {
+	        
+	    } else if(expr instanceof DerefExpression) {
+	        return estimateNumItems(((DerefExpression) expr).getExpression());
+	    } else if(expr instanceof DeserializeOidExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof DotExpression) {
+	        DotExpression de = (DotExpression) expr;
+	        return estimateNumItems(de.getLeftExpression()) * estimateNumItems(de.getRightExpression()); // i think this is good
+	    } else if(expr instanceof EmptyExpression) {
+	        return 0;
+	    } else if(expr instanceof EqualityExpression) {
+	        
+	    } else if(expr instanceof ExecSqlExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof ExistsExpression) {
+	        
+	    } else if(expr instanceof ExternalNameExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof ExternalProcedureCallExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof ForAllExpression) {
+	        
+	    } else if(expr instanceof ForSomeExpression) {
+	        
+	    } else if(expr instanceof GroupAsExpression) {
+	        return estimateNumItems(((GroupAsExpression) expr).getExpression());
+	    } else if(expr instanceof IfThenElseExpression) {
+	        IfThenElseExpression ifee = (IfThenElseExpression) expr;
+	        return Math.max(estimateNumItems(ifee.getThenExpression()), estimateNumItems(ifee.getElseExpression()));
+	    } else if(expr instanceof IfThenExpression) {
+	        return estimateNumItems(((IfThenExpression) expr).getConditionExpression());
+	    } else if(expr instanceof InExpression) {
+	        
+	    } else if(expr instanceof InsertCopyExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof InsertExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof InstanceOfExpression) {
+	        
+	    } else if(expr instanceof IntegerExpression) {
+	        
+	    } else if(expr instanceof IntersectExpression) {
+	        IntersectExpression ie = (IntersectExpression) expr;
+	        return Math.max(estimateNumItems(ie.getLeftExpression()), estimateNumItems(ie.getRightExpression()));
+	    } else if(expr instanceof JoinExpression) {
+	        JoinExpression je = (JoinExpression) expr;
+	        return estimateNumItems(je.getLeftExpression()) + estimateNumItems(je.getRightExpression());
+	    } else if(expr instanceof LazyFailureExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof LeavesByExpression) {
+	        // TODO
+	    } else if(expr instanceof LeavesUniqueByExpression) {
+	        // TODO
+	    } else if(expr instanceof MatchStringExpression) {
+	        
+	    } else if(expr instanceof MaxExpression) {
+	        
+	    } else if(expr instanceof MinExpression) {
+	        
+	    } else if(expr instanceof MinusExpression) {
+	        
+	    } else if(expr instanceof NameExpression) {
+	        // TODO get cardinality of name from metabase
+	    } else if(expr instanceof NowExpression) {
+	        
+	    } else if(expr instanceof OrderByExpression) {
+	        return estimateNumItems(((OrderByExpression) expr).getLeftExpression());
+	    } else if(expr instanceof ParallelUnionExpression) {
+	        int total = 0;
+	        for(Expression e : ((ParallelUnionExpression) expr).getParallelExpressions()) {
+	            total += estimateNumItems(e);
+	        }
+	        return total;
+	    } else if(expr instanceof ProcedureCallExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof RandomExpression) {
+	        
+	    } else if(expr instanceof RangeAsExpression) {
+	        return estimateNumItems(((RangeAsExpression) expr).getExpression());
+	    } else if(expr instanceof RangeExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof RealExpression) {
+	        
+	    } else if(expr instanceof RefExpression) {
+	        return estimateNumItems(((RefExpression) expr).getExpression());
+	    } else if(expr instanceof RemoteQueryExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof RenameExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof SequentialExpression) {
+	        SequentialExpression se = (SequentialExpression) expr;
+	        return estimateNumItems(se.getFirstExpression()) + estimateNumItems(se.getSecondExpression());
+	    } else if(expr instanceof SerializeOidExpression) {
+	        // TODO what is this?
+	    } else if(expr instanceof SimpleBinaryExpression) {
+	        
+	    } else if(expr instanceof SimpleUnaryExpression) {
+	        
+	    } else if(expr instanceof StringExpression) {
+	        
+	    } else if(expr instanceof StructExpression) {
+	        return estimateNumItems(((StructExpression) expr).getExpression());
+	    } else if(expr instanceof SumExpression) {
+	        
+	    } else if(expr instanceof ToBagExpression) {
+	        return estimateNumItems(((ToBagExpression) expr).getExpression());
+	    } else if(expr instanceof ToBooleanExpression) {
+	        
+	    } else if(expr instanceof ToDateExpression) {
+	        
+	    } else if(expr instanceof ToIntegerExpression) {
+	        
+	    } else if(expr instanceof ToRealExpression) {
+	        
+	    } else if(expr instanceof ToSingleExpression) {
+	        
+	    } else if(expr instanceof ToStringExpression) {
+	        
+	    } else if(expr instanceof UnionExpression) {
+	        UnionExpression ue = (UnionExpression) expr;
+	        return estimateNumItems(ue.getLeftExpression()) + estimateNumItems(ue.getRightExpression());
+	    } else if(expr instanceof UniqueExpression) {
+	        return estimateNumItems(((UniqueExpression) expr).getExpression());
+	    } else if(expr instanceof WhereExpression) {
+	        return estimateNumItems(((WhereExpression) expr).getLeftExpression());
+	    }
+	    return 1;
+	}
+	
+	private void addEstimate(double e) {
+	    if(e > 0.0) estimate += e;
 	}
 	
 	@Override
@@ -201,22 +280,28 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitAssignExpression(AssignExpression expr, Object attr) throws SBQLException {
+	    // unaccounted for
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitAvgExpression(AvgExpression expr, Object attr) throws SBQLException {
-	    return commonVisitUnaryExpression(expr, attr);
+	    int x = estimateNumItems(expr.getExpression()) - 1;
+	    addEstimate(0.171303 + 0.00296116 * x + 0.000000791336 * x * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitBooleanExpression(BooleanExpression expr, Object attr) throws SBQLException {
-	    return commonVisitLiteral(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitCommaExpression(CommaExpression expr, Object attr) throws SBQLException {
-	    return commonVisitAlgebraicExpression(expr, attr);
+	    int x = estimateNumItems(expr) - 1;
+	    addEstimate(0.226851 - 0.00550817 * x + 0.0000146711 * x * x + 0.0000000480612 * x * x * x);
+	    return null;
 	}
 
 	@Override
@@ -224,104 +309,122 @@ public class CostModel extends TraversingASTAdapter {
 	    expr.getConditionExpression().accept(this, attr);
 	    expr.getThenExpression().accept(this, attr);
 	    expr.getElseExpression().accept(this, attr);
-	    return commonVisitExpression(expr, attr);
+	    return null;
 	}
 
 	@Override
 	public Object visitIfThenExpression(IfThenExpression expr, Object attr) throws SBQLException {
 	    expr.getConditionExpression().accept(this, attr);
 	    expr.getThenExpression().accept(this, attr);
-	    return commonVisitExpression(expr, attr);
+	    return null;
 	}
 
 	@Override
 	public Object visitCountExpression(CountExpression expr, Object attr) throws SBQLException {
+	    // TODO implement count
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitCreateExpression(CreateExpression expr, Object attr) throws SBQLException {
+	    // unaccounted for
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitCreateLocalExpression(CreateLocalExpression expr, Object attr) throws SBQLException {
+	    // unaccounted for
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitCreatePermanentExpression(CreatePermanentExpression expr, Object attr) throws SBQLException {
+	    // unaccounted for
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitCreateTemporalExpression(CreateTemporalExpression expr, Object attr) throws SBQLException {
+	    // unaccounted for
 	    expr.getExpression().accept(this, attr);
 	    return commonVisitExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitDerefExpression(DerefExpression expr, Object attr) throws SBQLException {
+	    // TODO implement deref
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitDeleteExpression(DeleteExpression expr, Object attr) throws SBQLException {
+	    // unaccounted for
 	    expr.getExpression().accept(this, attr);
 	    return commonVisitExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitInsertCopyExpression(InsertCopyExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitBinaryExpression(expr, attr);
 	}
 
 	public Object visitRefExpression(RefExpression expr, Object attr) throws SBQLException {
+	    // TODO implement ref
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitCloseByExpression(CloseByExpression expr, Object attr) throws SBQLException {
+	    // unknown
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitDotExpression(DotExpression expr, Object attr) throws SBQLException {
+	    // TODO implement dot
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitEmptyStatement(EmptyStatement stmt, Object attr) throws SBQLException {
-	    return commonVisitStatement(stmt, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitEmptyExpression(EmptyExpression expr, Object attr) throws SBQLException {
-	    return this.commonVisitExpression(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitEqualityExpression(EqualityExpression expr, Object attr) throws SBQLException {
-	    return commonVisitAlgebraicExpression(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitExistsExpression(ExistsExpression expr, Object attr) throws SBQLException {
+	    // TODO implement exists
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitForAllExpression(ForAllExpression expr, Object attr) throws SBQLException {
+	    // TODO implement forall
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitForSomeExpression(ForSomeExpression expr, Object attr) throws SBQLException {
+	    // TODO implement forsome
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitGroupAsExpression(GroupAsExpression expr, Object attr) throws SBQLException {
+	    // TODO implement groupas
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
@@ -639,12 +742,12 @@ public class CostModel extends TraversingASTAdapter {
 	}
 
 	@Override
-	public Object visitAtMostExpression(AtMostExpression expr, Object attr) throws SBQLException {      
+	public Object visitAtMostExpression(AtMostExpression expr, Object attr) throws SBQLException {
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 	
 	@Override
-	public Object visitAtLeastExpression(AtLeastExpression expr, Object attr) throws SBQLException {      
+	public Object visitAtLeastExpression(AtLeastExpression expr, Object attr) throws SBQLException {
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
