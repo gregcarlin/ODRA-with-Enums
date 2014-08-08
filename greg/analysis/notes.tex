@@ -10,16 +10,16 @@
 	Negligible
 	
 	\section{a as b}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{avg(a)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$0.171303 + 0.00296116x + 7.91336 \times 10^{-7} x^2$\\
 	$r^2 = 0.994094$
 
 	\section{bag(a)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$-0.168636 - 0.000841481x + 0.0000299677x^2$\\
 	$r^2 = 0.999968$
 	
@@ -27,7 +27,7 @@
 	Negligible
 	
 	\section{count(a)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{$a_1, a_2, ..., a_n$}
@@ -40,7 +40,7 @@
 	Negligible
 	
 	\section{a contains b}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$0.0152971 - 0.00015426x + 6.87809 \times 10^{-7} x^2$\\
 	$r^2 = 0.906738$
 	
@@ -52,7 +52,7 @@
 	Negligible
 	
 	\section{a.b}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{a = b (Numerical)}
@@ -62,15 +62,15 @@
 	Negligible
 	
 	\section{a.exists(b)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{forall(a)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{forsome(a)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{a > b}
@@ -80,15 +80,15 @@
 	Negligible
 	
 	\section{a groupas b}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{a in b}
-	x := number of items in b\\
+	x := (number of items in b) - 1\\
 	$TODO$
 	
 	\section{a[b]}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{a[b]}
@@ -96,11 +96,11 @@
 	$TODO$
 	
 	\section{a intersect b}
-	x := number of items in b\\
+	x := (number of items in b) - 1\\
 	$TODO$
 	
 	\section{a join b}
-	x := number of items in b\\
+	x := (number of items in b) - 1\\
 	$-0.296612 + 0.0033636x + 0.0000845375x^2$\\
 	$r^2 = 0.99998$
 	
@@ -111,11 +111,11 @@
 	Negligible
 	
 	\section{max(a)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{min(a)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{a \% b}
@@ -140,19 +140,19 @@
 	Negligible
 	
 	\section{a orderby b (b ::= date)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{a orderby b (b ::= enum)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{a rangeas b}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{ref(a)}
-	x := number of items in a\\
+	x := (number of items in a) - 1\\
 	$TODO$
 	
 	\section{a $\sim\sim$ b}
@@ -165,5 +165,41 @@
 			\end{array}
 		\right.
 	\end{displaymath}
+	
+	\section{struct(a)}
+	x := (number of items in a) - 1\\
+	$-6.26565 + 0.0267596 x + 2.81054 \times 10^{-6} x ^2$\\
+	$r^2 = 0.846738$
+	Note: Ensure min result is 0
+	
+	\section{a - b}
+	Negligible
+	
+	\section{a subtract b}
+	x := (number of items in b) - 1\\
+	$TODO$
+	
+	\section{sum(a)}
+	x := (number of items in a) - 1\\
+	$-0.01947 + 0.00329381 x + 3.45479 \times 10^{-7} x^2$\\
+	$r^2 = 0.98972$
+	
+	\section{a union b}
+	x := (number of items in b) - 1\\
+	$0.195218 - 0.000825259 x + 8.05861 \times 10^{-7} x^2$\\
+	$r^2 = 0.791186$
+	Note: If x < 654, just use 0
+	
+	\section{unique(a)}
+	x := (number of items in a) - 1\\
+	$TODO$
+	
+	\section{uniqueref(a)}
+	x := (number of items in a) - 1\\
+	$TODO$
+	
+	\section{a where b}
+	x := (number of conditions in b) - 1\\
+	$TODO$
 
 \end{document}
