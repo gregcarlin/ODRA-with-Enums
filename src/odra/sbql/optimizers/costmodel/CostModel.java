@@ -274,31 +274,38 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitAsExpression(AsExpression expr, Object attr) throws SBQLException {
-	    // TODO implement as
-	    return commonVisitUnaryExpression(expr, attr);
+	    expr.getExpression().accept(this, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitAssignExpression(AssignExpression expr, Object attr) throws SBQLException {
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
 	    // unaccounted for
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitAvgExpression(AvgExpression expr, Object attr) throws SBQLException {
-	    int x = estimateNumItems(expr.getExpression()) - 1;
+	    Expression child = expr.getExpression();
+	    child.accept(this, attr);
+	    int x = estimateNumItems(child) - 1;
 	    addEstimate(0.171303 + 0.00296116 * x + 0.000000791336 * x * x);
 	    return null;
 	}
 
 	@Override
 	public Object visitBooleanExpression(BooleanExpression expr, Object attr) throws SBQLException {
+	    // literal
 	    // negligible
 	    return null;
 	}
 
 	@Override
 	public Object visitCommaExpression(CommaExpression expr, Object attr) throws SBQLException {
+	    // assume expression contains only literals
 	    int x = estimateNumItems(expr) - 1;
 	    if(x >= 182) addEstimate(0.226851 - 0.00550817 * x + 0.0000146711 * x * x + 0.0000000480612 * x * x * x);
 	    return null;
@@ -321,8 +328,9 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitCountExpression(CountExpression expr, Object attr) throws SBQLException {
-	    // TODO implement count
-	    return commonVisitUnaryExpression(expr, attr);
+	    expr.getExpression().accept(this, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
@@ -352,6 +360,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitDerefExpression(DerefExpression expr, Object attr) throws SBQLException {
+	    expr.getExpression().accept(this, attr);
 	    // TODO implement deref
 	    return commonVisitUnaryExpression(expr, attr);
 	}
@@ -359,7 +368,6 @@ public class CostModel extends TraversingASTAdapter {
 	@Override
 	public Object visitDeleteExpression(DeleteExpression expr, Object attr) throws SBQLException {
 	    // unaccounted for
-	    expr.getExpression().accept(this, attr);
 	    return commonVisitExpression(expr, attr);
 	}
 
@@ -370,18 +378,23 @@ public class CostModel extends TraversingASTAdapter {
 	}
 
 	public Object visitRefExpression(RefExpression expr, Object attr) throws SBQLException {
+	    expr.getExpression().accept(this, attr);
 	    // TODO implement ref
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitCloseByExpression(CloseByExpression expr, Object attr) throws SBQLException {
-	    // unknown
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
+	    // TODO implement closeby
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitDotExpression(DotExpression expr, Object attr) throws SBQLException {
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
 	    // TODO implement dot
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
@@ -400,38 +413,54 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitEqualityExpression(EqualityExpression expr, Object attr) throws SBQLException {
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
 	    // negligible
 	    return null;
 	}
 
 	@Override
 	public Object visitExistsExpression(ExistsExpression expr, Object attr) throws SBQLException {
+	    expr.getExpression().accept(this, attr);
 	    // TODO implement exists
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitForAllExpression(ForAllExpression expr, Object attr) throws SBQLException {
-	    // TODO implement forall
-	    return commonVisitNonAlgebraicExpression(expr, attr);
+	    Expression itemExpr = expr.getLeftExpression();
+	    itemExpr.accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
+	    int x = estimateNumItems(itemExpr) - 1;
+	    addEstimate(0.368536 + 0.000115264 * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitForSomeExpression(ForSomeExpression expr, Object attr) throws SBQLException {
-	    // TODO implement forsome
-	    return commonVisitNonAlgebraicExpression(expr, attr);
+	    Expression itemExpr = expr.getLeftExpression();
+	    itemExpr.accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
+	    int x = estimateNumItems(itemExpr) - 1;
+	    addEstimate(-0.0266538 + 0.0000215938 * x + 0.000000653259 * x * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitGroupAsExpression(GroupAsExpression expr, Object attr) throws SBQLException {
-	    // TODO implement groupas
-	    return commonVisitUnaryExpression(expr, attr);
+	    Expression child = expr.getExpression();
+	    child.accept(this, attr);
+	    int x = estimateNumItems(child) - 1;
+	    if(x >= 270) addEstimate(0.0410372 - 0.000161534 * x + 0.000000299533 * x * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitInExpression(InExpression expr, Object attr) throws SBQLException {
-	    // TODO implement in
-	    return commonVisitAlgebraicExpression(expr, attr);
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
@@ -442,12 +471,16 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitIntersectExpression(IntersectExpression expr, Object attr) throws SBQLException {
-	    // TODO implement intersect
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
+	    // negligible
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitJoinExpression(JoinExpression expr, Object attr) throws SBQLException {
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
 	    int x = estimateNumItems(expr) - 5;
 	    addEstimate(-0.296612 + 0.0033636 * x + 0.0000845375 * x * x);
 	    return null;
@@ -461,18 +494,26 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitMaxExpression(MaxExpression expr, Object attr) throws SBQLException {
-	    // TODO implement max
-	    return commonVisitUnaryExpression(expr, attr);
+	    Expression child = expr.getExpression();
+	    child.accept(this, attr);
+	    int x = estimateNumItems(child) - 1;
+	    addEstimate(-0.00206558 + 0.0000179761 * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitMinExpression(MinExpression expr, Object attr) throws SBQLException {
-	    // TODO implement min
+	    Expression child = expr.getExpression();
+	    child.accept(this, attr);
+	    int x = estimateNumItems(child) - 1;
+	    if(x >= 831) addEstimate(0.247735 - 0.00106815 * x + 0.00000092684 * x * x);
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitMinusExpression(MinusExpression expr, Object attr) throws SBQLException {
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
 	    // negligible
 	    return null;
 	}
@@ -485,7 +526,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitExternalNameExpression(ExternalNameExpression expr, Object attr) throws SBQLException {
-	    // TODO implement
+	    // TODO implement name look-up
 	    return commonVisitExpression(expr, attr);
 	}   
 
@@ -511,110 +552,142 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitRealExpression(RealExpression expr, Object attr) throws SBQLException {
-	    return commonVisitLiteral(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitReturnWithValueStatement(ReturnWithValueStatement stmt, Object attr) throws SBQLException {
 	    stmt.getExpression().accept(this, attr);
-	    return commonVisitStatement(stmt, attr);
+	    return null;
 	}
 
 	@Override
 	public Object visitReturnWithoutValueStatement(ReturnWithoutValueStatement stmt, Object attr) throws SBQLException {
-	    return commonVisitStatement(stmt, attr);
+	    // assumed negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitSequentialExpression(SequentialExpression expr, Object attr) throws SBQLException {
 	    expr.getFirstExpression().accept(this, attr);
 	    expr.getSecondExpression().accept(this, attr);
-	    return this.commonVisitExpression(expr, attr);
+	    return null;
 	}
 
 	@Override
 	public Object visitSimpleBinaryExpression(SimpleBinaryExpression expr, Object attr) throws SBQLException {
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitSimpleUnaryExpression(SimpleUnaryExpression expr, Object attr) throws SBQLException {
+	    expr.getExpression().accept(this, attr);
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitStringExpression(StringExpression expr, Object attr) throws SBQLException {
-	    return commonVisitLiteral(expr, attr);
+	    // literal
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitSumExpression(SumExpression expr, Object attr) throws SBQLException {
-	    return commonVisitUnaryExpression(expr, attr);
+	    Expression child = expr.getExpression();
+	    child.accept(this, attr);
+	    int x = estimateNumItems(child) - 1;
+	    addEstimate(-0.01947 + 0.00329381 * x + 0.000000345479 * x * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitToBooleanExpression(ToBooleanExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToIntegerExpression(ToIntegerExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToRealExpression(ToRealExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToStringExpression(ToStringExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToDateExpression(ToDateExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitUnionExpression(UnionExpression expr, Object attr) throws SBQLException {
-	    return commonVisitAlgebraicExpression(expr, attr);
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
+	    int x = estimateNumItems(expr) - 4;
+	    if(x >= 654) addEstimate(0.195218 - 0.000825259 * x + 0.000000805861 * x * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitUniqueExpression(UniqueExpression expr, Object attr) throws SBQLException {
-	    return commonVisitUnaryExpression(expr, attr);
+	    expr.getExpression().accept(this, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitWhereExpression(WhereExpression expr, Object attr) throws SBQLException {
+	    // TODO implement where
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitRangeExpression(RangeExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 	
 	@Override
 	public Object visitToBagExpression(ToBagExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToSingleExpression(ToSingleExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitBagExpression(BagExpression expr, Object attr) throws SBQLException {
-	    return commonVisitUnaryExpression(expr, attr);
+	    // assume bag of literals
+	    int x = estimateNumItems(expr) - 1;
+	    addEstimate(-0.168636 - 0.000841481 * x + 0.0000299677 * x * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitStructExpression(StructExpression expr, Object attr) throws SBQLException {
-	    return commonVisitUnaryExpression(expr, attr);
+	    // assume struct of literals
+	    int x = estimateNumItems(expr) - 1;
+	    addEstimate(-6.26565 + 0.0267596 * x + 0.00000281054 * x * x);
+	    return null;
 	}
 
 	@Override
@@ -628,6 +701,7 @@ public class CostModel extends TraversingASTAdapter {
 	@Override
 	public Object visitVariableDeclarationStatement(VariableDeclarationStatement stmt, Object attr) throws SBQLException {
 	    stmt.getInitExpression().accept(this, attr);
+	    // unknown
 	    return this.commonVisitStatement(stmt, attr);
 	}
 
@@ -668,16 +742,19 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitBreakStatement(BreakStatement stmt, Object attr) throws SBQLException {
-	    return commonVisitStatement(stmt, attr);
+	    // assume negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitContinueStatement(ContinueStatement stmt, Object attr) throws SBQLException {
-	    return commonVisitStatement(stmt, attr);
+	    // assume negligible
+	    return null;
 	}
 
 	@Override
-	public Object visitInsertExpression(InsertExpression expr, Object attr) throws SBQLException {  
+	public Object visitInsertExpression(InsertExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitBinaryExpression(expr, attr);
 	}
 
@@ -712,39 +789,48 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitDateExpression(DateExpression expr, Object attr) throws SBQLException {
-	    return commonVisitLiteral(expr, attr);
+	    // literal
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitDateprecissionExpression(DateprecissionExpression expr, Object attr) throws SBQLException {
+	    // unknown
 	    return commonVisitBinaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitRandomExpression(RandomExpression expr, Object attr) throws SBQLException {
+	    // unknown
 	    return commonVisitBinaryExpression(expr, attr);
 	}
 	  
 	public Object visitInstanceOfExpression(InstanceOfExpression expr, Object attr) throws SBQLException {
+	    // unknown
 	    return commonVisitBinaryExpression(expr, attr);
 	}
 
 	public Object visitCastExpression(CastExpression expr, Object attr) throws SBQLException {
+	    // unknown
 	    return commonVisitBinaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitCloseUniqueByExpression(CloseUniqueByExpression node, Object attr) throws SBQLException {
+	    // TODO implement closeuniqueby
 	    return commonVisitNonAlgebraicExpression(node, attr);
 	}
 
 	@Override
 	public Object visitLeavesByExpression(LeavesByExpression node, Object attr) throws SBQLException {
+	    // TODO implement leavesby
 	    return commonVisitNonAlgebraicExpression(node, attr);
 	}
 
 	@Override
 	public Object visitLeavesUniqueByExpression(LeavesUniqueByExpression node, Object attr) throws SBQLException {
+	    // unknown
 	    return commonVisitNonAlgebraicExpression(node, attr);
 	}
 
@@ -755,11 +841,13 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitAtMostExpression(AtMostExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 	
 	@Override
 	public Object visitAtLeastExpression(AtLeastExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
@@ -780,7 +868,13 @@ public class CostModel extends TraversingASTAdapter {
 	}
 
 	public Object visitParallelUnionExpression(ParallelUnionExpression expr, Object attr) throws SBQLException {
-	    return commonVisitParallelExpression(expr, attr);
+	    int x = -4;
+	    for(Expression e : expr.getParallelExpressions()) {
+	        e.accept(this, attr);
+	        x += estimateNumItems(e);
+	    }
+	    addEstimate(0.195218 - 0.000825259 * x + 0.000000805861 * x * x);
+	    return null;
 	}
 
 	@Override
@@ -790,6 +884,7 @@ public class CostModel extends TraversingASTAdapter {
 	
 	@Override
 	public Object visitRangeAsExpression(RangeAsExpression expr, Object attr) {
+	    // TODO implement rangeas
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
