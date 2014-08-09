@@ -10,8 +10,7 @@
 	Negligible
 	
 	\section{a as b}
-	x := (number of items in a) - 1\\
-	$TODO$
+	Negligible
 	
 	\section{avg(a)}
 	x := (number of items in a) - 1\\
@@ -27,8 +26,7 @@
 	Negligible
 	
 	\section{count(a)}
-	x := (number of items in a) - 1\\
-	$TODO$
+	Negligible
 	
 	\section{$a_1, a_2, ..., a_n$}
 	x := n - 1\\
@@ -67,11 +65,13 @@
 	
 	\section{forall(a)}
 	x := (number of items in a) - 1\\
-	$TODO$
+	$0.368536 + 0.000115264 x$\\
+	$r^2 = 0.53822$
 	
 	\section{forsome(a)}
 	x := (number of items in a) - 1\\
-	$TODO$
+	$-0.0266538 + 0.0000215938 x + 6.53259 \times 10^{-7} x^2$\\
+	$r^2 = 0.912933$
 	
 	\section{a $>$ b}
 	Negligible
@@ -81,11 +81,12 @@
 	
 	\section{a groupas b}
 	x := (number of items in a) - 1\\
-	$TODO$
+	$0.0410372 - 0.000161534 x + 2.99533 \times 10^{-7} x^2$\\
+	$r^2 = 0.319202$
+	Note: If x < 270, just use 0
 	
 	\section{a in b}
-	x := (number of items in b) - 1\\
-	$TODO$
+	Negligible
 	
 	\section{a[b]}
 	x := (number of items in a) - 1\\
@@ -96,11 +97,10 @@
 	$TODO$
 	
 	\section{a intersect b}
-	x := (number of items in b) - 1\\
-	$TODO$
+	Negligible
 	
 	\section{a join b}
-	x := (number of items in b) - 1\\
+	x := (number of items in a) + (number of items in b) - 5\\
 	$-0.296612 + 0.0033636x + 0.0000845375x^2$\\
 	$r^2 = 0.99998$
 	
@@ -112,11 +112,14 @@
 	
 	\section{max(a)}
 	x := (number of items in a) - 1\\
-	$TODO$
+	$-0.00206558 + 0.0000179761 x$\\
+	$r^2 = 0.00486482$
 	
 	\section{min(a)}
 	x := (number of items in a) - 1\\
-	$TODO$
+	$0.247735 - 0.00106815 x + 9.2684 \times 10^{-7} x^2$\\
+	$r^2 = 0.794276$
+	Note: if x < 831, just use 0.
 	
 	\section{a \% b}
 	Negligible
@@ -176,8 +179,7 @@
 	Negligible
 	
 	\section{a subtract b}
-	x := (number of items in b) - 1\\
-	$TODO$
+	Negligible
 	
 	\section{sum(a)}
 	x := (number of items in a) - 1\\
@@ -191,8 +193,7 @@
 	Note: If x < 654, just use 0
 	
 	\section{unique(a)}
-	x := (number of items in a) - 1\\
-	$TODO$
+	Negligible
 	
 	\section{uniqueref(a)}
 	x := (number of items in a) - 1\\

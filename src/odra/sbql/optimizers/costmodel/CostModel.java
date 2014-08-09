@@ -300,7 +300,7 @@ public class CostModel extends TraversingASTAdapter {
 	@Override
 	public Object visitCommaExpression(CommaExpression expr, Object attr) throws SBQLException {
 	    int x = estimateNumItems(expr) - 1;
-	    addEstimate(0.226851 - 0.00550817 * x + 0.0000146711 * x * x + 0.0000000480612 * x * x * x);
+	    if(x >= 182) addEstimate(0.226851 - 0.00550817 * x + 0.0000146711 * x * x + 0.0000000480612 * x * x * x);
 	    return null;
 	}
 
@@ -430,56 +430,68 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitInExpression(InExpression expr, Object attr) throws SBQLException {
+	    // TODO implement in
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitIntegerExpression(IntegerExpression expr, Object attr) throws SBQLException {
-	    return commonVisitLiteral(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitIntersectExpression(IntersectExpression expr, Object attr) throws SBQLException {
+	    // TODO implement intersect
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitJoinExpression(JoinExpression expr, Object attr) throws SBQLException {
-	    return commonVisitNonAlgebraicExpression(expr, attr);
+	    int x = estimateNumItems(expr) - 5;
+	    addEstimate(-0.296612 + 0.0033636 * x + 0.0000845375 * x * x);
+	    return null;
 	}
 
 	@Override
 	public Object visitLazyFailureExpression(LazyFailureExpression expr, Object attr) throws SBQLException {
+	    // TODO what is this?
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitMaxExpression(MaxExpression expr, Object attr) throws SBQLException {
+	    // TODO implement max
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitMinExpression(MinExpression expr, Object attr) throws SBQLException {
+	    // TODO implement min
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitMinusExpression(MinusExpression expr, Object attr) throws SBQLException {
-	    return commonVisitAlgebraicExpression(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitNameExpression(NameExpression expr, Object attr) throws SBQLException {
+	    // TODO implement name look-up
 	    return commonVisitExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitExternalNameExpression(ExternalNameExpression expr, Object attr) throws SBQLException {
+	    // TODO implement
 	    return commonVisitExpression(expr, attr);
 	}   
 
 	@Override
 	public Object visitOrderByExpression(OrderByExpression expr, Object attr) throws SBQLException {
+	    // TODO implement orderby
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
