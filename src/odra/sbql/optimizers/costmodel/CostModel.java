@@ -123,7 +123,7 @@ public class CostModel extends TraversingASTAdapter {
 	    } else if(expr instanceof ExistsExpression) {
 	        
 	    } else if(expr instanceof ExternalNameExpression) {
-	        // TODO what is this?
+	        return expr.getSignature().getMaxCard();
 	    } else if(expr instanceof ExternalProcedureCallExpression) {
 	        // TODO what is this?
 	    } else if(expr instanceof ForAllExpression) {
@@ -168,7 +168,7 @@ public class CostModel extends TraversingASTAdapter {
 	    } else if(expr instanceof MinusExpression) {
 	        
 	    } else if(expr instanceof NameExpression) {
-	        // TODO get cardinality of name from metabase
+	        return expr.getSignature().getMaxCard();
 	    } else if(expr instanceof NowExpression) {
 	        
 	    } else if(expr instanceof OrderByExpression) {
@@ -537,17 +537,6 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitNameExpression(NameExpression expr, Object attr) throws SBQLException {
 	    Signature sig = expr.getSignature();
 	    System.out.printf("min = %d, max = %d%n", sig.getMinCard(), sig.getMaxCard());
-        for(ASTNode node : new NameExpressionFinder().findNodes(expr)) {
-            NameExpression nameExpression = (NameExpression) node;
-            if(nameExpression.getSignature() instanceof ReferenceSignature) {
-                try {
-                    MBObject object = new MBObject(((ReferenceSignature) nameExpression.getSignature()).value);
-                    System.out.printf("min = %d, max = %d%n", object.getMinCard(), object.getMaxCard());
-                } catch (DatabaseException e) {
-                    throw new OptimizationException(e, node, this);
-                }
-            }
-        }
 	    // TODO implement name look-up
 	    return commonVisitExpression(expr, attr);
 	}
