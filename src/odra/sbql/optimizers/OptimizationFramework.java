@@ -61,7 +61,7 @@ public class OptimizationFramework {
 	}
 	
 	public ASTNode optimize(ASTNode query, DBModule module) throws SBQLException {
-	    ASTNode oldQuery = DeepCopyAST.copy(query);
+	    ASTNode oldQuery = query;
 	    
 		for(Type type : sequence) 
 		{
@@ -72,8 +72,11 @@ public class OptimizationFramework {
 		}
 		
 		CostModel costModel = CostModel.getCostModel();
+		double newEstimate = costModel.estimate(query, module);
+		double oldEstimate = costModel.estimate(oldQuery, module);
+		System.out.printf("%f => %f%n", oldEstimate, newEstimate);
 		// if the new query is faster, return it, otherwise return the old query
-		if(FORCE_OPTIMIZATION || costModel.estimate(query, module) < costModel.estimate(oldQuery, module)) {
+		if(FORCE_OPTIMIZATION || newEstimate < oldEstimate) {
 		    System.out.println("Using optimized version.");
 		    return query;
 		} else {

@@ -2,13 +2,19 @@ package odra.sbql.optimizers.costmodel;
 
 import java.util.Vector;
 
+import odra.db.Database;
+import odra.db.DatabaseException;
+import odra.db.IDataStore;
+import odra.db.OID;
 import odra.db.objects.data.DBModule;
 import odra.sbql.SBQLException;
 import odra.sbql.ast.ASTNode;
 import odra.sbql.ast.TraversingASTAdapter;
 import odra.sbql.ast.expressions.*;
 import odra.sbql.ast.statements.*;
+import odra.sbql.ast.terminals.Operator;
 import odra.sbql.optimizers.queryrewrite.index.SingleIndexFitter;
+import odra.store.sbastore.NameIndex;
 
 /** 
  * 
@@ -44,8 +50,8 @@ public class CostModel extends TraversingASTAdapter {
 	    return estimate;
 	}
 	
-	private void warn() {
-	    if(WARN) System.out.println("WARNING: Unsupported operator encountered.");
+	private void warn(ASTNode operator) {
+	    if(WARN) System.out.printf("WARNING: Unsupported operator (%s) encountered.%n", operator.getClass().getSimpleName());
 	}
 	
 	/**
@@ -226,13 +232,13 @@ public class CostModel extends TraversingASTAdapter {
 	
 	@Override
 	protected Object commonVisitStatement(Statement stmt, Object attr) throws SBQLException {
-	    warn();
+	    warn(stmt);
 	    return null;
 	}
 
 	@Override
 	protected Object commonVisitExpression(Expression expr, Object attr) throws SBQLException {
-	    warn();
+	    warn(expr);
 	    return null;
 	}
 
@@ -244,31 +250,31 @@ public class CostModel extends TraversingASTAdapter {
 	
 	@Override
 	protected Object commonVisitUnaryExpression(UnaryExpression expr, Object attr) throws SBQLException {
-	    warn();
+	    warn(expr);
 	    return null;
 	}
 
 	@Override
 	protected Object commonVisitBinaryExpression(BinaryExpression expr, Object attr) throws SBQLException {
-	    warn();
+	    warn(expr);
 	    return null;
 	}
 
 	@Override
 	protected Object commonVisitAlgebraicExpression(BinaryExpression expr, Object attr) throws SBQLException {
-	    warn();
+	    warn(expr);
 	    return null;
 	}
 
 	@Override
 	protected Object commonVisitNonAlgebraicExpression(NonAlgebraicExpression expr, Object attr) throws SBQLException {
-	    warn();
+	    warn(expr);
 	    return null;
 	}
 
 	@Override
 	protected Object commonVisitParallelExpression(ParallelExpression expr, Object attr) throws SBQLException {
-	    warn();
+	    warn(expr);
 	    return null;
 	}
 
@@ -520,6 +526,21 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitNameExpression(NameExpression expr, Object attr) throws SBQLException {
+	    String name = expr.name().value();
+        try {
+            IDataStore store = Database.getStore();
+            int id = store.getNameId(name);
+            System.out.printf("id = %d%n", id);
+            OID oid = store.offset2OID(id);
+            System.out.printf("name = %s%n", oid.getObjectName());
+            System.out.printf("oid = %s%n", oid);
+            System.out.printf("min = %d, max = %d%n", oid.getAggregateMinCard(), oid.getAggregateMaxCard());
+            /*NameIndex nameIndex = Database.getNameIndex();
+            int id = nameIndex.name2id(name);
+            System.out.printf("id = %d%n", id);*/
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
 	    // TODO implement name look-up
 	    return commonVisitExpression(expr, attr);
 	}
@@ -579,7 +600,32 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitSimpleBinaryExpression(SimpleBinaryExpression expr, Object attr) throws SBQLException {
 	    expr.getLeftExpression().accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    return commonVisitAlgebraicExpression(expr, attr);
+	    switch(expr.O.getAsInt()) {
+	    case Operator.PLUS:
+	    case Operator.MINUS:
+	    case Operator.MULTIPLY:
+	    case Operator.DIVIDE:
+	    case Operator.EQUALS:
+	    case Operator.GREATER:
+	    case Operator.LOWER:
+	    case Operator.GREATEREQUALS:
+	    case Operator.LOWEREQUALS:
+	    case Operator.OR:
+	    case Operator.AND:
+	    case Operator.NOT:
+	    case Operator.DIFFERENT:
+	    case Operator.MODULO:
+	        // negligible
+	        return null;
+	    case Operator.MATCH_STRING:
+	    case Operator.NOT_MATCH_STRING:
+	        int x = ((StringExpression) expr.getRightExpression()).getLiteral().value().length();
+	        addEstimate(x < 103 ? 0.676408 : 2.00131);
+	        return null;
+	    case Operator.ASSIGN:
+	    default:
+	        return commonVisitAlgebraicExpression(expr, attr);
+	    }
 	}
 
 	@Override
