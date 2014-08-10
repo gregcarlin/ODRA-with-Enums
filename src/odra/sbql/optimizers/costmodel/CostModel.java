@@ -22,6 +22,7 @@ import odra.sbql.optimizers.queryrewrite.index.SingleIndexFitter;
 import odra.sbql.optimizers.queryrewrite.wrapper.Utils;
 import odra.sbql.optimizers.queryrewrite.wrapper.finders.NameExpressionFinder;
 import odra.sbql.results.compiletime.ReferenceSignature;
+import odra.sbql.results.compiletime.Signature;
 import odra.store.sbastore.NameIndex;
 
 /** 
@@ -534,53 +535,18 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitNameExpression(NameExpression expr, Object attr) throws SBQLException {
-	    String name = expr.name().value();
-	    System.out.println("name = " + name);
-        try {
-            /*IDataStore store = Database.getStore();
-            int id = store.getNameId(name);
-            System.out.printf("id = %d%n", id);
-            OID oid = store.offset2OID(id);*/
-            //System.out.println("kind = " + oid.getObjectKind().name());
-            //System.out.printf("min = %d, max = %d%n", store.getAggregateMinCard(oid), store.getAggregateMaxCard(oid));
-            /*MetaBase mb = new MetaBase(oid.getChildAt(9));
-            System.out.println("max = " + mb.getMetabaseEntry().getAggregateMaxCard());*/
-            //System.out.println("parent name = " + oid.getParent().getObjectName());
-            //System.out.printf("name = %s%n", oid.getObjectName());
-            //System.out.printf("oid = %s%n", oid);
-            //System.out.printf("min = %d, max = %d%n", oid.getAggregateMinCard(), oid.getAggregateMaxCard());
-            /*NameIndex nameIndex = Database.getNameIndex();
-            int id = nameIndex.name2id(name);
-            System.out.printf("id = %d%n", id);*/
-            /*DBModule mod = Database.getModuleByName("WeakDependMod");
-            System.out.println("metabase name = " + mod.getMetaBase().getName());*/
-            /*OID emp = mod.findFirstByName(name, mod.getDatabaseEntry());
-            System.out.println("empID = " + emp.getObjectNameId());
-            System.out.println("empName = " + emp.getObjectName());*/
-            for(ASTNode node : new NameExpressionFinder().findNodes(expr)) {
-                NameExpression nameExpression = (NameExpression) node;
-                System.out.println("nameExpression = " + nameExpression.name().value());
-                if(nameExpression.getSignature() instanceof ReferenceSignature) {
-                    try {
-                        MBObject object = new MBObject(((ReferenceSignature) nameExpression.getSignature()).value);
-                        DBModule nameModule = object.getModule();
-                        System.out.println("nameModule = " + nameModule.getModuleGlobalName());
-                        System.out.println("metabase = " + nameModule.getMetaBase());
-                        System.out.printf("min = %d, max = %d%n", object.getMinCard(), object.getMaxCard());
-                        if(nameModule.isWrapper()) {
-                            nameExpression.wrapper = nameModule.getModuleGlobalName();
-                            //wrappers.put(nameModule.getModuleGlobalName(), nameModule.getWrapper());
-                        }
-                    } catch (DatabaseException e) {
-                        throw new OptimizationException(e);
-                    }
+	    Signature sig = expr.getSignature();
+	    System.out.printf("min = %d, max = %d%n", sig.getMinCard(), sig.getMaxCard());
+        for(ASTNode node : new NameExpressionFinder().findNodes(expr)) {
+            NameExpression nameExpression = (NameExpression) node;
+            if(nameExpression.getSignature() instanceof ReferenceSignature) {
+                try {
+                    MBObject object = new MBObject(((ReferenceSignature) nameExpression.getSignature()).value);
+                    System.out.printf("min = %d, max = %d%n", object.getMinCard(), object.getMaxCard());
+                } catch (DatabaseException e) {
+                    throw new OptimizationException(e, node, this);
                 }
             }
-            /*Method method = Util.class.getMethod("resolveValue", Expression.class, Database.class, DBModule.class);
-            method.setAccessible(true);
-            method.invoke(null, expr, Server.)*/
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 	    // TODO implement name look-up
 	    return commonVisitExpression(expr, attr);
