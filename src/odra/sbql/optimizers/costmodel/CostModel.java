@@ -1,29 +1,16 @@
 package odra.sbql.optimizers.costmodel;
 
-import java.lang.reflect.Method;
 import java.util.Vector;
 
-import ch.qos.logback.classic.pattern.Util;
-import odra.db.Database;
-import odra.db.DatabaseException;
-import odra.db.IDataStore;
-import odra.db.OID;
 import odra.db.objects.data.DBModule;
-import odra.db.objects.meta.MBObject;
-import odra.db.objects.meta.MetaBase;
 import odra.sbql.SBQLException;
 import odra.sbql.ast.ASTNode;
 import odra.sbql.ast.TraversingASTAdapter;
 import odra.sbql.ast.expressions.*;
 import odra.sbql.ast.statements.*;
 import odra.sbql.ast.terminals.Operator;
-import odra.sbql.optimizers.OptimizationException;
 import odra.sbql.optimizers.queryrewrite.index.SingleIndexFitter;
-import odra.sbql.optimizers.queryrewrite.wrapper.Utils;
-import odra.sbql.optimizers.queryrewrite.wrapper.finders.NameExpressionFinder;
-import odra.sbql.results.compiletime.ReferenceSignature;
 import odra.sbql.results.compiletime.Signature;
-import odra.store.sbastore.NameIndex;
 
 /** 
  * 
@@ -35,7 +22,7 @@ import odra.store.sbastore.NameIndex;
 
 
 public class CostModel extends TraversingASTAdapter {
-    private static final boolean WARN = true; // TODO link up with some server setting?
+    private static final boolean WARN = false; // TODO link up with some server setting?
 
 	private CostModel() {
 		
@@ -239,6 +226,13 @@ public class CostModel extends TraversingASTAdapter {
 	    if(e > 0.0) estimate += e;
 	}
 	
+	private NameExpression getRightNameExpression(BinaryExpression e) {
+	    Expression right = e.getRightExpression();
+	    if(right instanceof NameExpression) return (NameExpression) right;
+	    if(right instanceof BinaryExpression) return getRightNameExpression((BinaryExpression) right);
+	    return null;
+	}
+	
 	@Override
 	protected Object commonVisitStatement(Statement stmt, Object attr) throws SBQLException {
 	    warn(stmt);
@@ -402,7 +396,12 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitCloseByExpression(CloseByExpression expr, Object attr) throws SBQLException {
 	    expr.getLeftExpression().accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    // TODO implement closeby
+	    NameExpression nameExpr = getRightNameExpression(expr);
+	    if(nameExpr != null) {
+	        System.out.println("maxCard = " + nameExpr.getSignature().getMaxCard());
+    	    // TODO implement closeby
+	        return null;
+	    }
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
