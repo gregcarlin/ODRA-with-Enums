@@ -62,9 +62,9 @@ public class CostModel extends TraversingASTAdapter {
 	    } else if(expr instanceof AssignExpression) {
 	        
 	    } else if(expr instanceof AtLeastExpression) {
-	        // TODO what is this?
+	        // unsupported and unknown
 	    } else if(expr instanceof AtMostExpression) {
-	        // TODO what is this?
+	        // unsupported and unknown
 	    } else if(expr instanceof AvgExpression) {
 	        
 	    } else if(expr instanceof BagExpression) {
@@ -74,9 +74,11 @@ public class CostModel extends TraversingASTAdapter {
 	    } else if(expr instanceof CastExpression) {
 	        
 	    } else if(expr instanceof CloseByExpression) {
-	        // TODO
+	        NameExpression nameExpr = getRightNameExpression((CloseByExpression) expr);
+	        if(nameExpr != null) return nameExpr.getSignature().getMaxCard();
 	    } else if(expr instanceof CloseUniqueByExpression) {
-	        // TODO
+	        NameExpression nameExpr = getRightNameExpression((CloseUniqueByExpression) expr);
+            if(nameExpr != null) return nameExpr.getSignature().getMaxCard();
 	    } else if(expr instanceof CommaExpression) {
 	        CommaExpression ce = (CommaExpression) expr;
 	        return estimateNumItems(ce.getLeftExpression()) + estimateNumItems(ce.getRightExpression());
@@ -106,13 +108,13 @@ public class CostModel extends TraversingASTAdapter {
 	    } else if(expr instanceof EqualityExpression) {
 	        
 	    } else if(expr instanceof ExecSqlExpression) {
-	        // TODO what is this?
+	        // unsupported
 	    } else if(expr instanceof ExistsExpression) {
 	        
 	    } else if(expr instanceof ExternalNameExpression) {
 	        return expr.getSignature().getMaxCard();
 	    } else if(expr instanceof ExternalProcedureCallExpression) {
-	        // TODO what is this?
+	        // unsupported
 	    } else if(expr instanceof ForAllExpression) {
 	        
 	    } else if(expr instanceof ForSomeExpression) {
@@ -143,9 +145,11 @@ public class CostModel extends TraversingASTAdapter {
 	    } else if(expr instanceof LazyFailureExpression) {
 	        // TODO what is this?
 	    } else if(expr instanceof LeavesByExpression) {
-	        // TODO
+	        NameExpression nameExpr = getRightNameExpression((LeavesByExpression) expr);
+            if(nameExpr != null) return nameExpr.getSignature().getMaxCard();
 	    } else if(expr instanceof LeavesUniqueByExpression) {
-	        // TODO
+	        NameExpression nameExpr = getRightNameExpression((LeavesUniqueByExpression) expr);
+            if(nameExpr != null) return nameExpr.getSignature().getMaxCard();
 	    } else if(expr instanceof MatchStringExpression) {
 	        
 	    } else if(expr instanceof MaxExpression) {
@@ -167,21 +171,21 @@ public class CostModel extends TraversingASTAdapter {
 	        }
 	        return total;
 	    } else if(expr instanceof ProcedureCallExpression) {
-	        // TODO what is this?
+	        // unsupported
 	    } else if(expr instanceof RandomExpression) {
 	        
 	    } else if(expr instanceof RangeAsExpression) {
 	        return estimateNumItems(((RangeAsExpression) expr).getExpression());
 	    } else if(expr instanceof RangeExpression) {
-	        // TODO what is this?
+	        
 	    } else if(expr instanceof RealExpression) {
 	        
 	    } else if(expr instanceof RefExpression) {
 	        return estimateNumItems(((RefExpression) expr).getExpression());
 	    } else if(expr instanceof RemoteQueryExpression) {
-	        // TODO what is this?
+	        return estimateNumItems(((RemoteQueryExpression) expr).getExpression()); // guess
 	    } else if(expr instanceof RenameExpression) {
-	        // TODO what is this?
+	        return estimateNumItems(((RenameExpression) expr).getExpression());
 	    } else if(expr instanceof SequentialExpression) {
 	        SequentialExpression se = (SequentialExpression) expr;
 	        return estimateNumItems(se.getFirstExpression()) + estimateNumItems(se.getSecondExpression());
@@ -399,7 +403,7 @@ public class CostModel extends TraversingASTAdapter {
 	    NameExpression nameExpr = getRightNameExpression(expr);
 	    if(nameExpr != null) {
 	        System.out.println("maxCard = " + nameExpr.getSignature().getMaxCard());
-    	    // TODO implement closeby
+    	    // TODO implement close by
 	        return null;
 	    }
 	    return commonVisitNonAlgebraicExpression(expr, attr);
@@ -699,7 +703,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitRangeExpression(RangeExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // TODO implement Object[index]
 	    return commonVisitAlgebraicExpression(expr, attr);
 	}
 	
