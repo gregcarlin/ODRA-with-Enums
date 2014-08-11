@@ -915,12 +915,14 @@ public class CostModel extends TraversingASTAdapter {
 	}
 
 	public Object visitParallelUnionExpression(ParallelUnionExpression expr, Object attr) throws SBQLException {
-	    int x = -4;
+	    /*int x = -4;
 	    for(Expression e : expr.getParallelExpressions()) {
 	        e.accept(this, attr);
 	        x += estimateNumItems(e);
 	    }
-	    addEstimate(0.195218 - 0.000825259 * x + 0.000000805861 * x * x);
+	    addEstimate(0.195218 - 0.000825259 * x + 0.000000805861 * x * x);*/
+	    // TODO implement with results from unionp
+	    warn(expr);
 	    return null;
 	}
 
