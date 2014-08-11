@@ -11,6 +11,7 @@ import odra.sbql.ast.statements.*;
 import odra.sbql.ast.terminals.Operator;
 import odra.sbql.optimizers.queryrewrite.index.SingleIndexFitter;
 import odra.sbql.results.compiletime.Signature;
+import odra.system.config.ConfigServer;
 
 /** 
  * 
@@ -22,7 +23,7 @@ import odra.sbql.results.compiletime.Signature;
 
 
 public class CostModel extends TraversingASTAdapter {
-    private static final boolean WARN = false; // TODO link up with some server setting?
+    private static final boolean WARN = ConfigServer.DEBUG_ENABLE; // true
 
 	private CostModel() {
 		
@@ -42,6 +43,7 @@ public class CostModel extends TraversingASTAdapter {
 	 * @return
 	 */
 	public double estimate(ASTNode query, DBModule module) {
+	    estimate = 0.0;
 	    query.accept(this, null);
 	    return estimate;
 	}
@@ -99,7 +101,7 @@ public class CostModel extends TraversingASTAdapter {
 	    } else if(expr instanceof DerefExpression) {
 	        return estimateNumItems(((DerefExpression) expr).getExpression());
 	    } else if(expr instanceof DeserializeOidExpression) {
-	        // TODO what is this?
+	        // unsupported because unknown
 	    } else if(expr instanceof DotExpression) {
 	        DotExpression de = (DotExpression) expr;
 	        return estimateNumItems(de.getLeftExpression()) * estimateNumItems(de.getRightExpression()); // i think this is good
@@ -143,7 +145,7 @@ public class CostModel extends TraversingASTAdapter {
 	        JoinExpression je = (JoinExpression) expr;
 	        return estimateNumItems(je.getLeftExpression()) + estimateNumItems(je.getRightExpression());
 	    } else if(expr instanceof LazyFailureExpression) {
-	        // TODO what is this?
+	        // unsupported because unknown
 	    } else if(expr instanceof LeavesByExpression) {
 	        NameExpression nameExpr = getRightNameExpression((LeavesByExpression) expr);
             if(nameExpr != null) return nameExpr.getSignature().getMaxCard();
@@ -190,7 +192,7 @@ public class CostModel extends TraversingASTAdapter {
 	        SequentialExpression se = (SequentialExpression) expr;
 	        return estimateNumItems(se.getFirstExpression()) + estimateNumItems(se.getSecondExpression());
 	    } else if(expr instanceof SerializeOidExpression) {
-	        // TODO what is this?
+	        // unsupported because unknown
 	    } else if(expr instanceof SimpleBinaryExpression) {
 	        
 	    } else if(expr instanceof SimpleUnaryExpression) {

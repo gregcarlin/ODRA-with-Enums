@@ -6,6 +6,8 @@ import odra.sbql.ast.ASTAdapter;
 import odra.sbql.ast.ASTNode;
 import odra.sbql.ast.DeepCopyAST;
 import odra.sbql.optimizers.costmodel.CostModel;
+import odra.system.config.ConfigDebug;
+import odra.system.config.ConfigServer;
 
 public class OptimizationFramework {
     private static final boolean FORCE_OPTIMIZATION = false; // ignore cost model and always use 'optimized' version of query
@@ -74,9 +76,11 @@ public class OptimizationFramework {
 		CostModel costModel = CostModel.getCostModel();
 		double newEstimate = costModel.estimate(query, module);
 		double oldEstimate = costModel.estimate(oldQuery, module);
+		System.out.println("OLD: " + oldQuery);
+		System.out.println("NEW: " + query);
 		System.out.printf("%f => %f%n", oldEstimate, newEstimate);
 		// if the new query is faster, return it, otherwise return the old query
-		if(FORCE_OPTIMIZATION || newEstimate < oldEstimate) {
+		if(FORCE_OPTIMIZATION || newEstimate <= oldEstimate) {
 		    System.out.println("Using optimized version.");
 		    return query;
 		} else {
