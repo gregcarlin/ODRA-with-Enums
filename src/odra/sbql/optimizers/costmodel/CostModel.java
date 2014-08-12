@@ -725,6 +725,7 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitBagExpression(BagExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
 	    int x = estimateNumItems(expr) - 1;
+	    // TODO update after subtracting unionp results
 	    addEstimate(-0.168636 - 0.000841481 * x + 0.0000299677 * x * x);
 	    return null;
 	}
