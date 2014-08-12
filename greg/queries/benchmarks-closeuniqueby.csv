@@ -1,0 +1,3 @@
+0;(bag(Part[1])) close unique by (component.leadsTo.Part;517224.94;5.1722638209431E11
+1;(bag(Part[1], Part[2])) close unique by (component.leadsTo.Part;516936.06;5.1693760416174E11
+2;(bag(Part[1], Part[2], Part[3])) close unique by (component.leadsTo.Part;517471.08;5.1747268905287E11

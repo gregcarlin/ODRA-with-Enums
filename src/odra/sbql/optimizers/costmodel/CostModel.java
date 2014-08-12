@@ -723,7 +723,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitBagExpression(BagExpression expr, Object attr) throws SBQLException {
-	    // assume bag of literals
+	    expr.getExpression().accept(this, attr);
 	    int x = estimateNumItems(expr) - 1;
 	    addEstimate(-0.168636 - 0.000841481 * x + 0.0000299677 * x * x);
 	    return null;
@@ -731,7 +731,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitStructExpression(StructExpression expr, Object attr) throws SBQLException {
-	    // assume struct of literals
+	    expr.getExpression().accept(this, attr);
 	    int x = estimateNumItems(expr) - 1;
 	    addEstimate(-6.26565 + 0.0267596 * x + 0.00000281054 * x * x);
 	    return null;
