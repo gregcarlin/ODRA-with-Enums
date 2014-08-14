@@ -508,7 +508,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitLazyFailureExpression(LazyFailureExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // unsupported because unknown
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
