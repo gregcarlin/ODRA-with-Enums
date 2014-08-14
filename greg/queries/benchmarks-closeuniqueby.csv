@@ -1,3 +1,7 @@
 0;(bag(Part[1])) close unique by (component.leadsTo.Part;517224.94;5.1722638209431E11
 1;(bag(Part[1], Part[2])) close unique by (component.leadsTo.Part;516936.06;5.1693760416174E11
 2;(bag(Part[1], Part[2], Part[3])) close unique by (component.leadsTo.Part;517471.08;5.1747268905287E11
+3;(bag(Part[1], Part[2], Part[3], Part[4])) close unique by (component.leadsTo.Part;517199.26;5.1720098808083E11
+4;(bag(Part[1], Part[2], Part[3], Part[4], Part[5])) close unique by (component.leadsTo.Part;517406.29;5.1740804977832E11
+5;(bag(Part[1], Part[2], Part[3], Part[4], Part[5], Part[6])) close unique by (component.leadsTo.Part;517539.04;5.1754084813761E11
+6;(bag(Part[1], Part[2], Part[3], Part[4], Part[5], Part[6], Part[7])) close unique by (component.leadsTo.Part;517202.31;5.1720413333025E11
