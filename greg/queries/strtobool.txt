@@ -1,0 +1,4 @@
+$encoding = utf-8
+
+benchmark 100 strtobool:(boolean) "true";
+benchmark 100 strtobool:(boolean) "false";
