@@ -653,31 +653,31 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitToBooleanExpression(ToBooleanExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // TODO implement (boolean)
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToIntegerExpression(ToIntegerExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // TODO implement (integer)
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToRealExpression(ToRealExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // TODO implement (real)
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToStringExpression(ToStringExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // TODO implement (string)
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToDateExpression(ToDateExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // TODO implement (date)
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
@@ -717,8 +717,8 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitToSingleExpression(ToSingleExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
-	    return commonVisitUnaryExpression(expr, attr);
+	    // assumed negligible
+	    return null;
 	}
 
 	@Override
