@@ -34,22 +34,36 @@ public class CostModel extends TraversingASTAdapter {
 	}
 	
 	private double estimate = 0.0;
+	private boolean debug = true;
+	
+	/**
+     * Estimates the running time of a given query. Note that estimates are not absolute, but they can be compared.
+     * 
+     * @param query
+     * @param module
+     * @return
+     */
+	public double estimate(ASTNode query, DBModule module) {
+	    return estimate(query, module, true);
+	}
 	
 	/**
 	 * Estimates the running time of a given query. Note that estimates are not absolute, but they can be compared.
 	 * 
 	 * @param query
 	 * @param module
+	 * @param debug When running CostModel on a similar query multiple times, setting debug to false will prevent warnings.
 	 * @return
 	 */
-	public double estimate(ASTNode query, DBModule module) {
+	public double estimate(ASTNode query, DBModule module, boolean debug) {
+	    this.debug = debug;
 	    estimate = 0.0;
 	    query.accept(this, null);
 	    return estimate;
 	}
 	
 	private void warn(ASTNode operator) {
-	    if(WARN) System.out.printf("WARNING: Unsupported operator (%s) encountered.%n", operator.getClass().getSimpleName());
+	    if(WARN && debug) System.out.printf("WARNING: Unsupported operator (%s) encountered.%n", operator.getClass().getSimpleName());
 	}
 	
 	/**
