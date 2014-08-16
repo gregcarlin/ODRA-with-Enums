@@ -731,6 +731,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitToSingleExpression(ToSingleExpression expr, Object attr) throws SBQLException {
+	    expr.accept(this, attr);
 	    // assumed negligible
 	    return null;
 	}
