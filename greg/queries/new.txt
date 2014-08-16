@@ -1,4 +1,12 @@
 empbag.txt
 where2.txt
 unionp.txt
+strtobool.txt
+strtoint.txt
+realtoint.txt
+strtoreal.txt
+inttoreal.txt
+inttostring.txt
+realtostring.txt
+datetodate.txt
 
