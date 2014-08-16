@@ -39,8 +39,8 @@
 	
 	\section{a contains b}
 	x := (number of items in a) - 1\\
-	$0.0152971 - 0.00015426x + 6.87809 \times 10^{-7} x^2$\\
-	$r^2 = 0.906738$
+	$-0.0438918 + 6.17165 \times 10^{-7} x^2$\\
+	$r^2 = 0.906365$
 	
 	\section{deref(a)}
 	x := number of times in a\\
@@ -70,8 +70,8 @@
 	
 	\section{forsome(a)}
 	x := (number of items in a) - 1\\
-	$-0.0266538 + 0.0000215938 x + 6.53259 \times 10^{-7} x^2$\\
-	$r^2 = 0.912933$
+	$-0.0183684 + 6.63148 \times 10^{-7} x^2$\\
+	$r^2 = 0.912927$
 	
 	\section{a $>$ b}
 	Negligible
@@ -81,12 +81,11 @@
 	
 	\section{a groupas b}
 	x := (number of items in a) - 1\\
-	$0.0410372 - 0.000161534 x + 2.99533 \times 10^{-7} x^2$\\
-	$r^2 = 0.319202$
-	Note: If x < 270, just use 0
+	$-0.00591995 + 2.01902 \times 10^{-7} x^2$\\
+	$r^2 = 0.316911$
 	
 	\section{a in b}
-	Negligible
+	Same as contains
 	
 	\section{a[b]}
 	x := (number of items in a) - 1\\
@@ -101,8 +100,8 @@
 	
 	\section{a join b}
 	x := (number of items in a) + (number of items in b) - 5\\
-	$-0.296612 + 0.0033636x + 0.0000845375x^2$\\
-	$r^2 = 0.99998$
+	$0.993985 + 0.0000860779 x^2$\\
+	$r^2 = 0.999971$
 	
 	\section{a $<$ b}
 	Negligible
@@ -171,9 +170,8 @@
 	
 	\section{struct(a)}
 	x := (number of items in a) - 1\\
-	$-6.26565 + 0.0267596 x + 2.81054 \times 10^{-6} x ^2$\\
-	$r^2 = 0.846738$
-	Note: Ensure min result is 0
+	$4.00191 + 0.0000150654 x^2$\\
+	$r^2 = 0.83345$
 	
 	\section{a - b}
 	Negligible
@@ -183,8 +181,8 @@
 	
 	\section{sum(a)}
 	x := (number of items in a) - 1\\
-	$-0.01947 + 0.00329381 x + 3.45479 \times 10^{-7} x^2$\\
-	$r^2 = 0.98972$
+	$-0.161127 + 0.00383586 x$\\
+	$r^2 = 0.989362$
 	
 	\section{a union b}
 	x := (number of items in a) + (number of items in b) - 4\\

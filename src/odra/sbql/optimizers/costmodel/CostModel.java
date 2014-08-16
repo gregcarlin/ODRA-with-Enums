@@ -476,7 +476,7 @@ public class CostModel extends TraversingASTAdapter {
 	    itemExpr.accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
 	    int x = estimateNumItems(itemExpr) - 1;
-	    addEstimate(-0.0266538 + 0.0000215938 * x + 0.000000653259 * x * x);
+	    addEstimate(-0.0183684 + 0.000000663148 * x * x);
 	    return null;
 	}
 
@@ -485,7 +485,7 @@ public class CostModel extends TraversingASTAdapter {
 	    Expression child = expr.getExpression();
 	    child.accept(this, attr);
 	    int x = estimateNumItems(child) - 1;
-	    if(x >= 270) addEstimate(0.0410372 - 0.000161534 * x + 0.000000299533 * x * x);
+	    addEstimate(-0.00591995 + 0.000000201902 * x * x);
 	    return null;
 	}
 
@@ -493,7 +493,8 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitInExpression(InExpression expr, Object attr) throws SBQLException {
 	    expr.getLeftExpression().accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    // negligible
+	    int x = estimateNumItems(expr.getRightExpression()) - 1;
+	    addEstimate(-0.0438918 + 0.000000617165 * x * x);
 	    return null;
 	}
 
@@ -516,7 +517,7 @@ public class CostModel extends TraversingASTAdapter {
 	    expr.getLeftExpression().accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
 	    int x = estimateNumItems(expr) - 5;
-	    addEstimate(-0.296612 + 0.0033636 * x + 0.0000845375 * x * x);
+	    addEstimate(0.993985 + 0.0000860779 * x * x);
 	    return null;
 	}
 
@@ -661,7 +662,7 @@ public class CostModel extends TraversingASTAdapter {
 	    Expression child = expr.getExpression();
 	    child.accept(this, attr);
 	    int x = estimateNumItems(child) - 1;
-	    addEstimate(-0.01947 + 0.00329381 * x + 0.000000345479 * x * x);
+	    addEstimate(-0.161127 + 0.00383586 * x);
 	    return null;
 	}
 
@@ -749,7 +750,7 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitStructExpression(StructExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
 	    int x = estimateNumItems(expr) - 1;
-	    addEstimate(-6.26565 + 0.0267596 * x + 0.00000281054 * x * x);
+	    addEstimate(4.00191 + 0.0000150654 * x * x);
 	    return null;
 	}
 
