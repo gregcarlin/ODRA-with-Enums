@@ -1,11 +1,11 @@
-empbag.txt
-unionp.txt
-where2.txt
-strtobool.txt
-strtoint.txt
-realtoint.txt
-strtoreal.txt
-inttoreal.txt
-inttostring.txt
-realtostring.txt
-datetodate.txt
+batch empbag.txt
+batch unionp.txt
+batch where2.txt
+batch strtobool.txt
+batch strtoint.txt
+batch realtoint.txt
+batch strtoreal.txt
+batch inttoreal.txt
+batch inttostring.txt
+batch realtostring.txt
+batch datetodate.txt
