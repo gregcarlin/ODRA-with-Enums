@@ -390,8 +390,8 @@ public class CostModel extends TraversingASTAdapter {
 	@Override
 	public Object visitDerefExpression(DerefExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
-	    // TODO implement deref
-	    return commonVisitUnaryExpression(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
@@ -408,8 +408,8 @@ public class CostModel extends TraversingASTAdapter {
 
 	public Object visitRefExpression(RefExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
-	    // TODO implement ref
-	    return commonVisitUnaryExpression(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
@@ -429,8 +429,8 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitDotExpression(DotExpression expr, Object attr) throws SBQLException {
 	    expr.getLeftExpression().accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    // TODO implement dot
-	    return commonVisitNonAlgebraicExpression(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
@@ -456,8 +456,8 @@ public class CostModel extends TraversingASTAdapter {
 	@Override
 	public Object visitExistsExpression(ExistsExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
-	    // TODO implement exists
-	    return commonVisitUnaryExpression(expr, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
@@ -706,7 +706,7 @@ public class CostModel extends TraversingASTAdapter {
 	}
 
 	@Override
-	public Object visitUniqueExpression(UniqueExpression expr, Object attr) throws SBQLException {
+	public Object visitUniqueExpression(UniqueExpression expr, Object attr) throws SBQLException { // also handles uniqueref
 	    expr.getExpression().accept(this, attr);
 	    // negligible
 	    return null;
@@ -719,9 +719,11 @@ public class CostModel extends TraversingASTAdapter {
 	}
 
 	@Override
-	public Object visitRangeExpression(RangeExpression expr, Object attr) throws SBQLException {
-	    // TODO implement Object[index]
-	    return commonVisitAlgebraicExpression(expr, attr);
+	public Object visitRangeExpression(RangeExpression expr, Object attr) throws SBQLException { // Object[index]
+	    expr.getLeftExpression().accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
+	    // negligible
+	    return null;
 	}
 	
 	@Override
@@ -950,8 +952,9 @@ public class CostModel extends TraversingASTAdapter {
 	
 	@Override
 	public Object visitRangeAsExpression(RangeAsExpression expr, Object attr) {
-	    // TODO implement rangeas
-	    return commonVisitUnaryExpression(expr, attr);
+	    expr.getExpression().accept(this, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
