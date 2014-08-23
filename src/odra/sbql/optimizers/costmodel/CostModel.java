@@ -943,7 +943,7 @@ public class CostModel extends TraversingASTAdapter {
 	        e.accept(this, attr);
 	    }
 	    int x = exprs.size() - 1;
-	    //addEstimate(); TODO: investigate mathematica
+	    addEstimate(-0.277017 + 0.0000292739 * x * x);
 	    return null;
 	}
 
