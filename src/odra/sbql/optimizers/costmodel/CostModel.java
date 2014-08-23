@@ -146,9 +146,9 @@ public class CostModel extends TraversingASTAdapter {
 	    } else if(expr instanceof InExpression) {
 	        
 	    } else if(expr instanceof InsertCopyExpression) {
-	        // TODO what is this?
+	        // unknown
 	    } else if(expr instanceof InsertExpression) {
-	        // TODO what is this?
+	        // unknown
 	    } else if(expr instanceof InstanceOfExpression) {
 	        
 	    } else if(expr instanceof IntegerExpression) {
@@ -403,7 +403,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitInsertCopyExpression(InsertCopyExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // unknown
 	    return commonVisitBinaryExpression(expr, attr);
 	}
 
@@ -570,7 +570,11 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitOrderByExpression(OrderByExpression expr, Object attr) throws SBQLException {
-	    // TODO implement orderby
+	    Expression left = expr.getLeftExpression();
+	    left.accept(this, attr);
+	    expr.getRightExpression().accept(this, attr);
+	    int x = estimateNumItems(left) - 1;
+	    addEstimate(-10.0698 + 0.893485 * x);
 	    return commonVisitNonAlgebraicExpression(expr, attr);
 	}
 
