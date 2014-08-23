@@ -1,5 +1,6 @@
 package odra.sbql.optimizers.costmodel;
 
+import java.util.List;
 import java.util.Vector;
 
 import odra.db.objects.data.DBModule;
@@ -668,31 +669,36 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitToBooleanExpression(ToBooleanExpression expr, Object attr) throws SBQLException {
-	    // TODO implement (boolean)
-	    return commonVisitUnaryExpression(expr, attr);
+	    expr.getExpression().accept(this, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitToIntegerExpression(ToIntegerExpression expr, Object attr) throws SBQLException {
-	    // TODO implement (integer)
-	    return commonVisitUnaryExpression(expr, attr);
+	    expr.getExpression().accept(this, attr);
+	    // negligible
+	    return null;
 	}
 
 	@Override
 	public Object visitToRealExpression(ToRealExpression expr, Object attr) throws SBQLException {
-	    // TODO implement (real)
+	    expr.getExpression().accept(this, attr);
+	    // negligible
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToStringExpression(ToStringExpression expr, Object attr) throws SBQLException {
-	    // TODO implement (string)
+	    expr.getExpression().accept(this, attr);
+	    // negligible
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
 	@Override
 	public Object visitToDateExpression(ToDateExpression expr, Object attr) throws SBQLException {
-	    // TODO implement (date)
+	    expr.getExpression().accept(this, attr);
+	    // negligible
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
@@ -728,7 +734,7 @@ public class CostModel extends TraversingASTAdapter {
 	
 	@Override
 	public Object visitToBagExpression(ToBagExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // unknown
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
@@ -742,9 +748,7 @@ public class CostModel extends TraversingASTAdapter {
 	@Override
 	public Object visitBagExpression(BagExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
-	    int x = estimateNumItems(expr) - 1;
-	    // TODO update after subtracting unionp results
-	    addEstimate(-0.168636 - 0.000841481 * x + 0.0000299677 * x * x);
+	    // negligible
 	    return null;
 	}
 
@@ -934,14 +938,12 @@ public class CostModel extends TraversingASTAdapter {
 	}
 
 	public Object visitParallelUnionExpression(ParallelUnionExpression expr, Object attr) throws SBQLException {
-	    /*int x = -4;
-	    for(Expression e : expr.getParallelExpressions()) {
+	    List<Expression> exprs = expr.getParallelExpressions();
+	    for(Expression e : exprs) {
 	        e.accept(this, attr);
-	        x += estimateNumItems(e);
 	    }
-	    addEstimate(0.195218 - 0.000825259 * x + 0.000000805861 * x * x);*/
-	    // TODO implement with results from unionp
-	    warn(expr);
+	    int x = exprs.size() - 1;
+	    //addEstimate(); TODO: investigate mathematica
 	    return null;
 	}
 
