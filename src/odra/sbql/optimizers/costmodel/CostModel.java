@@ -243,6 +243,12 @@ public class CostModel extends TraversingASTAdapter {
 	    return 1;
 	}
 	
+	private int countBinaryExpressions(Expression e) {
+	    if(!(e instanceof BinaryExpression)) return 1;
+	    BinaryExpression be = (BinaryExpression) e;
+	    return countBinaryExpressions(be.getLeftExpression()) + countBinaryExpressions(be.getRightExpression());
+	}
+	
 	private void addEstimate(double e) {
 	    if(e > 0.0) estimate += e;
 	}
@@ -725,8 +731,14 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitWhereExpression(WhereExpression expr, Object attr) throws SBQLException {
-	    // TODO implement where
-	    return commonVisitNonAlgebraicExpression(expr, attr);
+	    Expression left = expr.getLeftExpression();
+	    Expression right = expr.getRightExpression();
+	    left.accept(this, attr);
+	    right.accept(this, attr);
+	    int x = estimateNumItems(left);
+	    int z = countBinaryExpressions(right);
+	    addEstimate(9.25131 + 9.13024 * x + 0.0650857 * z);
+	    return null;
 	}
 
 	@Override
@@ -829,7 +841,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitInsertExpression(InsertExpression expr, Object attr) throws SBQLException {
-	    // TODO what is this?
+	    // unknown
 	    return commonVisitBinaryExpression(expr, attr);
 	}
 
