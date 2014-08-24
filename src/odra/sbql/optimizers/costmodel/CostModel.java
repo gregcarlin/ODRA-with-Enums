@@ -556,6 +556,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitNameExpression(NameExpression expr, Object attr) throws SBQLException {
+	    System.out.printf("name = %s%n", expr.name().value());
 	    Signature sig = expr.getSignature();
 	    System.out.printf("min = %d, max = %d%n", sig.getMinCard(), sig.getMaxCard());
 	    // TODO implement name look-up
@@ -744,7 +745,7 @@ public class CostModel extends TraversingASTAdapter {
 
 	@Override
 	public Object visitToSingleExpression(ToSingleExpression expr, Object attr) throws SBQLException {
-	    expr.accept(this, attr);
+	    expr.getExpression().accept(this, attr);
 	    // assumed negligible
 	    return null;
 	}

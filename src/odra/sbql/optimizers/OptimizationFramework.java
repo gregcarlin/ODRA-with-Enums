@@ -4,6 +4,7 @@ import odra.db.objects.data.DBModule;
 import odra.sbql.SBQLException;
 import odra.sbql.ast.ASTAdapter;
 import odra.sbql.ast.ASTNode;
+import odra.sbql.ast.DeepCopyAST;
 import odra.sbql.optimizers.costmodel.CostModel;
 
 public class OptimizationFramework {
@@ -60,7 +61,7 @@ public class OptimizationFramework {
 	}
 	
 	public ASTNode optimize(ASTNode query, DBModule module) throws SBQLException {
-	    ASTNode oldQuery = query;
+	    ASTNode oldQuery = DeepCopyAST.copy(query);
 	    
 		for(Type type : sequence) 
 		{
