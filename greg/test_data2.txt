@@ -1,3 +1,0 @@
-create permanent Student("That" as fName, "Student" as lname, enum_gender.F as sex, 2000-01-01 as birthday, 1 as year, {2,3} as grades, ref(create permanent Project("ThatProj" as name, 2 as duration, ref(Emp where fName = "Greg") as supervised_by, ref(Student where fName = "That"))), as implements);
-
-create permanent Emp("Greg" as fName, "Carlin" as lname, enum_gender.M as sex, 1997-09-07 as birthday, 2014-02-20 as hire_date, 1000 as sal, enum_pos.P as position, ref(create permanent Dept("Hi" as dname, ref(Emp where fName = "Greg") as boss)) as works_in, ref(Project where name = "ThatProj") as supervises);

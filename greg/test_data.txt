@@ -1,1 +1,0 @@
-create permanent Person("Greg" as fName, "Carlin" as lname, enum_gender.M as sex, 1900-01-01 as birthday);
