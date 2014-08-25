@@ -76,7 +76,7 @@ public class OptimizationFramework {
 		// TODO remove prints when finished
 		System.out.println("OLD: " + oldQuery);
 		System.out.println("NEW: " + query);
-		System.out.printf("%f => %f%n", oldEstimate, newEstimate);
+		System.out.printf("%f => %f (%.2fx)%n", oldEstimate, newEstimate, oldEstimate / newEstimate);
 		// if the new query is faster, return it, otherwise return the old query
 		if(FORCE_OPTIMIZATION || newEstimate <= oldEstimate) {
 		    System.out.println("Using optimized version.");

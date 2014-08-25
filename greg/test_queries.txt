@@ -1,5 +1,5 @@
 Emp where sal > (Emp where lname = "Smith").sal
 Emp where sal > avg(Emp.sal)
-Emp where position = (Emp where lname = "Smith").position
+#Emp where position = (Emp where lname = "Smith").position
 Part where detailCost > (Part where name = "Kemp").detailCost
 

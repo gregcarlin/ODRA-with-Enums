@@ -1,6 +1,7 @@
 package odra.sbql.optimizers.costmodel;
 
 import java.util.List;
+import java.util.Stack;
 import java.util.Vector;
 
 import odra.db.objects.data.DBModule;
@@ -34,8 +35,9 @@ public class CostModel extends TraversingASTAdapter {
 		return new CostModel();
 	}
 	
-	private double estimate = 0.0;
 	private boolean debug = true;
+	private double estimate = 0.0;
+	private final Stack<Double> tempStack = new Stack<Double>();
 	
 	/**
      * Estimates the running time of a given query. Note that estimates are not absolute, but they can be compared.
@@ -58,7 +60,8 @@ public class CostModel extends TraversingASTAdapter {
 	 */
 	public double estimate(ASTNode query, DBModule module, boolean debug) {
 	    this.debug = debug;
-	    estimate = 0.0;
+	    this.estimate = 0.0;
+	    assert tempStack.isEmpty();
 	    query.accept(this, null);
 	    return estimate;
 	}
@@ -250,7 +253,15 @@ public class CostModel extends TraversingASTAdapter {
 	}
 	
 	private void addEstimate(double e) {
-	    if(e > 0.0) estimate += e;
+	    if(e > 0.0) {
+	        if(tempStack.isEmpty()) {
+	            estimate += e;
+	        } else {
+	            double t = tempStack.pop();
+	            t += e;
+	            tempStack.push(t);
+	        }
+	    }
 	}
 	
 	private NameExpression getRightNameExpression(BinaryExpression e) {
@@ -696,21 +707,21 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitToRealExpression(ToRealExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
 	    // negligible
-	    return commonVisitUnaryExpression(expr, attr);
+	    return null;
 	}
 
 	@Override
 	public Object visitToStringExpression(ToStringExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
 	    // negligible
-	    return commonVisitUnaryExpression(expr, attr);
+	    return null;
 	}
 
 	@Override
 	public Object visitToDateExpression(ToDateExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
 	    // negligible
-	    return commonVisitUnaryExpression(expr, attr);
+	    return null;
 	}
 
 	@Override
@@ -734,8 +745,11 @@ public class CostModel extends TraversingASTAdapter {
 	    Expression left = expr.getLeftExpression();
 	    Expression right = expr.getRightExpression();
 	    left.accept(this, attr);
+	    tempStack.push(0.0);
 	    right.accept(this, attr);
+	    double temp = tempStack.pop();
 	    int x = estimateNumItems(left);
+	    addEstimate(temp * x);
 	    int z = countBinaryExpressions(right);
 	    addEstimate(9.25131 + 9.13024 * x + 0.0650857 * z);
 	    return null;
