@@ -1,146 +1,163 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath, amsthm, amssymb, alltt, float, url, array}
 
+%NOTE: 100,000 emus used for all tests but Name
+
 \begin{document}
 
 	\section{a + b (Numerical)}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a and b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a as b}
-	Negligible
+	Negligible (Trend goes down)
 	
 	\section{avg(a)}
 	x := (number of items in a) - 1\\
 	$0.171303 + 0.00296116x + 7.91336 \times 10^{-7} x^2$\\
-	$r^2 = 0.994094$
+	$r^2 = 0.994094$\\
+	$p = \{5.86788 \times 10^{-11}, 3.72525073025 \times 10^{-361}, 1.20718 \times 10^{-150}\}$
 
 	\section{bag(a)}
-	Negligible
+	Negligible (Trend goes down)\\
+	$p = \{0.215747, 3.08592 \times 10^{-19}\}$
 	
 	\section{a + b (Strings)}
-	Negligible
+	Negligible (Values too low, p too high)\\
+	$p = \{0.635993, 0.588993\}$
 	
 	\section{count(a)}
-	Negligible
+	Negligible (Values too dispersed)\\
+	$p = \{0.374396, 0.368428\}$
 	
 	\section{$a_1, a_2, ..., a_n$}
 	x := n - 1\\
 	$0.226851 - 0.00550817x + 0.0000146711x^2 + 4.80612 \times 10^{-8} x^3$\\
-	$r^2 = 0.840262$
+	$r^2 = 0.840262$\\
+	$p = \{0.00474814, 6.34041 \times 10^{-15}, 1.63753 \times 10^{-64}\}$\\
 	Note: If x $<$ 182, just use 0
 	
 	\section{if(a)}
-	Negligible
+	Negligible (Values too dispersed, negative trend)\\
+	$p = \{9.82682 \times 10^{-7}, 0.734307\}$
 	
 	\section{a contains b}
 	x := (number of items in a) - 1\\
 	$-0.0438918 + 6.17165 \times 10^{-7} x^2$\\
-	$r^2 = 0.906365$
+	$r^2 = 0.906365$\\
+	$p = \{0.000256419, 3.35648759752 \times 10^{-764}\}$
 	
 	\section{deref(a)}
-	Negligible
+	Negligible (Negative Trend)
 	
 	\section{a / b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a.b}
-	Negligible
+	Negligible (Negative Trend, Negative Values)
 	
 	\section{a = b (Numerical)}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a = b (Strings)}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a.exists(b)}
-	Negligible
+	Negligible (Negative Trend, Negative Values)
 	
 	\section{forall(a)}
 	x := (number of items in a) - 1\\
 	$0.368536 + 0.000115264 x$\\
-	$r^2 = 0.53822$
+	$r^2 = 0.53822$\\
+	$p = \{1.44604 \time 10^{-69}, 1.63331 \times 10^{-11}\}$
 	
 	\section{forsome(a)}
 	x := (number of items in a) - 1\\
 	$-0.0183684 + 6.63148 \times 10^{-7} x^2$\\
-	$r^2 = 0.912927$
+	$r^2 = 0.912927$\\
+	$p = \{0.144731, 9.51459449459 \times 10^{-781}\}$
 	
 	\section{a $>$ b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a $>=$ b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a groupas b}
 	x := (number of items in a) - 1\\
 	$-0.00591995 + 2.01902 \times 10^{-7} x^2$\\
-	$r^2 = 0.316911$
+	$r^2 = 0.316911$\\
+	$p = \{0.619181, 1.50974 \times 10^{-67}\}$
 	
 	\section{a in b}
 	Same as contains
 	
 	\section{a[b]}
-	Negligible
+	Negligible (Negative Trend, Negative Values)
 	
 	\section{a intersect b}
-	Negligible
+	Negligible (Values too dispersed)\\
+	$p = \{4.712 \times 10^{-19}, 0.824746\}$ % linear model
 	
 	\section{a join b}
 	x := (number of items in a) + (number of items in b) - 5\\
 	$0.993985 + 0.0000860779 x^2$\\
-	$r^2 = 0.999971$
+	$r^2 = 0.999971$\\
+	$p = \{2.80608 \times 10^{-203}, 5.62282379069 \times 10^{-4277}\}$
 	
 	\section{a $<$ b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a $<=$ b}
-	Negligible
+	Negligible (Values too low)
 	
-	\section{max(a)}
+	\section{max(a)} % TODO remove?
 	x := (number of items in a) - 1\\
 	$-0.00206558 + 0.0000179761 x$\\
-	$r^2 = 0.00486482$
+	$r^2 = 0.00486482$\\
+	$p = \{0.866849, 0.0847042\}$
 	
 	\section{min(a)}
 	x := (number of items in a) - 1\\
 	$0.247735 - 0.00106815 x + 9.2684 \times 10^{-7} x^2$\\
-	$r^2 = 0.794276$
-	Note: if x < 831, just use 0.
+	$r^2 = 0.794276$\\
+	$p = \{1.50916 \times 10^{-23}, 1.00011 \times 10^{-76}, 1.9999 \times 10^{-215}\}$\\
+	Note: if x $<$ 831, just use 0.
 	
 	\section{a \% b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a * b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{-a}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a $<>$ b (Numerical)}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a $<>$ b (Strings)}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{now()}
-	Negligible
+	Negligible (Values too low, Not enough data)
 	
 	\section{a or b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a orderby b} %note: orderby-str used 
 	x := (number of items in a) - 1\\
 	$-10.0698 + 0.893485 x$\\
-	$r^2 = 0.999835$
+	$r^2 = 0.999835$\\
+	$p = \{8.11056 \times 10^{-137}, 1.237429703722 \times 10^{-819}\}$
 	
 	\section{a rangeas b}
-	Negligible
+	Negligible (Negative Trend, Negative Values)
 	
 	\section{ref(a)}
-	Negligible
+	Negligible (Negative Trend, Negative Values)
 	
 	\section{a $\sim\sim$ b}
 	x := length of b
@@ -152,59 +169,66 @@
 			\end{array}
 		\right.
 	\end{displaymath}
+	$r^2 = 0.979792$\\
+	$p = \{6.34389 \times 10^{-108}, 1.337437370542 \times 10^{-864}\}$
 	
 	\section{struct(a)}
 	x := (number of items in a) - 1\\
 	$4.00191 + 0.0000150654 x^2$\\
-	$r^2 = 0.83345$
+	$r^2 = 0.83345$\\
+	$p = \{2.70636 \times 10^{-12}, 7.42776 \times 10^{-39}, 0.00314473\}$
 	
 	\section{a - b}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{a subtract b}
-	Negligible
+	Negligible (Negative Trend, Negative Values)
 	
 	\section{sum(a)}
 	x := (number of items in a) - 1\\
 	$-0.161127 + 0.00383586 x$\\
-	$r^2 = 0.989362$
+	$r^2 = 0.989362$\\
+	$p = \{8.92934 \times 10^{-20}, 6.07425459460 \times 10^{-1115}\}$
 	
 	\section{a union b}
 	x := (number of items in a) + (number of items in b) - 4\\
 	$0.195218 - 0.000825259 x + 8.05861 \times 10^{-7} x^2$\\
-	$r^2 = 0.791186$
+	$r^2 = 0.791186$\\
+	$p = \{4.84407 \times 10^{-15}, 4.6056 \times 10^{-47}, 6.58346 \times 10^{-169}\}$\\
 	Note: If x < 654, just use 0
 	
 	\section{a union b union c ... union n}
 	x := n - 1\\
 	$-0.277017 + 0.0000292739 x^2$\\
-	$r^2 = 0.999564$
+	$r^2 = 0.999564$\\
+	$p = \{2.50948 \times 10^{-81}, 1.100169975461 \times 10^{-1546}\}$
 	
 	\section{unique(a)}
-	Negligible
+	Negligible (Negative Trend, Negative Values)
 	
 	\section{uniqueref(a)}
-	Negligible
+	Negligible (Negative Trend, Negative Values)
 	
 	\section{a where b}
 	x := number of items in a\\
 	z := number of conditions in b\\
 	$9.25131 + 9.13024 x + 0.0650857 z$\\
-	$r^2 = 0.999906$
+	$r^2 = 0.999906$\\
+	$p = \{4.01828 \times 10^{-9}, 1.87116 \times 10^{-199}, 0.823875\}$
 	
 	\section{(boolean) a}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{(int) a}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{(real) a}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{(string) a}
-	Negligible
+	Negligible (Values too low)
 	
 	\section{(date) a}
-	Negligible
+	Negligible (Values too low)
 
 \end{document}
