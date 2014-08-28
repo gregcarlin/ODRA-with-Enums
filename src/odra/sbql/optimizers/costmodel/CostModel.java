@@ -558,8 +558,8 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitMinExpression(MinExpression expr, Object attr) throws SBQLException {
 	    Expression child = expr.getExpression();
 	    child.accept(this, attr);
-	    int x = estimateNumItems(child) - 1;
-	    if(x >= 831) addEstimate(0.247735 - 0.00106815 * x + 0.00000092684 * x * x);
+	    int x = estimateNumItems(child);
+	    if(x >= 832) addEstimate(0.248804 - 0.00107 * x + 0.00000092684 * x * x);
 	    return commonVisitUnaryExpression(expr, attr);
 	}
 
@@ -728,8 +728,8 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitUnionExpression(UnionExpression expr, Object attr) throws SBQLException {
 	    expr.getLeftExpression().accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    int x = estimateNumItems(expr) - 4;
-	    if(x >= 654) addEstimate(0.195218 - 0.000825259 * x + 0.000000805861 * x * x);
+	    int x = estimateNumItems(expr);
+	    if(x >= 655) addEstimate(0.198532 - 0.000831706 * x + 0.000000805861 * x * x);
 	    return null;
 	}
 
@@ -973,8 +973,8 @@ public class CostModel extends TraversingASTAdapter {
 	    for(Expression e : exprs) {
 	        e.accept(this, attr);
 	    }
-	    int x = exprs.size() - 1;
-	    addEstimate(-0.277017 + 0.0000292739 * x * x);
+	    int x = exprs.size();
+	    addEstimate(-0.288195 + 0.0000292202 * x * x);
 	    return null;
 	}
 
