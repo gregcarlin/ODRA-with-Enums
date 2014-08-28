@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     21937,        464]
-NotebookOptionsPosition[     20898,        429]
-NotebookOutlinePosition[     21276,        446]
-CellTagsIndexPosition[     21233,        443]
+NotebookDataLength[     18077,        359]
+NotebookOptionsPosition[     17448,        334]
+NotebookOutlinePosition[     17826,        351]
+CellTagsIndexPosition[     17783,        348]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,8 +26,7 @@ Cell[BoxData[{
    RowBox[{"EvaluationNotebook", "[", "]"}], ",", 
    RowBox[{"CellContext", "\[Rule]", "Notebook"}]}], 
   "]"}], "\[IndentingNewLine]", 
- RowBox[{"name", " ", ":=", " ", 
-  "\"\<strtobool-nq\>\""}], "\[IndentingNewLine]", 
+ RowBox[{"name", " ", ":=", " ", "\"\<name\>\""}], "\[IndentingNewLine]", 
  RowBox[{"data", " ", ":=", 
   RowBox[{
    RowBox[{"Import", "[", 
@@ -65,72 +64,68 @@ Enums/greg/queries/benchmarks-\>\"", ",", "name", ",", "\"\<.csv\>\""}],
  RowBox[{"nlm", "[", "\"\<RSquared\>\"", "]"}], "\[IndentingNewLine]", 
  RowBox[{"nlm", "[", "\"\<ParameterPValues\>\"", "]"}]}], "Input",
  CellChangeTimes->CompressedData["
-1:eJwd0mtM01cYx/Fyk7XgBUQZWUVFV2DRgbFKBUULZLB4GdGyrIKXMRRkVbBT
-cDCNVGWsmSIEoSZdbLmYDouwBWQyVgspRQtTKBUMU3Sd1tIyBpUsc0O6/+95
-cfLJOa++eZ6zMjNv9yFPFouVxhwoLlK5d0w7hNHZFp+djOKJQxy4tycxAM5s
-LQuGghXlb0NOU+YaWBWrXA/juKs20fvMEbLNsGQrjNAayTqf9I+gKiaH/Kd3
-VzYMSV53BFZ+U34U+gi9jsGuP3hfQUfG7AWo2HNHTne/TRVQe06uhubMoQY4
-nn+pEfpfjmyBBR7drdC69p4eLm0v76GezgkjVMZ/9vIkY5Zu4wSU26eEKsYc
-VXEKPNtslteiV2cl76cOaqDwi4xGeP2M8yW8vVszDuV3nX9CHtdNqgrZIXXo
-ORFKmouCeTCnzzcc3nD4CGDVyALy22X8q7BpfTyZF+qrhkmzz0nPtKwf4WHt
-z2RgEc9gYLwp4DyA/2pdZviBsW0I5r2wXulh/GXOQcqyy5qhrq+B9FZe7oAJ
-Ni3ZMjO/G4qCw8jfJClGmKr4lNQ//fANfGMfJWuDTlzoxxz3HPwaPhKHVcG8
-axvIUotCAU2sDlKbX6yEPH47OfeOXAVvNj1ugIGHc29AmUhKjo2uaIHtCVFk
-fLhTDwemgrrgrH8N61f0scdIa2ToNpiU+h455vulGAbGPSQ7/wuQQr38Y3KN
-xXsEVsbxSFeSR8QwY0PBAtJp/bwUDkxfJfmLSy5Blfmtcihy77wCR/32k9eN
-6lVz+NfFA6TZkqqGwwMnyWcLe3thvctKbjdNst2MPxm5HBgtkAhgSm4F6VJX
-p8CQWDWpedW/D3odOLofFurcdWYXszdDfj3cKH3yIuGVQ7jleKQN+tf21WQz
-3pKlKaC/SeK3esYhtEWJFkKZbXYx3HuRGwQNQ54hcG2xbSXk/q7ZAjP7n5HJ
-zzeXHmP0ciSQrrZTkzAspoy8r1mUVc346HQiObz8di5UHrhL9gu+499jlLAD
-YqDz+FIhHB3fTBYMfp8MdZ2a7XB5c7MIqtK70qCSLc2Ai7xkEnitpLoAWu1d
-hfDUkvSzcNoVUQLtPzjPw6etc2TryMUKmFFZT26YbKqBNr5YCV+//3cr1Eff
-6oRRr6e6oeCTRBPkbtvxAEqj5g1Ci3LCDs0eHX/Bd+fFepvQH3eHA/8H+zEv
-zA==
+1:eJwd0n9Q03Ucx/HxS2KQCqLEtVCxJnQadE6ZoOgGF+SP4nR4TUiLUJCm4FIw
+yE5WIu1ShEOYd/Pc+OEtHUIdiNKagxtDx1IYCzwqtKVzbEQwqMtC1vf1/uNz
+j/t8/nre+/1ZmVO464Avi8XawxwoLlV5d0y7BPF5toCdjOKJA2y4tzclFM5u
+qYyA/BVVL0F2S84aWJuoXAeTOKs20vvsIbLDuHQLjNGayMaArHehKiGf/Kfv
+nTwYmfbmIVjzVdVhGCDwOwK7f+d+Bl3Zc6ehYvdtOd2DN1ZD7RdyNbTmDDXD
+8aJzV2HI+dg2WOzT0w7ta+8a4LLOql7q0U2YoDL5o6fHGXP1Gyag3DklUDHm
+q8rS4alWq7wBvXo7eS9jUAMFn2RfhVc+dz+Ft3ZpxqH8jvsPyOV4SVVJUGQj
+eo5FkdbSCC7M7w9cDa+5AviwdmQh+fUrvIuwZV0yWRgVqIapc49J38zc7+BB
+7fdkWCnXaGS8zmffh/9qPVb4lqljCBY+sV/oZfxh3kXK8ipbob6/mfRXnu+C
+QoeWbJt9sQeKIqLJnyXpJpih+JA0PHz7OXzuHCUbwo+dtmCOuz84Ax+Io2th
+4eX1ZIVNoYBmVhepLSpTQi6vk5x/Wa6C11t+aYZhBwuuQZlISo6NrmiDncI4
+Mnm12wAHpsK74VxIPetH9AWNkfbYqK0wNeN1cizwUzEMS/qJ1P0XKoUG+R5y
+jc1/BNYkcUlPqk/MMGNz8ULSbf+4Ag5MXyR5S8rPQZX1hSoo8u68AEeD95FX
+TOpV8/jXZQOk1ZahhsMDx8lHi/r6YJPHTm43TwZ5GW+aOGwYz5fwYXpBNelR
+16XDyEQ1qZmxvA/99h/eB0v03karh9mbsagJbpD++kQ44xJsPhrrgCEN/fV5
+jDdkmQoYYpYEvzrrEjjiRIugzDG3BO49ywmHxiHfSLi2zLEScn7TbIY5lkdk
+2uNNFUcY/VxC0tNxYhJGJ1SS9zSLc+sYH5xMIYeX3yqAyv13SAv/Eu8uoyQo
+NAG6jy4TwNHxTWTx4DdpUK/TbIfLW1tFUJXVnQmVQdJsuNhPJoGXy+uKod3Z
+XQJPLM06Bac9MeXQ+a37S/iwfZ5sHzlbDbNrmsj1ky310METK+GzN/5uh4b4
+GzoY92yqB/LfSzFDztYd96E0bsEgtCknnNDq0/UnfG1Bor8Z/Um32VC47aYn
+7C+X4KRFNwP/B0sQOV8=
   "]],
 
 Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Import", "::", "nffil"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"File not found during \[NoBreak]\\!\\(Import\\)\[NoBreak]. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/nffil\\\", \
-ButtonNote -> \\\"Import::nffil\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.6180009822833643`*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Symbol", "::", "argx"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"\[NoBreak]\\!\\(Symbol\\)\[NoBreak] called with \[NoBreak]\
-\\!\\(0\\)\[NoBreak] arguments; 1 argument is expected. \\!\\(\\*ButtonBox[\\\
-\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/argx\\\", ButtonNote -> \
-\\\"Symbol::argx\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.618000982335495*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"NonlinearModelFit", "::", "fitd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(Symbol[]\\)\[NoBreak] in \
-NonlinearModelFit is not a list or a rectangular array. \\!\\(\\*ButtonBox[\\\
-\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/NonlinearModelFit\\\", ButtonNote -> \
-\\\"NonlinearModelFit::fitd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.6180009824117947`*^9}}],
-
-Cell[BoxData[
- RowBox[{"NonlinearModelFit", "[", 
-  RowBox[{
-   RowBox[{"Symbol", "[", "]"}], ",", 
-   RowBox[{"a", "+", 
-    RowBox[{"b", " ", "x"}]}], ",", 
-   RowBox[{"{", 
-    RowBox[{"a", ",", "b"}], "}"}], ",", "x"}], "]"}]], "Output",
+ TagBox[
+  RowBox[{"FittedModel", "[", 
+   TagBox[
+    PanelBox[
+     TagBox[
+      RowBox[{
+       RowBox[{"-", "0.00046930693069306695`"}], "+", 
+       RowBox[{"0.00015493549354935487`", " ", "x"}]}],
+      Short[#, 2]& ],
+     FrameMargins->5],
+    Editable -> False], "]"}],
+  InterpretTemplate[
+  FittedModel[{
+    "Nonlinear", {$CellContext`a -> -0.00046930693069306695`, $CellContext`b -> 
+      0.00015493549354935487`}, {{$CellContext`x}, $CellContext`a + \
+$CellContext`b $CellContext`x}}, {
+    1}, {{0, 0.}, {1, 0.}, {2, 0.}, {3, 0.}, {4, 0.}, {5, 0.}, {6, 0.}, {
+     7, 0.}, {8, 0.}, {9, 0.02}, {10, 0.}, {11, 0.}, {12, 0.}, {13, 0.}, {
+     14, 0.}, {15, 0.}, {16, 0.}, {17, 0.}, {18, 0.}, {19, 0.}, {20, 0.}, {
+     21, 0.}, {22, 0.}, {23, 0.}, {24, 0.01}, {25, 0.}, {26, 0.}, {27, 0.}, {
+     28, 0.}, {29, 0.}, {30, 0.}, {31, 0.}, {32, 0.01}, {33, 0.01}, {
+     34, 0.}, {35, 0.}, {36, 0.}, {37, 0.01}, {38, 0.01}, {39, 0.01}, {
+     40, 0.}, {41, 0.01}, {42, 0.01}, {43, 0.01}, {44, 0.01}, {45, 0.}, {
+     46, 0.}, {47, 0.01}, {48, 0.01}, {49, 0.01}, {50, 0.}, {51, 0.}, {
+     52, 0.01}, {53, 0.}, {54, 0.}, {55, 0.02}, {56, 0.01}, {57, 0.01}, {
+     58, 0.01}, {59, 0.02}, {60, 0.02}, {61, 0.01}, {62, 0.}, {63, 0.}, {
+     64, 0.01}, {65, 0.02}, {66, 0.02}, {67, 0.01}, {68, 0.01}, {69, 0.01}, {
+     70, 0.02}, {71, 0.02}, {72, 0.02}, {73, 0.02}, {74, 0.01}, {75, 0.01}, {
+     76, 0.01}, {77, 0.01}, {78, 0.02}, {79, 0.01}, {80, 0.01}, {81, 0.01}, {
+     82, 0.01}, {83, 0.02}, {84, 0.02}, {85, 0.01}, {86, 0.01}, {87, 0.01}, {
+     88, 0.02}, {89, 0.02}, {90, 0.}, {91, 0.01}, {92, 0.01}, {93, 0.01}, {
+     94, 0.}, {95, 0.}, {96, 0.02}, {97, 0.02}, {98, 0.}, {99, 0.02}}, 
+    Function[Null, 
+     Internal`LocalizedBlock[{$CellContext`a, $CellContext`b, \
+$CellContext`x}, #], {HoldAll}]]& ],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->True]], "Output",
  CellChangeTimes->{
   3.6163484756527042`*^9, 3.616348609103424*^9, 3.616349386402028*^9, 
    3.616349449018919*^9, 3.616349590881075*^9, {3.616417334935487*^9, 
@@ -160,134 +155,71 @@ Cell[BoxData[
    3.618000296308753*^9, 3.618000358013111*^9}, {3.618000408204019*^9, 
    3.618000466560355*^9}, {3.618000507284224*^9, 3.618000520678281*^9}, {
    3.6180007119847813`*^9, 3.6180007662538433`*^9}, {3.618000932111381*^9, 
-   3.6180009824152403`*^9}}],
+   3.6180009824152403`*^9}, {3.618150297531842*^9, 3.618150307582932*^9}}],
 
 Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Import", "::", "nffil"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"File not found during \[NoBreak]\\!\\(Import\\)\[NoBreak]. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/nffil\\\", \
-ButtonNote -> \\\"Import::nffil\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.6180009824601793`*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Symbol", "::", "argx"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"\[NoBreak]\\!\\(Symbol\\)\[NoBreak] called with \[NoBreak]\
-\\!\\(0\\)\[NoBreak] arguments; 1 argument is expected. \\!\\(\\*ButtonBox[\\\
-\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/argx\\\", ButtonNote -> \
-\\\"Symbol::argx\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.618000982496866*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"ListPlot", "::", "lpn"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"\[NoBreak]\\!\\(Symbol[]\\)\[NoBreak] is not a list of \
-numbers or pairs of numbers. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/ListPlot\\\", ButtonNote -> \\\"ListPlot::lpn\\\"]\
-\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.6180009825920553`*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"NonlinearModelFit", "::", "fitd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(Symbol[]\\)\[NoBreak] in \
-NonlinearModelFit is not a list or a rectangular array. \\!\\(\\*ButtonBox[\\\
-\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/NonlinearModelFit\\\", ButtonNote -> \
-\\\"NonlinearModelFit::fitd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.618000982685808*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"NonlinearModelFit", "::", "fitd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(Symbol[]\\)\[NoBreak] in \
-NonlinearModelFit is not a list or a rectangular array. \\!\\(\\*ButtonBox[\\\
-\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/NonlinearModelFit\\\", ButtonNote -> \
-\\\"NonlinearModelFit::fitd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.6180009827598343`*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Show", "::", "gcomb"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Could not combine the graphics objects in \
-\[NoBreak]\\!\\(Show[\\(\\(\\(\\(ListPlot[\\(\\(Symbol[]\\)\\)]\\)\\), \
-\\*GraphicsBox[GraphicsComplexBox[List[List[0.`, 0.`], List[0.`, 0.`], \
-List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, \
-0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], \
-List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, \
-0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], \
-List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, \
-0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], \
-List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, \
-0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], \
-List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, \
-0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`], \
-List[0.`, 0.`], List[0.`, 0.`], List[0.`, 0.`]], List[]], \
-List[Rule[DisplayFunction, Identity], Rule[AspectRatio, \
-NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
-True]], Rule[AxesLabel, List[None, None]], Rule[AxesOrigin, List[0, 0]], \
-RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
-List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
-None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
-Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
-Directive[GrayLevel[0.5`, 0.4`]]], Rule[Method, \
-List[Rule[\\\"DefaultBoundaryStyle\\\", Automatic], Rule[\\\"ScalingFunctions\
-\\\", None]]], Rule[PlotRange, List[List[0, 2048], List[0.`, 1.`]]], \
-Rule[PlotRangeClipping, True], Rule[PlotRangePadding, \
-List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
-Scaled[0.05`]]]], Rule[Ticks, List[Automatic, Automatic]]]]\\)\\)]\\)\
-\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/Show/gcomb\\\", ButtonNote -> \
-\\\"Show::gcomb\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.6180009828714447`*^9}}],
-
-Cell[BoxData[
- RowBox[{"Show", "[", 
-  RowBox[{
-   RowBox[{"ListPlot", "[", 
-    RowBox[{"Symbol", "[", "]"}], "]"}], ",", 
-   GraphicsBox[GraphicsComplexBox[CompressedData["
-1:eJxTTMoPSmViYGAwAmIQPQpGwSjADQD2ewHg
-     "], {}],
-    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
-    Axes->{True, True},
-    AxesLabel->{None, None},
-    AxesOrigin->{0, 0},
-    DisplayFunction->Identity,
-    Frame->{{False, False}, {False, False}},
-    FrameLabel->{{None, None}, {None, None}},
-    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
-    GridLines->{None, None},
-    GridLinesStyle->Directive[
-      GrayLevel[0.5, 0.4]],
-    Method->{"DefaultBoundaryStyle" -> Automatic, "ScalingFunctions" -> None},
-    
-    PlotRange->{{0, 2048}, {0., 1.}},
-    PlotRangeClipping->True,
-    PlotRangePadding->{{
-       Scaled[0.02], 
-       Scaled[0.02]}, {
-       Scaled[0.05], 
-       Scaled[0.05]}},
-    Ticks->{Automatic, Automatic}]}], "]"}]], "Output",
+ GraphicsBox[{{{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.01388888888888889], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxt0jtOQlEUBdATK0sLCgsLNcYYY4z/v/JEBAVB/lAbre21uYVDcByO4U3F
+GTgENSExb0USQhb77nvOCyw9PPeeZiLi8ef9+/n/66vMF1mRs3gOl/A8XsCL
+eDl7LX3UP1/ep3uskK/iNbyON/Am3sLbeAfv4j28jw/wIT6aPu/b9HmPyU/w
+KT7D5/gCl3FWnJ9wXBbPJxwV8gr9K+7HUaVfJb+mj6NGXmO/OvfX6d/Qx3FL
+H0eDfoO8Sb/J//uOPo4WeYt+u+jUpn/PfByd4vmsw30453x06ePUpY+jV3SG
+U694X46jz3yc+swnjwF9nHA+YP8h+w/p4xzHiD5Oo+LvlY/oj9kfpzF9HBPm
+4zSh/5d/A2clEGw=
+      "]]}, {}}, {{}, {}, 
+    {RGBColor[1, 0, 0], AbsoluteThickness[1.6], Opacity[1.], 
+     LineBox[CompressedData["
+1:eJwVxX041AccAHAvpamUGldXlkKGIrtQFN9vpSwxcTVtT8NzYlmKXsSlQpe3
+HDl33s7pdzqnQjovNUOOcFjk5X649ty8lKQSkZcn87Ltj8/z2cII8vBTU1FR
+cf3P/zv7DXfUvFsKBGfXxqRaB+nboh8ZfdRBGLcaCe322S2lrOhKKqVOwn6F
+kNykQpNa2OqIs6lLkBdusrt6Vkdq175TkkLVwW664aKFoxXUZNVZJ1KNkJ7k
+rRHe6Q6sqISwW1QrjI2UNRfm+8GpS2PUeKojCr8wCxrSQuEr3uGcT+PH8GXu
+mbZrRDz83k5zctrkjcbM1aqRjlw4wVL+VZdwCkMejIZ0ZWRCUPFF84zJAEwc
+3s7APUKYSO5uUlUNwkqxqCcoSARNtTJp294LyPPqt3UezoMA5mGtn0YuoY2y
+r3n0aD7UatIWC8+GojVrs8nH6w8hT1S/sGHrFRxL4do+D5MAUp7epRddxfGw
+XbIWnRIwb1SWy8wi8ERtVUDp/VIgkT76YDQSU5eJWWNejyFw+ZnOLssbGPHq
+4U3FzBN4rvB8uiqJhVBJnaOUlgP90ImBwcGb6Dvtf8vOvwJshAmeQqMYtJaR
+i8vnKqF/gUuejojFXq74g2XZU3hzuE1EqYvDndNp1epuUpBk9jE7ttxCi4Ip
+dUpMDYjj1ONNryRgGFu7TOBTC1O+P7/3r2Qjpbyyh7n9GaxwjPEoXpeEQkbG
+kyjNOriq/WblwMnbGOm5VLO/pw5WVm9T6XFNRt78qyHLu/Vgf9ltvm42GVMM
+JiIKrzWAIJctMhRwcIjDYV93loHXcatWzSMpaBzJOBZu0giPu/y41dMpyNfP
+vfebWhPYtkjUhtK4yNC8fE7S2gSbD/pPcR15SLnA/LQ5vxmsraw5ZUM8NNiq
+NfQ29E/om0hsFkWnolf8ml9z9j2HkZ3u0VRaGsYFOomi9VrA+IP5e1V5Gmrw
+teg1wy1QbxTSGRyVjsGHllZvlbXCbbLL18MoAy3tEwUDvBcwRq/hqNVnoMGb
+aI1k7zYoOa57wPZ8JqpoKFLLvmkHUSsr+9VaPvIdrBkuN9thpvFk+NpnfMy3
+2cZmfm6Hfo50SvtcFtJjX/5D+HTAdMce6o1VAvx23k18XtYBwTyDGmaVAM/T
+vAsVVp2wrtVAe9ArG4fYNh/fZ3UCvatwTm8hGydBdnFaRQ4T3jmByvw7GFYy
+6pl+Tg5Sn0fRq1wINHHuC3lNyqGiLfBI7w8EujQ42Rd2y+GJg9maIncCg1Gy
+JEQhh0I9scDVk8A/bKK4Gko58BX8UjaDQGdDw2LT13IIORozsJxJ4Nk5/5Gg
+cTlsw1/sl+URWFI0ypjTIsH40Qb1nvsEdpt6mjWsJsFgk6Ipr4DA2VzpeOIa
+EtbPeRw7VEzggazkSH1dEjTKvz8TXUUgGUu7s1+PhIEdVpnqcgJnfC6/jDMj
+QXln3EveReBGZa/QfTsJCq1HRiIFgeDpdHqDBQkvPphK9vcSGOe6fqbgOxKq
+7uk3Rr0jkGpXodO2m4Ryyt9s9xECHR4bKNPtSCiN5ntsGSOQYZkg8tlLQr6v
+bm/NJIEFxidpE0CCuLNTlDxDYFtO/ZeKfSQI9yUH+MwS+FnPvJZ1gASBxHWH
+5TyB6zNS41wOkpCuv2JqcZHAvV8vuOk6kfAvuBJg9Q==
+      "]]}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{},
+  PlotRange->{{0, 99.}, {0, 0.02}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
  CellChangeTimes->{
   3.6163484756527042`*^9, 3.616348609103424*^9, 3.616349386402028*^9, 
    3.616349449018919*^9, 3.616349590881075*^9, {3.616417334935487*^9, 
@@ -317,30 +249,9 @@ Cell[BoxData[
    3.618000296308753*^9, 3.618000358013111*^9}, {3.618000408204019*^9, 
    3.618000466560355*^9}, {3.618000507284224*^9, 3.618000520678281*^9}, {
    3.6180007119847813`*^9, 3.6180007662538433`*^9}, {3.618000932111381*^9, 
-   3.618000982881789*^9}}],
+   3.6180009824152403`*^9}, {3.618150297531842*^9, 3.618150308123643*^9}}],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"NonlinearModelFit", "::", "fitd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(Symbol[]\\)\[NoBreak] in \
-NonlinearModelFit is not a list or a rectangular array. \\!\\(\\*ButtonBox[\\\
-\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/NonlinearModelFit\\\", ButtonNote -> \
-\\\"NonlinearModelFit::fitd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.618000969697115*^9, 3.6180009829552393`*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"NonlinearModelFit", "[", 
-   RowBox[{
-    RowBox[{"Symbol", "[", "]"}], ",", 
-    RowBox[{"a", "+", 
-     RowBox[{"b", " ", "x"}]}], ",", 
-    RowBox[{"{", 
-     RowBox[{"a", ",", "b"}], "}"}], ",", "x"}], "]"}], 
-  "[", "\<\"RSquared\"\>", "]"}]], "Output",
+Cell[BoxData["0.6652052983076086`"], "Output",
  CellChangeTimes->{
   3.6163484756527042`*^9, 3.616348609103424*^9, 3.616349386402028*^9, 
    3.616349449018919*^9, 3.616349590881075*^9, {3.616417334935487*^9, 
@@ -370,18 +281,12 @@ Cell[BoxData[
    3.618000296308753*^9, 3.618000358013111*^9}, {3.618000408204019*^9, 
    3.618000466560355*^9}, {3.618000507284224*^9, 3.618000520678281*^9}, {
    3.6180007119847813`*^9, 3.6180007662538433`*^9}, {3.618000932111381*^9, 
-   3.6180009829582853`*^9}}],
+   3.6180009824152403`*^9}, {3.618150297531842*^9, 3.618150308126457*^9}}],
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"NonlinearModelFit", "[", 
-   RowBox[{
-    RowBox[{"Symbol", "[", "]"}], ",", 
-    RowBox[{"a", "+", 
-     RowBox[{"b", " ", "x"}]}], ",", 
-    RowBox[{"{", 
-     RowBox[{"a", ",", "b"}], "}"}], ",", "x"}], "]"}], 
-  "[", "\<\"ParameterPValues\"\>", "]"}]], "Output",
+ RowBox[{"{", 
+  RowBox[{"0.6979626023777985`", ",", "5.64741614871069`*^-11"}], 
+  "}"}]], "Output",
  CellChangeTimes->{
   3.6163484756527042`*^9, 3.616348609103424*^9, 3.616349386402028*^9, 
    3.616349449018919*^9, 3.616349590881075*^9, {3.616417334935487*^9, 
@@ -411,7 +316,7 @@ Cell[BoxData[
    3.618000296308753*^9, 3.618000358013111*^9}, {3.618000408204019*^9, 
    3.618000466560355*^9}, {3.618000507284224*^9, 3.618000520678281*^9}, {
    3.6180007119847813`*^9, 3.6180007662538433`*^9}, {3.618000932111381*^9, 
-   3.618000982962447*^9}}]
+   3.6180009824152403`*^9}, {3.618150297531842*^9, 3.618150308352254*^9}}]
 }, Open  ]],
 
 Cell[BoxData[""], "Input",
@@ -428,7 +333,7 @@ Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.616256088412817*^9, 3.616256088819242*^9}}]
 },
 WindowSize->{736, 519},
-WindowMargins->{{28, Automatic}, {Automatic, 272}},
+WindowMargins->{{Automatic, 89}, {188, Automatic}},
 CellContext->Notebook,
 FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
 2014)",
@@ -446,26 +351,16 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 2878, 66, 216, "Input"],
-Cell[3460, 90, 464, 9, 24, "Message"],
-Cell[3927, 101, 517, 10, 24, "Message"],
-Cell[4447, 113, 536, 10, 24, "Message"],
-Cell[4986, 125, 2314, 37, 28, "Output"],
-Cell[7303, 164, 464, 9, 24, "Message"],
-Cell[7770, 175, 517, 10, 24, "Message"],
-Cell[8290, 187, 479, 10, 24, "Message"],
-Cell[8772, 199, 534, 10, 24, "Message"],
-Cell[9309, 211, 536, 10, 24, "Message"],
-Cell[9848, 223, 2305, 36, 70, "Message"],
-Cell[12156, 261, 3037, 58, 77, "Output"],
-Cell[15196, 321, 536, 10, 24, "Message"],
-Cell[15735, 333, 2366, 39, 28, "Output"],
-Cell[18104, 374, 2372, 39, 28, "Output"]
+Cell[579, 22, 2883, 65, 216, "Input"],
+Cell[3465, 89, 4034, 68, 42, "Output"],
+Cell[7502, 159, 5119, 92, 234, "Output"],
+Cell[12624, 253, 2165, 30, 28, "Output"],
+Cell[14792, 285, 2234, 33, 69, "Output"]
 }, Open  ]],
-Cell[20491, 416, 92, 1, 28, "Input"],
-Cell[20586, 419, 92, 1, 28, "Input"],
-Cell[20681, 422, 118, 2, 28, "Input"],
-Cell[20802, 426, 92, 1, 28, "Input"]
+Cell[17041, 321, 92, 1, 28, "Input"],
+Cell[17136, 324, 92, 1, 28, "Input"],
+Cell[17231, 327, 118, 2, 28, "Input"],
+Cell[17352, 331, 92, 1, 28, "Input"]
 }
 ]
 *)
