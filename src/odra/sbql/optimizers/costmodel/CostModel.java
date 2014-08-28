@@ -483,8 +483,8 @@ public class CostModel extends TraversingASTAdapter {
 	    Expression itemExpr = expr.getLeftExpression();
 	    itemExpr.accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    int x = estimateNumItems(itemExpr) - 1;
-	    addEstimate(0.368536 + 0.000115264 * x);
+	    int x = estimateNumItems(itemExpr);
+	    addEstimate(0.368421 + 0.000115264 * x);
 	    return null;
 	}
 
@@ -493,8 +493,8 @@ public class CostModel extends TraversingASTAdapter {
 	    Expression itemExpr = expr.getLeftExpression();
 	    itemExpr.accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    int x = estimateNumItems(itemExpr) - 1;
-	    addEstimate(-0.0183684 + 0.000000663148 * x * x);
+	    int x = estimateNumItems(itemExpr);
+	    addEstimate(-0.0183684 + 0.000000662542 * x * x);
 	    return null;
 	}
 
@@ -511,8 +511,8 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitInExpression(InExpression expr, Object attr) throws SBQLException {
 	    expr.getLeftExpression().accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    int x = estimateNumItems(expr.getRightExpression()) - 1;
-	    addEstimate(-0.0438918 + 0.000000617165 * x * x);
+	    int x = estimateNumItems(expr.getRightExpression());
+	    addEstimate(-0.0443595 + 0.000000616595 * x * x);
 	    return null;
 	}
 
@@ -534,8 +534,8 @@ public class CostModel extends TraversingASTAdapter {
 	public Object visitJoinExpression(JoinExpression expr, Object attr) throws SBQLException {
 	    expr.getLeftExpression().accept(this, attr);
 	    expr.getRightExpression().accept(this, attr);
-	    int x = estimateNumItems(expr) - 5;
-	    addEstimate(0.993985 + 0.0000860779 * x * x);
+	    int x = estimateNumItems(expr);
+	    addEstimate(0.662582 + 0.0000856859 * x * x);
 	    return null;
 	}
 
@@ -786,8 +786,8 @@ public class CostModel extends TraversingASTAdapter {
 	@Override
 	public Object visitStructExpression(StructExpression expr, Object attr) throws SBQLException {
 	    expr.getExpression().accept(this, attr);
-	    int x = estimateNumItems(expr) - 1;
-	    addEstimate(4.00191 + 0.0000150654 * x * x);
+	    int x = estimateNumItems(expr);
+	    addEstimate(3.9893 + 0.0000150523 * x * x);
 	    return null;
 	}
 
