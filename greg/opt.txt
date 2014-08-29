@@ -1,2 +1,2 @@
+#set optimization none | dead | weaklydependent | lscweaklydependent | independent
 set optimization none | dead | weaklydependent | independent
-

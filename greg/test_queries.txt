@@ -1,6 +1,24 @@
+# independent subqueries
 Emp where sal > (Emp where lname = "Smith").sal
 Emp where sal > avg(Emp.sal)
+Emp where hire_date > (Emp where lname = "Smith").hire_date
+Emp where birthday > (Emp[42]).birthday # note: correctly predicts no gain
+Emp where works_in.Dept = (Emp where lname = "Smith").works_in.Dept
 #Emp where position = (Emp where lname = "Smith").position
+Dept where count(employs) > avg((Dept join count(employs) as x).x)
 Part where detailCost > (Part where name = "Kemp").detailCost
-(Emp as e) where e.sal > avg((Emp as f where e.sex = f.sex).f.sal)
+Part where kind = (Part where name = "Kemp").kind
+Part where kind = (Part[42]).kind # note: correctly predicts no gain
+Part where detailMass < (Part where name = "Kemp").detailMass
 
+
+# weakly dependent subqueries
+(Emp as e) where e.sal > avg((Emp as f where e.sex = f.sex).f.sal)
+(Emp as e) where e.sal > avg((Emp as f where e.position = f.position).f.sal)
+#(Emp as e) where e.sal > ((2000 where e.sex = "female") union (Emp where e.sex = "male" and lname = "Smith").sal)
+
+# compound weakly dependent subqueries
+#(Emp as e) where e.sal > avg(e.works_in.Dept.employs.(Emp where position = e.position).sal)
+
+# large and small collections
+#Emp join avg(works_in.Dept.employs.Emp.sal)
