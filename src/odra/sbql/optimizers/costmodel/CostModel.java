@@ -659,8 +659,17 @@ public class CostModel extends TraversingASTAdapter {
 	        return null;
 	    case Operator.MATCH_STRING:
 	    case Operator.NOT_MATCH_STRING:
-	        int x = ((StringExpression) expr.getRightExpression()).getLiteral().value().length();
-	        addEstimate(x < 103 ? 0.676408 : 2.00131);
+	        Expression right = expr.getRightExpression();
+	        int x = -1;
+	        if(right instanceof StringExpression) {
+	            x = ((StringExpression) right).getLiteral().value().length();
+	        } else if(right instanceof ToStringExpression) {
+	            Expression inner = ((ToStringExpression) right).getExpression();
+	            if(inner instanceof StringExpression) {
+	                x = ((StringExpression) inner).getLiteral().value().length();
+	            }
+	        }
+	        if(x >= 0) addEstimate(x < 103 ? 0.676408 : 2.00131);
 	        return null;
 	    case Operator.ASSIGN:
 	    default:

@@ -6,15 +6,20 @@ Emp where birthday > (Emp[42]).birthday # note: correctly predicts no gain
 Emp where works_in.Dept = (Emp where lname = "Smith").works_in.Dept
 #Emp where position = (Emp where lname = "Smith").position
 Dept where count(employs) > avg((Dept join count(employs) as x).x)
+#Dept where dname ~~ ("%" + Dept[1].dname + "%")
 Part where detailCost > (Part where name = "Kemp").detailCost
 Part where kind = (Part where name = "Kemp").kind
 Part where kind = (Part[42]).kind # note: correctly predicts no gain
 Part where detailMass < (Part where name = "Kemp").detailMass
-
+Part where count(component) > avg((Part join count(component) as x).x)
+Part where exists(component) and sum(component.amount) > avg((Part where exists(component) join sum(component.amount) as x).x)
+Part as p where p.detailCost > avg((Part as q where q.kind = p.kind).q.detailCost) # correctly predicts no gain
 
 # weakly dependent subqueries
 (Emp as e) where e.sal > avg((Emp as f where e.sex = f.sex).f.sal)
 (Emp as e) where e.sal > avg((Emp as f where e.position = f.position).f.sal)
+#(Emp as e) where e.sal > avg((Emp as f where e.works_in.Dept = f.works_in.Dept).f.sal)
+#(Emp as e) where e.sal > avg(((((e.works_in.Dept groupas $aux0).(((Emp as f) where $aux0 = f.works_in.Dept)))).f).sal)
 #(Emp as e) where e.sal > ((2000 where e.sex = "female") union (Emp where e.sex = "male" and lname = "Smith").sal)
 
 # compound weakly dependent subqueries
