@@ -1,0 +1,1 @@
+0;Dept where count(employs) > avg((Dept join count(employs) as x).x;2937.85;2.94013221353E9

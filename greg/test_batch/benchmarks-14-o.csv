@@ -1,0 +1,1 @@
+0;(Emp as e) where e.sal > avg((Emp as f where e.position = f.position).f.sal;23.25;5.619141793E7

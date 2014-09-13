@@ -1,0 +1,72 @@
+set test plaintimes
+
+
+cm WeakDependMod
+
+set optimization none
+benchmark 100 1:Emp where sal > (Emp where lname = "Smith").sal;
+benchmark 100 2:Emp where sal > avg(Emp.sal);
+benchmark 100 3:Emp where sal = max(Emp.sal);
+benchmark 100 4:Emp where sal = min(Emp.sal);
+benchmark 100 5:Emp where hire_date > (Emp where lname = "Smith").hire_date;
+benchmark 100 6:Emp where hire_date = max(Emp.hire_date);
+benchmark 100 7:Emp where hire_date = min(Emp.hire_date);
+benchmark 100 8:Emp where birthday > (Emp[42]).birthday;
+benchmark 100 9:Emp where works_in.Dept = (Emp where lname = "Smith").works_in.Dept;
+benchmark 100 10:Dept where count(employs) > avg((Dept join count(employs) as x).x);
+benchmark 100 11:Dept where count(employs) = max((Dept join count(employs) as x).x);
+benchmark 100 12:Dept where count(employs) = min((Dept join count(employs) as x).x);
+benchmark 100 13:(Emp as e) where e.sal > avg((Emp as f where e.sex = f.sex).f.sal);
+benchmark 100 14:(Emp as e) where e.sal > avg((Emp as f where e.position = f.position).f.sal);
+benchmark 100 15:(Emp as e) where e.sal = max((Emp as f where e.sex = f.sex).f.sal);
+benchmark 100 16:(Emp as e) where e.sal = max((Emp as f where e.position = f.position).f.sal);
+benchmark 100 17:(Emp as e) where e.sal = min((Emp as f where e.sex = f.sex).f.sal);
+benchmark 100 18:(Emp as e) where e.sal = min((Emp as f where e.position = f.position).f.sal);
+benchmark 100 19:(Emp as e) where e.sal > avg((Emp as f where e.works_in.Dept = f.works_in.Dept).f.sal);
+
+set optimization none | dead | weaklydependent | independent
+benchmark 100 1-o:Emp where sal > (Emp where lname = "Smith").sal;
+benchmark 100 2-o:Emp where sal > avg(Emp.sal);
+benchmark 100 3-o:Emp where sal = max(Emp.sal);
+benchmark 100 4-o:Emp where sal = min(Emp.sal);
+benchmark 100 5-o:Emp where hire_date > (Emp where lname = "Smith").hire_date;
+benchmark 100 6-o:Emp where hire_date = max(Emp.hire_date);
+benchmark 100 7-o:Emp where hire_date = min(Emp.hire_date);
+benchmark 100 8-o:Emp where birthday > (Emp[42]).birthday;
+benchmark 100 9-o:Emp where works_in.Dept = (Emp where lname = "Smith").works_in.Dept;
+benchmark 100 10-o:Dept where count(employs) > avg((Dept join count(employs) as x).x);
+benchmark 100 11-o:Dept where count(employs) = max((Dept join count(employs) as x).x);
+benchmark 100 12-o:Dept where count(employs) = min((Dept join count(employs) as x).x);
+benchmark 100 13-o:(Emp as e) where e.sal > avg((Emp as f where e.sex = f.sex).f.sal);
+benchmark 100 14-o:(Emp as e) where e.sal > avg((Emp as f where e.position = f.position).f.sal);
+benchmark 100 15-o:(Emp as e) where e.sal = max((Emp as f where e.sex = f.sex).f.sal);
+benchmark 100 16-o:(Emp as e) where e.sal = max((Emp as f where e.position = f.position).f.sal);
+benchmark 100 17-o:(Emp as e) where e.sal = min((Emp as f where e.sex = f.sex).f.sal);
+benchmark 100 18-o:(Emp as e) where e.sal = min((Emp as f where e.position = f.position).f.sal);
+benchmark 100 19-o:(Emp as e) where e.sal > avg((Emp as f where e.works_in.Dept = f.works_in.Dept).f.sal);
+
+
+cm ..
+cm PartMod
+
+set optimization none
+benchmark 100 20:Part where detailCost > (Part where name = "Kemp").detailCost;
+benchmark 100 21:Part where kind = (Part where name = "Kemp").kind;
+benchmark 100 22:Part where kind = (Part[42]).kind # note: correctly predicts no gain;
+benchmark 100 23:Part where detailMass < (Part where name = "Kemp").detailMass;
+benchmark 100 24:Part where count(component) > avg((Part join count(component) as x).x);
+benchmark 100 25:Part where count(component) = max((Part join count(component) as x).x);
+benchmark 100 26:Part where count(component) = min((Part join count(component) as x).x);
+benchmark 100 27:Part where exists(component) and sum(component.amount) > avg((Part where exists(component) join sum(component.amount) as x).x);
+benchmark 100 28:Part as p where p.detailCost > avg((Part as q where q.kind = p.kind).q.detailCost);
+
+set optimization none | dead | weaklydependent | independent
+benchmark 100 20-o:Part where detailCost > (Part where name = "Kemp").detailCost;
+benchmark 100 21-o:Part where kind = (Part where name = "Kemp").kind;
+benchmark 100 22-o:Part where kind = (Part[42]).kind # note: correctly predicts no gain;
+benchmark 100 23-o:Part where detailMass < (Part where name = "Kemp").detailMass;
+benchmark 100 24-o:Part where count(component) > avg((Part join count(component) as x).x);
+benchmark 100 25-o:Part where count(component) = max((Part join count(component) as x).x);
+benchmark 100 26-o:Part where count(component) = min((Part join count(component) as x).x);
+benchmark 100 27-o:Part where exists(component) and sum(component.amount) > avg((Part where exists(component) join sum(component.amount) as x).x);
+benchmark 100 28-o:Part as p where p.detailCost > avg((Part as q where q.kind = p.kind).q.detailCost);

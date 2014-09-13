@@ -1,0 +1,1 @@
+0;(Emp as e) where e.sal > avg((Emp as f where e.sex = f.sex).f.sal;822.2;8.2654609602E8

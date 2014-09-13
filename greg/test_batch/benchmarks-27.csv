@@ -1,0 +1,1 @@
+0;Part where exists(component) and sum(component.amount) > avg((Part where exists(component) join sum(component.amount) as x).x;372.59;3.760870125E8

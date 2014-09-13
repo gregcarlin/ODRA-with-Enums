@@ -1,26 +1,39 @@
 # independent subqueries
 Emp where sal > (Emp where lname = "Smith").sal
 Emp where sal > avg(Emp.sal)
+Emp where sal = max(Emp.sal)
+Emp where sal = min(Emp.sal)
 Emp where hire_date > (Emp where lname = "Smith").hire_date
+Emp where hire_date = max(Emp.hire_date)
+Emp where hire_date = min(Emp.hire_date)
 Emp where birthday > (Emp[42]).birthday # note: correctly predicts no gain
 Emp where works_in.Dept = (Emp where lname = "Smith").works_in.Dept
 #Emp where position = (Emp where lname = "Smith").position
 Dept where count(employs) > avg((Dept join count(employs) as x).x)
+Dept where count(employs) = max((Dept join count(employs) as x).x)
+Dept where count(employs) = min((Dept join count(employs) as x).x)
 #Dept where dname ~~ ("%" + Dept[1].dname + "%")
 Part where detailCost > (Part where name = "Kemp").detailCost
 Part where kind = (Part where name = "Kemp").kind
 Part where kind = (Part[42]).kind # note: correctly predicts no gain
 Part where detailMass < (Part where name = "Kemp").detailMass
 Part where count(component) > avg((Part join count(component) as x).x)
+Part where count(component) = max((Part join count(component) as x).x)
+Part where count(component) = min((Part join count(component) as x).x)
 Part where exists(component) and sum(component.amount) > avg((Part where exists(component) join sum(component.amount) as x).x)
-Part as p where p.detailCost > avg((Part as q where q.kind = p.kind).q.detailCost) # correctly predicts no gain
 
 # weakly dependent subqueries
 (Emp as e) where e.sal > avg((Emp as f where e.sex = f.sex).f.sal)
 (Emp as e) where e.sal > avg((Emp as f where e.position = f.position).f.sal)
-#(Emp as e) where e.sal > avg((Emp as f where e.works_in.Dept = f.works_in.Dept).f.sal)
-#(Emp as e) where e.sal > avg(((((e.works_in.Dept groupas $aux0).(((Emp as f) where $aux0 = f.works_in.Dept)))).f).sal)
+(Emp as e) where e.sal = max((Emp as f where e.sex = f.sex).f.sal)
+(Emp as e) where e.sal = max((Emp as f where e.position = f.position).f.sal)
+(Emp as e) where e.sal = min((Emp as f where e.sex = f.sex).f.sal)
+(Emp as e) where e.sal = min((Emp as f where e.position = f.position).f.sal)
 #(Emp as e) where e.sal > ((2000 where e.sex = "female") union (Emp where e.sex = "male" and lname = "Smith").sal)
+
+# rewritten but without consequence?
+(Emp as e) where e.sal > avg((Emp as f where e.works_in.Dept = f.works_in.Dept).f.sal)
+Part as p where p.detailCost > avg((Part as q where q.kind = p.kind).q.detailCost)
 
 # compound weakly dependent subqueries
 #(Emp as e) where e.sal > avg(e.works_in.Dept.employs.(Emp where position = e.position).sal)

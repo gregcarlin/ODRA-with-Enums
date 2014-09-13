@@ -1,0 +1,1 @@
+0;Emp where works_in.Dept = (Emp where lname = "Smith").works_in.Dep;6.07;4.798791315E7

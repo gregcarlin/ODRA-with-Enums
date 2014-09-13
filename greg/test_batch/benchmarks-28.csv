@@ -1,0 +1,1 @@
+0;Part as p where p.detailCost > avg((Part as q where q.kind = p.kind).q.detailCost;568.2;5.7123699407E8

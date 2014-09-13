@@ -1,0 +1,1 @@
+0;(Emp as e) where e.sal = min((Emp as f where e.position = f.position).f.sal;753.78;7.5682284105E8

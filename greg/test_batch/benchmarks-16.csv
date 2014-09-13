@@ -1,0 +1,1 @@
+0;(Emp as e) where e.sal = max((Emp as f where e.position = f.position).f.sal;754.01;7.5702719162E8

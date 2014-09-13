@@ -1,0 +1,1 @@
+0;(Emp as e) where e.sal = max((Emp as f where e.sex = f.sex).f.sal;17.19;6.79799241E7

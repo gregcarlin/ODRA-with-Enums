@@ -1,0 +1,1 @@
+0;(Emp as e) where e.sal > avg((Emp as f where e.works_in.Dept = f.works_in.Dept).f.sal;943.26;9.4796264887E8

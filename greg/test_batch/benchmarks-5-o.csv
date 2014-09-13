@@ -1,0 +1,1 @@
+0;Emp where hire_date > (Emp where lname = "Smith").hire_dat;5.07;4.798708486E7

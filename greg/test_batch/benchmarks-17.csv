@@ -1,0 +1,1 @@
+0;(Emp as e) where e.sal = min((Emp as f where e.sex = f.sex).f.sal;801.17;8.0423773862E8
